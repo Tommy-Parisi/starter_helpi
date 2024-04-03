@@ -37,6 +37,9 @@ function App() {
         <p>
           Ellie Dassoulas
         </p>
+        <p>
+          Listowel Anim
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
