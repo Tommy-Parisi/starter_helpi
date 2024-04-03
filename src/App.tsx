@@ -34,6 +34,9 @@ function App() {
         <p>
           Thomas Parisi
         </p>
+        <p>
+          Ellie Dassoulas
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
