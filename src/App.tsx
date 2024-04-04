@@ -66,7 +66,7 @@ function App() {
       {/* Routes for the different pages */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/basic-questions" element={<BasicQuestions />} />
+        <Route path="/BasicQuestions" element={<BasicQuestions />} />
       </Routes>
     </div>
     </BrowserRouter>
