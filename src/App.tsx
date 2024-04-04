@@ -33,6 +33,13 @@ function App() {
         </p>
         <p>
           Sarah Hershberger
+          Thomas Parisi
+        </p>
+        <p>
+          Ellie Dassoulas
+        </p>
+        <p>
+          Listowel Anim
         </p>
         <a
           className="App-link"
@@ -54,3 +61,4 @@ function App() {
 }
 
 export default App;
+//Reset build
