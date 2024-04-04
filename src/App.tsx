@@ -28,7 +28,7 @@ function App() {
     setKey(event.target.value);
   }
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/starter_helpi'>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
