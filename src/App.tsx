@@ -32,6 +32,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <p>
+          Sarah Hershberger
           Thomas Parisi
         </p>
         <p>
