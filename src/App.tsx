@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
+import DetailedQuestions from './pages/DetailedQuestions';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -16,6 +17,23 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [currentPage , setCurrentPage] = useState<string>('Home'); //for the current page the user is on
+
+  const changePage = (page: string) => {
+    setCurrentPage(page);
+  }
+
+  {/* State change for the different pages */}
+  const renderPage = (): JSX.Element => {
+    switch (currentPage) {
+      case 'Basic':
+        return <BasicQuestions changePage={setCurrentPage} />;
+      case 'Detailed':
+        return <DetailedQuestions changePage={setCurrentPage} />;
+      default:
+        return <Home changePage = {setCurrentPage}/>;
+    }
+  }
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -28,12 +46,11 @@ function App() {
     setKey(event.target.value);
   }
   return (
-    <BrowserRouter basename='/starter_helpi'>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
           </p>
           <p>
             Sarah Hershberger
@@ -63,13 +80,8 @@ function App() {
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
 
-      {/* Routes for the different pages */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/BasicQuestions" element={<BasicQuestions />} />
-      </Routes>
+      {renderPage()}
     </div>
-    </BrowserRouter>
   );
 }
 

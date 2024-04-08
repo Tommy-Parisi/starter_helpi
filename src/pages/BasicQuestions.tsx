@@ -2,20 +2,18 @@
 //import logo from './logo.svg';
 //import './App.css';
 import { Button } from 'react-bootstrap';
-
 import { useNavigate } from "react-router-dom";
 
-const BasicQuestions = () => {
-    const navigate = useNavigate();
+interface BasicProps {
+    changePage: (page: string) => void;
+}
 
-    const toHome = () => {
-        navigate('/');
-    };
+const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
 
     return (
         <div className = "BasicQuestions">
             <h1>Basic Questions</h1>
-            <Button onClick ={toHome}>Back</Button>
+            <Button onClick={() => changePage('Home')} >Back</Button>
         </div>
     );
 }
