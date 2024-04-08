@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
@@ -19,11 +18,7 @@ function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [currentPage , setCurrentPage] = useState<string>('Home'); //for the current page the user is on
 
-  const changePage = (page: string) => {
-    setCurrentPage(page);
-  }
-
-  {/* State change for the different pages */}
+  /* State change for the different pages */
   const renderPage = (): JSX.Element => {
     switch (currentPage) {
       case 'Basic':
