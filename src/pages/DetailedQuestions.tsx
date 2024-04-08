@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+//import React, { useState } from 'react';
 //import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 interface DetailedProps {
     changePage: (page: string) => void;
