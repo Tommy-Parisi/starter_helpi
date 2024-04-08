@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
+import DetailedQuestions from './pages/DetailedQuestions';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -16,25 +17,23 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [currentPage , setCurrentPage] = useState<string>("home"); //for the current page the user is on
+  const [currentPage , setCurrentPage] = useState<string>('Home'); //for the current page the user is on
+
+  const changePage = (page: string) => {
+    setCurrentPage(page);
+  }
 
   {/* State change for the different pages */}
   const renderPage = (): JSX.Element => {
     switch (currentPage) {
-      case 'basic':
-        return <BasicQuestions />;
-      case 'datailed':
-        return <DetailedQuestions />;
+      case 'Basic':
+        return <BasicQuestions changePage={setCurrentPage} />;
+      case 'Detailed':
+        return <DetailedQuestions changePage={setCurrentPage} />;
       default:
         return <Home changePage = {setCurrentPage}/>;
     }
   }
-
-  <div>
-      {currentPage === 'home' && <Home changePage={setCurrentPage} />}
-      {currentPage === 'basic' && <BasicQuestions />}
-  </div>
-  //{currentPage === 'detailed' && <DetailedQuestions />}
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -80,6 +79,8 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+
+      {renderPage()}
     </div>
   );
 }

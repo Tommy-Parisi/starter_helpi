@@ -8,17 +8,11 @@ interface HomeProps {
     changePage: (page: string) => void;
 }
 
-const Home = React.FC<HomeProps> = ({ changePage }) => {
-    const navigate = useNavigate();
-
-    const toBasicQuestions = () => {
-        navigate('/BasicQuestions');
-    };
-
+const Home: React.FC<HomeProps> = ({ changePage }) => {
     return(
         <div>
             <h1>Home Page</h1>
-            <Button onClick={() => changePage('basic')}>Basic Questions</Button>
+            <Button onClick={() => changePage('Basic')}>Basic Questions</Button>
         </div>
     );
 }
