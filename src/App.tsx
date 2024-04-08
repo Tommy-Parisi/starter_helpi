@@ -16,6 +16,25 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [currentPage , setCurrentPage] = useState<string>("home"); //for the current page the user is on
+
+  {/* State change for the different pages */}
+  const renderPage = (): JSX.Element => {
+    switch (currentPage) {
+      case 'basic':
+        return <BasicQuestions />;
+      case 'datailed':
+        return <DetailedQuestions />;
+      default:
+        return <Home changePage = {setCurrentPage}/>;
+    }
+  }
+
+  <div>
+      {currentPage === 'home' && <Home changePage={setCurrentPage} />}
+      {currentPage === 'basic' && <BasicQuestions />}
+  </div>
+  //{currentPage === 'detailed' && <DetailedQuestions />}
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -28,12 +47,11 @@ function App() {
     setKey(event.target.value);
   }
   return (
-    <BrowserRouter>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
           </p>
           <p>
             Sarah Hershberger
@@ -62,14 +80,7 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
-
-      {/* Routes for the different pages */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/BasicQuestions" element={<BasicQuestions />} />
-      </Routes>
     </div>
-    </BrowserRouter>
   );
 }
 

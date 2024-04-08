@@ -2,8 +2,13 @@
 //import './App.css';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-const Home = () => {
+interface HomeProps {
+    changePage: (page: string) => void;
+}
+
+const Home = React.FC<HomeProps> = ({ changePage }) => {
     const navigate = useNavigate();
 
     const toBasicQuestions = () => {
@@ -13,7 +18,7 @@ const Home = () => {
     return(
         <div>
             <h1>Home Page</h1>
-            <Button onClick={toBasicQuestions}>Basic Questions</Button>
+            <Button onClick={() => changePage('basic')}>Basic Questions</Button>
         </div>
     );
 }
