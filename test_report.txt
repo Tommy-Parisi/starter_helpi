@@ -56,7 +56,7 @@ FAIL src/App.test.tsx
               [0mDetailed Career Questions[0m
             [36m</h1>[39m
             [36m<p>[39m
-              [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
+              [0mExplore the depths of your chosen career with our Detailed Career Questions. Here, you'll find intricate insights into specific professions, from the skills you’ll need to thrive to the educational paths that lead there. Perfect for those ready to narrow down their career options or seeking comprehensive guidance, these questions help you uncover what it truly takes to excel in your desired field.[0m
             [36m</p>[39m
             [36m<button[39m
               [33mclass[39m=[32m"btn btn-primary"[39m
@@ -97,13 +97,13 @@ All files               |   37.83 |    22.22 |   23.07 |   37.83 |
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
  src/pages              |      40 |      100 |   14.28 |      40 |                   
   BasicQuestions.tsx    |   33.33 |      100 |       0 |   33.33 | 9-13              
-  DetailedQuestions.tsx |   33.33 |      100 |       0 |   33.33 | 9-12              
+  DetailedQuestions.tsx |   33.33 |      100 |       0 |   33.33 | 9-13              
   Home.tsx              |      50 |      100 |   33.33 |      50 | 14-17             
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.697 s
+Time:        2.727 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
