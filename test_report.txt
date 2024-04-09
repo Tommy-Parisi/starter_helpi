@@ -2,15 +2,97 @@
 > starter_helpi@0.1.0 test
 > react-scripts test --coverage
 
-PASS src/App.test.tsx
-  ✓ renders learn react link (41 ms)
+FAIL src/App.test.tsx
+  ✕ renders learn react link (39 ms)
+
+  ● renders learn react link
+
+    TestingLibraryElementError: Unable to find an element with the text: /learn react/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"App"[39m
+        [36m>[39m
+          [36m<form[39m
+            [33mclass[39m=[32m""[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+            [36m>[39m
+              [0mAPI Key:[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+              [33mtype[39m=[32m"password"[39m
+            [36m/>[39m
+            [36m<br />[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mSubmit[0m
+            [36m</button>[39m
+          [36m</form>[39m
+          [36m<div>[39m
+            [36m<h1>[39m
+              [0mHome Page[0m
+            [36m</h1>[39m
+            [36m<h1>[39m
+              [0mBasic Career Questions[0m
+            [36m</h1>[39m
+            [36m<p>[39m
+              [0mKickstart your career exploration with our Basic Career Questions! Designed to touch upon the surface aspects of various professions, these questions aim to quickly gauge your general interests, educational background, and work preferences. Perfect for those at the start of their career journey, these questions provide a straightforward way to discover potential career paths without delving into the complexities of each field.[0m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mBasic Questions[0m
+            [36m</button>[39m
+            [36m<h1>[39m
+              [0mDetailed Career Questions[0m
+            [36m</h1>[39m
+            [36m<p>[39m
+              [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDetailed Questions[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+       5 | test('renders learn react link', () => {
+       6 |   render(<App />);
+    >  7 |   const linkElement = screen.getByText(/learn react/i);
+         |                              ^
+       8 |   expect(linkElement).toBeInTheDocument();
+       9 | });
+      10 |
+
+      at Object.getElementError (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByText (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/App.test.tsx:7:30)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
 All files               |   37.83 |    22.22 |   23.07 |   37.83 |                   
  src                    |   37.03 |    22.22 |   33.33 |   37.03 |                   
-  App.tsx               |    62.5 |       40 |      50 |    62.5 | 14,25-27,35-41    
+  App.tsx               |    62.5 |       40 |      50 |    62.5 | 13,24-26,34-40    
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
  src/pages              |      40 |      100 |   14.28 |      40 |                   
@@ -18,10 +100,10 @@ All files               |   37.83 |    22.22 |   23.07 |   37.83 |
   DetailedQuestions.tsx |   33.33 |      100 |       0 |   33.33 | 9-12              
   Home.tsx              |      50 |      100 |   33.33 |      50 | 14-17             
 ------------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.804 s
+Time:        2.697 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
