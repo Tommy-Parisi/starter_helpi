@@ -1,5 +1,3 @@
-//import React, { useState } from 'react';
-//import './App.css';
 import { Button } from 'react-bootstrap';
 
 interface DetailedProps {
@@ -7,6 +5,7 @@ interface DetailedProps {
 }
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
+    
     return (
         <div>
             <h1>Detailed Questions</h1>
