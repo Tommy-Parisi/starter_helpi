@@ -41,6 +41,8 @@ function App() {
   }
   return (
     <div className="App">
+      
+      {renderPage()}
         
       {/* Form for the user to input their API Key */}
       <Form>
@@ -49,8 +51,6 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
-
-      {renderPage()}
     </div>
   );
 }
