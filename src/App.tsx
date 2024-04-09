@@ -13,7 +13,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  
+
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -24,10 +24,18 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  //for button in header to navigate back to home page
+  function navigateToHomePage() {
+    window.history.back();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <button onClick={navigateToHomePage}>
+          Home Page
+        </button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
