@@ -42,8 +42,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Header />
-      
+      <Header changePage={setCurrentPage} />
+
       {renderPage()}
         
       {/* Form for the user to input their API Key */}
