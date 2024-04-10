@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
+import { Header } from './pages/Header';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -41,6 +42,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Header />
       
       {renderPage()}
         
