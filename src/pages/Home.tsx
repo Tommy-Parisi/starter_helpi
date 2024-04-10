@@ -45,6 +45,11 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
     return(
         <>
         <div style={style.header}>Home</div>
+
+        <div style={style.header}>
+            <div>Home</div>
+            <Button style={style.customButton} onClick={() => changePage('Home')}>Home Page</Button>
+        </div>
         
         <div style={style.page}>
 
