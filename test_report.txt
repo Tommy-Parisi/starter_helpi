@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (48 ms)
+  ✕ renders learn react link (46 ms)
 
   ● renders learn react link
 
@@ -16,12 +16,12 @@ FAIL src/App.test.tsx
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
           [36m<div[39m
-            [33mstyle[39m=[32m"display: flex; font-size: 50px; background-color: rgb(39, 52, 105); width: 100%; height: 50px; color: rgb(228, 217, 255);"[39m
+            [33mstyle[39m=[32m"display: flex; font-size: 50px; background-color: rgb(39, 52, 105); width: 100%; height: 75px; color: rgb(228, 217, 255);"[39m
           [36m>[39m
             [36m<div[39m
-              [33mstyle[39m=[32m"display: flex; font-size: 50px; background-color: rgb(39, 52, 105); width: 100%; height: 50px; color: rgb(228, 217, 255);"[39m
+              [33mstyle[39m=[32m"display: flex; font-size: 50px; background-color: rgb(39, 52, 105); width: 100%; height: 75px; color: rgb(228, 217, 255);"[39m
             [36m>[39m
-              [0mHome[0m
+              [0mHelpi[0m
             [36m</div>[39m
             [36m<button[39m
               [33mclass[39m=[32m"btn btn-primary"[39m
@@ -32,41 +32,41 @@ FAIL src/App.test.tsx
             [36m</button>[39m
           [36m</div>[39m
           [36m<div[39m
-            [33mstyle[39m=[32m"margin-top: 0px; width: 100%; display: flex; background-color: rgb(228, 217, 255);"[39m
+            [33mclass[39m=[32m"page"[39m
           [36m>[39m
             [36m<div[39m
-              [33mstyle[39m=[32m"flex: 1; padding: 10px; border: 1px solid black;"[39m
+              [33mclass[39m=[32m"column"[39m
             [36m>[39m
-              [36m<h2>[39m
-                [0mBasic Career Questions[0m
-              [36m</h2>[39m
-              [36m<p>[39m
-                [0mKickstart your career exploration with our Basic Career Questions! Designed to touch upon the surface aspects of various professions, these questions aim to quickly gauge your general interests, educational background, and work preferences. Perfect for those at the start of their career journey, these questions provide a straightforward way to discover potential career paths without delving into the complexities of each field.[0m
-              [36m</p>[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"btn btn-primary"[39m
-                [33mstyle[39m=[32m"background-color: rgb(30, 39, 73); color: rgb(228, 217, 255);"[39m
-                [33mtype[39m=[32m"button"[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"container"[39m
               [36m>[39m
-                [0mBasic Questions[0m
-              [36m</button>[39m
+                [36m<h2>[39m
+                  [0mThe Basic Quiz[0m
+                [36m</h2>[39m
+                [36m<h3>[39m
+                  [0m(5 Mins)[0m
+                [36m</h3>[39m
+                [36m<p>[39m
+                  [0mKickstart your career exploration with our Basic Career Questions! Designed to touch upon the surface aspects of various professions, these questions aim to quickly gauge your general interests, educational background, and work preferences. Perfect for those at the start of their career journey, these questions provide a straightforward way to discover potential career paths without delving into the complexities of each field.[0m
+                [36m</p>[39m
+              [36m</div>[39m
             [36m</div>[39m
             [36m<div[39m
-              [33mstyle[39m=[32m"flex: 1; padding: 10px; border: 1px solid black;"[39m
+              [33mclass[39m=[32m"column"[39m
             [36m>[39m
-              [36m<h2>[39m
-                [0mDetailed Career Questions[0m
-              [36m</h2>[39m
-              [36m<p>[39m
-                [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
-              [36m</p>[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"btn btn-primary"[39m
-                [33mstyle[39m=[32m"background-color: rgb(30, 39, 73); color: rgb(228, 217, 255);"[39m
-                [33mtype[39m=[32m"button"[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"container"[39m
               [36m>[39m
-                [0mDetailed Questions[0m
-              [36m</button>[39m
+                [36m<h2>[39m
+                  [0mThe Detailed Quiz[0m
+                [36m</h2>[39m
+                [36m<h3>[39m
+                  [0m(10 Mins)[0m
+                [36m</h3>[39m
+                [36m<p>[39m
+                  [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
+                [36m</p>[39m
+              [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
           [36m<div[39m
@@ -125,23 +125,23 @@ FAIL src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   47.82 |    22.22 |   35.29 |   47.82 |                   
+All files               |   46.66 |    22.22 |   35.29 |   46.66 |                   
  src                    |   39.28 |    22.22 |   42.85 |   39.28 |                   
   ApiKey.tsx            |      60 |       50 |   33.33 |      60 | 9,17-23           
   App.tsx               |   71.42 |    33.33 |     100 |   71.42 | 16-18             
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/pages              |   61.11 |      100 |      30 |   61.11 |                   
+ src/pages              |   58.82 |      100 |      30 |   58.82 |                   
   BasicQuestions.tsx    |   33.33 |      100 |       0 |   33.33 | 10-14             
   DetailedQuestions.tsx |   33.33 |      100 |       0 |   33.33 | 9-13              
   Footer.tsx            |     100 |      100 |     100 |     100 |                   
   Header.tsx            |      75 |      100 |      50 |      75 | 27                
-  Home.tsx              |      60 |      100 |   33.33 |      60 | 53-59             
+  Home.tsx              |      50 |      100 |   33.33 |      50 | 14-22             
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.808 s
+Time:        2.852 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
