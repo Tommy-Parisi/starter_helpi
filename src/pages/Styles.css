@@ -58,9 +58,18 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.styledText {
+.titleStyledText {
     font-family: 'STIX Two Text', serif;
     font-size: 50px;
     font-weight: bold;
     color: #E4D9FF;
 }
+
+.styledText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: #E4D9FF;
+}
+
+

@@ -24,7 +24,7 @@ export const Header: React.FC<HomeProps> = ({ changePage }) => {
     };
     return (
         <div style={style.header}>
-            <div className='styledText'>Helpi</div>
+            <div className='titleStyledText'>Helpi</div>
             <Button style={style.customButton} onClick={() => changePage('Home')}>Home Page</Button>
         </div>
     );
