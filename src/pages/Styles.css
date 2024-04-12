@@ -1,9 +1,17 @@
-.page {
+.pageTop {
     display: flex;
     width: 100%;
     justify-content: center;
-    min-height: 85vh; 
-    
+    flex-direction: column;
+    background-color: #273469;
+}
+
+.pageBody {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    min-height: 85vh;
+    background-color: #273469;
 }
 
 .column {
@@ -48,4 +56,11 @@
     transform: scale(1.025);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.styledText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #E4D9FF;
 }

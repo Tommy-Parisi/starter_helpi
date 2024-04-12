@@ -1,6 +1,8 @@
 import React from 'react';
 import './Styles.css';
 import { Button } from 'react-bootstrap';
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet"></link>
+
 
 interface HomeProps {
     changePage: (page: string) => void;
@@ -9,7 +11,14 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ changePage }) => {
     return(
         <>
-        <div className="page">
+
+        <div className='pageTop'>
+
+        <h2 className='styledText'>Your Career Companion</h2>
+
+        </div>
+
+        <div className="pageBody">
 
             <div className="column">
 
