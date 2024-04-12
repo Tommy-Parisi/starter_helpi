@@ -10,13 +10,6 @@
     margin-right: 2.5%;
 }
 
-.customButton {
-    background-color: #1E2749;
-    color: #E4D9FF;
-    border-radius: 10px;
-    border: none;
-}
-
 .container {
     flex-direction: column;
     align-items: center; 
@@ -31,6 +24,25 @@
 }
 
 .container:hover {
+    transform: scale(1.025);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .customButton {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    height: 250px;
+    width: 600px;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #E4D9FF;
+}
+
+.container .customButton:hover {
     transform: scale(1.025);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
