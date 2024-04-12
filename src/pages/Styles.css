@@ -1,0 +1,75 @@
+.pageTop {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #273469;
+}
+
+.pageBody {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    min-height: 85vh;
+    background-color: #273469;
+}
+
+.column {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.container {
+    flex-direction: column;
+    align-items: center; 
+    padding: 10px; 
+    height: 250px;
+    width: 600px;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #E4D9FF;
+}
+
+.container:hover {
+    transform: scale(1.025);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customButton {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    height: 250px;
+    width: 600px;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #E4D9FF;
+    border: none;
+}
+
+.customButton:hover {
+    transform: scale(1.025);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.titleStyledText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #E4D9FF;
+}
+
+.styledText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: #E4D9FF;
+}
+
+

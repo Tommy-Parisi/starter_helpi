@@ -14,7 +14,8 @@ export const Header: React.FC<HomeProps> = ({ changePage }) => {
             backgroundColor: '#273469',
             width: `100%`,
             height: '75px',
-            color: '#E4D9FF'
+            color: '#E4D9FF',
+            justifyContent: 'space-between',
         },
         customButton: {
             backgroundColor: '#1E2749',
@@ -23,7 +24,7 @@ export const Header: React.FC<HomeProps> = ({ changePage }) => {
     };
     return (
         <div style={style.header}>
-            <div style={style.header}>Helpi</div>
+            <div className='titleStyledText'>Helpi</div>
             <Button style={style.customButton} onClick={() => changePage('Home')}>Home Page</Button>
         </div>
     );
