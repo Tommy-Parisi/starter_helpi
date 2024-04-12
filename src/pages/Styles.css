@@ -3,6 +3,7 @@
     width: 100%;
     justify-content: center;
     min-height: 85vh; 
+    
 }
 
 .column {
@@ -29,7 +30,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container .customButton {
+.customButton {
     flex-direction: column;
     align-items: center;
     padding: 10px;
@@ -40,9 +41,10 @@
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
     background-color: #E4D9FF;
+    border: none;
 }
 
-.container .customButton:hover {
+.customButton:hover {
     transform: scale(1.025);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;

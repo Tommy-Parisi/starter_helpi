@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import './Styles.css';
 import { Button } from 'react-bootstrap';
 
 interface HomeProps {
