@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
 import { Header } from './pages/Header';
-import { Footer } from './pages/Footer';
+
 
 function App() {
   const [currentPage , setCurrentPage] = useState<string>('Home'); //for the current page the user is on
@@ -27,7 +27,7 @@ function App() {
 
       {renderPage()}
 
-      <Footer changePage={setCurrentPage}/>
+    
     </div>
   );
 }
