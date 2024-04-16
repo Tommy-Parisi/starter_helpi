@@ -28,8 +28,8 @@ export function ApiKey() {
     {/* Form for the user to input their API Key */}
     <Form>
         <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey} className='formControl'></Form.Control>
+        <Button className="Submit-Button" onClick={handleSubmit} >Submit</Button>
     </Form>
     </div>
   );
