@@ -9,7 +9,7 @@ import { Header } from './pages/Header';
 function App() {
   const [currentPage , setCurrentPage] = useState<string>('Home'); //for the current page the user is on
 
-  /* State change for the different pages */
+  /* State change to navigate to different pages */
   const renderPage = (): JSX.Element => {
     switch (currentPage) {
       case 'Basic':
