@@ -8,6 +8,21 @@
     transition: text-shadow 0.3s ease;
 }
 
+.headerButtonStylesText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color:#6a11cb;
+    cursor: pointer;
+    transition: text-shadow 0.3s ease;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.headerButtonStylesText:hover {
+    text-shadow: 2px 2px 4px #000000;
+}
+
 
 .titleStyledText:hover {
     text-shadow: 2px 2px 4px #000000;
@@ -138,3 +153,51 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     height: 463px;
 }
+
+.generalInfoBasic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #6a11cb;
+    border: none;
+    text-align: justify;
+}
+
+.recIndustriesBasic{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+    width: 100%;
+    margin-top: 5px;
+    text-align: justify;
+}
+
+.recBasicHeader{
+    height: auto;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    color: #6a11cb;
+    border: none;
+    text-align: justify;
+
+}
+.option1{
+    margin-left: 10px; 
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+.learn{
+margin-left: 20px;
+}
+
