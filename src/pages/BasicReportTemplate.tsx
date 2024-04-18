@@ -1,5 +1,4 @@
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
+import React from 'react';
 
 interface BasicReportProps {
     changePage: (page: string) => void;

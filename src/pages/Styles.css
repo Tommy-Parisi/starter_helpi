@@ -8,6 +8,21 @@
     transition: text-shadow 0.3s ease;
 }
 
+.headerButtonStylesText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color:#6a11cb;
+    cursor: pointer;
+    transition: text-shadow 0.3s ease;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.headerButtonStylesText:hover {
+    text-shadow: 2px 2px 4px #000000;
+}
+
 
 .titleStyledText:hover {
     text-shadow: 2px 2px 4px #000000;
