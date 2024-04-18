@@ -5,10 +5,31 @@ interface BasicReportProps {
 }
 const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
     return (
-        <div>
-            <h1>Basic Career Assessment Report</h1>
+        <>
+        <div className='pageTop'>
+            <h2 className='styledText'>Basic Career Assessment Report</h2>
         </div>
-    );
+
+        <div className="pageBody">
+        <div className='container'>
+            <div className="column">
+                <div className = "generalInfoBasic">
+                    <h1>General Information</h1>
+                    <p>Based on your answers, you showed the following raits of people in industries....</p>
+                </div>
+            </div>
+
+            <div className="column">
+                <div className = "recIndustriesBasic">
+                    <h1>Recommended Industries</h1>
+                    <p>Option 1: ...</p>
+                    <p>Learn More</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        </>
+        );
 }
 
 export default BasicReport;
