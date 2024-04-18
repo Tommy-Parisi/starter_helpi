@@ -21,9 +21,9 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
 
             <div className="column">
                 <div className = "recIndustriesBasic">
-                    <h1>Recommended Industries</h1>
-                    <p>Option 1: ...</p>
-                    <p>Learn More</p>
+                    <h1 className='recBasicHeader'>Recommended Industries</h1>
+                    <p className="option1">Option 1: ...</p>
+                   <p className="learn">Learn More</p>
                 </div>
             </div>
         </div>

@@ -21,7 +21,6 @@ export const Header: React.FC<HeaderProps> = ({ changePage }) => {
         <div style={style.header} className='header'>
             <div className='titleStyledText' onClick={() => changePage('Home')}>Helpi</div>
             <div className='headerButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
-            {/*<Button onClick={handleNavigateToBasicReport}>Basic Report</Button>*/}
         </div>
     );
 }
