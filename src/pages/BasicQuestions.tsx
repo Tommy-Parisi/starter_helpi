@@ -1,40 +1,113 @@
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { ApiKey } from '../ApiKey';
 
 interface BasicProps {
     changePage: (page: string) => void;
 }
 
 const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
+    const questions = [
+        {
+            question: "Question 1",
+            options: [
+                "I prefer working with numbers and data.",
+                "I prefer working with words and languages."
+            ]
+        },
+        {
+            question: "Question 2",
+            options: [
+                "I prefer working with other people.",
+                "I prefer working by myself."
+            ]
+        },
+        {
+            question: "Question 3",
+            options: [
+                "I prefer to be in charge.",
+                "I prefer to be told what to do."
+            ]
+        },
+        {
+            question: "Question 4",
+            options: [
+                "I prefer my work to be predictable and consistent.",
+                "I prefer my work to have variety and opportunity for creativity."
+            ]
+        },
+        {
+            question: "Question 5",
+            options: [
+                "I prefer active and hands on tasks.",
+                "I prefer working on a computer."
+            ]
+        },
+        {
+            question: "Question 6",
+            options: [
+                "I prefer working to improve quality of life (e.g., healthcare, education).",
+                "I prefer working in entertainment and leisure (e.g., gaming, sports)"
+            ]
+        },
+        {
+            question: "Question 7",
+            options: [
+                "I prefer science and technology.",
+                "I prefer design and communication."
+            ]
+        }
+    ];
+
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedOption, setSelectedOption] = useState("");
+
+    const handleOptionChange = (option: string) => {
+        setSelectedOption(option);
+        setTimeout(() => {
+            if (currentQuestionIndex < questions.length - 1) {
+                setCurrentQuestionIndex(currentQuestionIndex + 1);
+                setSelectedOption("");
+            } else {
+                changePage('Summary');
+            }
+        }, 600);
+    };
+
+    const question = questions[currentQuestionIndex];
 
     return (
-        <div className = "BasicQuestions">
-            <h1>Basic Career Questions</h1>
-            <p>Begin your journey to discovering your ideal career path with our Basic Career Questions. This section is designed to lightly touch upon your preferences, education, and general interests, guiding you towards potential career fields without overwhelming detail. Ideal for getting started on your career exploration journey.</p>
-            <Button onClick={() => changePage('Home')} >Back</Button>
-            <h2>Question 1</h2>
-            <Form.Check type="radio" name="question1" label="I prefer working with numbers and data." />
-            <Form.Check type="radio" name="question1" label="I working with words and languages." />
-            <h2>Question 2</h2>
-            <Form.Check type="radio" name="question2" label="I prefer working with other people." />
-            <Form.Check type="radio" name="question2" label="I working by myself." />
-            <h2>Question 3</h2>
-            <Form.Check type="radio" name="question3" label="I prefer to be in charge." />
-            <Form.Check type="radio" name="question3" label="I prefer to be told what to do." />
-            <h2>Question 4</h2>
-            <Form.Check type="radio" name="question4" label="I prefer my work to be predictable and consistent." />
-            <Form.Check type="radio" name="question4" label="I prefer my work to have variety and opportunity for creativity." />
-            <h2>Question 5</h2>
-            <Form.Check type="radio" name="question5" label="I prefer active and hands on tasks." />
-            <Form.Check type="radio" name="question5" label="I prefer working on a computer." />
-            <h2>Question 6</h2>
-            <Form.Check type="radio" name="question6" label="I prefer working to improve quality of life (e.g., healthcare, education)." />
-            <Form.Check type="radio" name="question6" label="I prefer working in entertainment and leisure (e.g., gaming, sports)" />
-            <h2>Question 7</h2>
-            <Form.Check type="radio" name="question7" label="I prefer science and technology." />
-            <Form.Check type="radio" name="question7" label="I prefer design and communication." />
-        </div>
+        <>
+            <div className='pageTop'>
+                <h2 className='styledText'>Basic Career Questions</h2>
+            </div>
+            <div className="pageBody1">
+                <div className='container1'>
+                    <div className="column">
+                        <Button className="customButton1" onClick={() => {}}>
+                            <h2>{question.question}</h2>
+                            {question.options.map((option, index) => (
+                                <Form.Check
+                                    key={index}
+                                    type="radio"
+                                    name={`question${currentQuestionIndex + 1}`}
+                                    label={option}
+                                    onChange={() => handleOptionChange(option)}
+                                    checked={selectedOption === option}
+                                />
+                            ))}
+
+
+                        </Button>
+                    </div>
+                </div>
+            </div>
+            <div className="footer1">
+                <p>© 2024 Helpi. All rights reserved.</p>
+                <ApiKey />
+            </div>
+        </>
     );
-}
+};
 
 export default BasicQuestions;
