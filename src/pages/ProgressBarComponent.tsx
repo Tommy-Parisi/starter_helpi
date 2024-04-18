@@ -12,7 +12,7 @@ const ProgressBarComponent = ({ total, progress, progressText = "" }: ProgressBa
    const percentage = (progress / total) * 100;
   
    return (
-       <ProgressBar now={percentage} label={`${progressText} ${progress}%`} />
+       <ProgressBar now={percentage} label={`${progressText} (${percentage.toFixed(0)}%)`} />
    );
 }
 

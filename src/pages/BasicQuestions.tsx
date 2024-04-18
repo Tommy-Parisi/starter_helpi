@@ -10,9 +10,10 @@ interface BasicProps {
 const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     const totalQuestions = 7;
     const [progress, setProgress] = useState<number>(0);
+
     
     const handleAnswer = (questionNumber: number) => (event: React.MouseEvent<HTMLInputElement>) =>{
-        if(progress < questionNumber){
+        if(progress <= questionNumber){
             setProgress(progress + 1);
         }
    }
