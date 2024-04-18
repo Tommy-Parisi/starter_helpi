@@ -15,6 +15,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
             <Button onClick={() => changePage('Home')} >Back</Button>
         </div>
         <div>
+            {/* All of our detailed questions formatted with a textbox for the user to input their response */}
             <Form.Label>1. What hobbies/activities do you engage in during your free time?</Form.Label>
             <Form.Control
             as="textarea"

@@ -15,6 +15,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
         </div>
        
         <div className="pageBody">
+        {/*Buttons to navigate to Basic and Detailed question pages*/}
         <div className='container'>
             <div className="column">
                 <Button className="customButton" onClick={() => changePage('Basic')}>
