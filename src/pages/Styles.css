@@ -28,6 +28,22 @@
     text-shadow: 2px 2px 4px #000000;
 }
 
+/*for header buttons on right side*/
+.headerRightButtonStylesText {
+    font-family: 'STIX Two Text', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color:#6a11cb;
+    cursor: pointer;
+    transition: text-shadow 0.3s ease;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.headerRightButtonStylesText:hover {
+    text-shadow: 2px 2px 4px #000000;
+}
+
 
 
 
@@ -181,6 +197,7 @@
     text-align: justify;
 }
 
+/*Basic report page styles*/
 .recBasicHeader{
     height: auto;
     width: 100%;
