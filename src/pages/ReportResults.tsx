@@ -1,9 +1,8 @@
 //Page commented out to avoid warnings
 
-
-/* 
 import React, { useState } from 'react';
 import axios from 'axios';
+//import BasicReport from './BasicReportTemplate';
 
 
 const ReportResults = () => {
@@ -69,7 +68,13 @@ const ReportResults = () => {
         catch (error) {
             setError('Failed to fetch report from OpenAI');
         }
+        console.log(basicPrompt);
+        console.log(detailedPrompt);
     }
+
+    submitAnswers(); //to avoid errors
+
+
 
 
     return (
@@ -93,4 +98,4 @@ const ReportResults = () => {
 
 export default ReportResults;
 
-*/
+
