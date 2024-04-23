@@ -1,5 +1,6 @@
 import React from 'react';
 import './Styles.css';
+import logo from '../assets/LaunchPadLogo.png';
 //import { Button } from 'react-bootstrap';
 
 interface HeaderProps {
@@ -8,23 +9,27 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ changePage }) => {
     const style = {
-        header: {
+        header: { //Style for the header
             textAllign: 'center',
             display: 'flex',
             width: `100%`,
-            height: '50px',
+            height: '70px',
             justifyContent: 'space-between',
         },
+        logoImage: { // Style for the image
+            height: '55px', 
+            marginRight: '10px',
+            marginLeft: '10px'
+        }
     };
 
     return (
         <div style={style.header} className='header'>
-            <div className='titleStyledText' onClick={() => changePage('Home')}>Helpi</div>
-            <div className='headerRightButtons'>
-                <div className='headerBasicButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
-                <div className='verticalLine'></div>
-                <div className='headerDetailedButtonStylesText' onClick={() => changePage('DetailedReport')}>Detailed Report</div>
-                </div>
+            <div style={{ display: 'flex', alignItems: 'center' }} className='titleStyledText' onClick={() => changePage('Home')}>
+                <img src= {logo} alt="Logo" style={style.logoImage} />
+                <div className='titleStyledText'>Launch Pad</div>
+            </div>
+            <div className='headerButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
         </div>
     );
 }
