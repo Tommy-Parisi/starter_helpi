@@ -2,6 +2,7 @@ import React from 'react';
 import './Styles.css';
 import { Button } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
+import './ParallaxStars.css';
 
 interface HomeProps {
     changePage: (page: string) => void;
@@ -10,7 +11,14 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ changePage }) => {
     return (
         <>
+        <div className ='parallax-scrolling'>
+            <div id='stars1' className="parallax-star-layer">What the heck</div>
+            <div id='stars2' className="parallax-star-layer"></div>
+            <div id='stars3' className="parallax-star-layer"></div>
+        </div>
+
         <div className='pageTop'>
+        <div id='stars1' className="parallax-star-layer"></div>
             <h2 className='styledText'>Shoot for the moon</h2>
         </div>
        
