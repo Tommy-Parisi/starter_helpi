@@ -1,5 +1,5 @@
 
-.titleStyledText {
+.titleStyledText { 
     font-family: 'Nasalization';
     src: url('../fonts/nasalization-rg.woff2') format('woff2');
     font-size: 30px;
@@ -7,6 +7,7 @@
     color:#6a11cb;
     cursor: pointer;
     transition: text-shadow 0.3s ease;
+    mix-blend-mode: #6a11cb
 }
 
 .headerButtonStylesText {
