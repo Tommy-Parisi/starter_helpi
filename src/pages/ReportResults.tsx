@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useState } from 'react';
 import axios from 'axios';
 
 
@@ -7,7 +8,6 @@ const ReportResults = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<String>('');
     const [ApiKey, setApiKey] = useState<String>('');
-    const [answers, setAnswers] = useState<String[]>([]);
 
     let basicQuestions: string[] = ['"I prefer working with numbers and data.", "I prefer working with words and languages."',
                         '"I prefer working with other people.", "I prefer working by myself."',
@@ -28,6 +28,9 @@ const ReportResults = () => {
                         "7. What are the three most predominant qualities of your personality?"
     ];
 
+    let basicAnswers: string[] = [];
+    let detailedAnswers: string[] = [];
+
     const generatePrompt = (questions: string[], answers: string[]) => {
         let QandAprompt = '';
         for (let i = 0; i < questions.length; i++) {
@@ -41,10 +44,8 @@ const ReportResults = () => {
         if (!ApiKey) {
             setError('Please enter an API key');
             return;
-        }
-        if (!answers) {
-            setError('Please answer all questions');
-            return;
+        } else {
+            setApiKey(ApiKey);
         }
 
         const basicPrompt = `Based on the following responses: ${generatePrompt(basicQuestions, basicAnswers)}, what is the most suitable career for you?`;
@@ -85,7 +86,6 @@ const ReportResults = () => {
             </div>
         </>
     )
-
 }
 
 
