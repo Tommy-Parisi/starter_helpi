@@ -5,16 +5,21 @@ interface DetailedProps {
     changePage: (page: string) => void;
 }
 
-let detailedAnswers = [];
-function recordAnswer(answer: string) {
-    detailedAnswers.push(answer);
-}
-function handleClick() {
-    recordAnswer((document.getElementById("question1") as HTMLInputElement).value);
-
-}
+let detailedAnswers: string[] = [];
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
+    // Function to record the user's responses to the detailed questions, call report generator, and move to report page
+    const handleClick = () => {
+        detailedAnswers.push((document.getElementById("question1") as HTMLTextAreaElement).value);
+        detailedAnswers.push((document.getElementById("question2") as HTMLTextAreaElement).value);
+        detailedAnswers.push((document.getElementById("question3") as HTMLTextAreaElement).value);
+        detailedAnswers.push((document.getElementById("question4") as HTMLTextAreaElement).value);
+        detailedAnswers.push((document.getElementById("question5") as HTMLTextAreaElement).value);
+        detailedAnswers.push((document.getElementById("question6") as HTMLTextAreaElement).value);
+        detailedAnswers.push((document.getElementById("question7") as HTMLTextAreaElement).value);
+        console.log(detailedAnswers);
+        changePage('DetailedReport')
+    }
     
     return (
         <>
@@ -27,36 +32,43 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
             {/* All of our detailed questions formatted with a textbox for the user to input their response */}
             <Form.Label>1. What hobbies/activities do you engage in during your free time?</Form.Label>
             <Form.Control
+            id = "question1"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
             <Form.Label>2. What are your top three skills or strengths?</Form.Label>
             <Form.Control
+            id = "question2"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
             <Form.Label>3. What is your ideal working environment?</Form.Label>
             <Form.Control
+            id = "question3"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
             <Form.Label>4. What are your long-term career goals?</Form.Label>
             <Form.Control
+            id = "question4"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
             <Form.Label>5. What type of tasks do you find most fulfilling? Include the topic and type.</Form.Label>
             <Form.Control
+            id = "question5"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
             <Form.Label>6. What are your favorite subjects or topics to learn about?</Form.Label>
             <Form.Control
+            id = "question6"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
             <Form.Label>7. What are the three most predominant qualities of your personality?</Form.Label>
             <Form.Control
+            id = "question7"
             as="textarea"
             rows={3}
             placeholder="Enter your response here"/>
