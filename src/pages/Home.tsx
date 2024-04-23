@@ -11,7 +11,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
     return (
         <>
         <div className='pageTop'>
-            <h2 className='styledText'>Your Career Companion</h2>
+            <h2 className='styledText'>Shoot for the moon</h2>
         </div>
        
         <div className="pageBody">

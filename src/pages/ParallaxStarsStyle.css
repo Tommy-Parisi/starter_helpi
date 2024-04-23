@@ -1,0 +1,25 @@
+.parallax-scrolling {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-star-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent url(path/to;/star.png) repeat top center;
+    background-attachment: fixed;
+}
+
+.parallax-background {
+    background-image: url('path-to-stars-image.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .pageTop, .pageBody {
+    position: relative;
+  }
