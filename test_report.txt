@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (51 ms)
+  ✕ renders learn react link (67 ms)
 
   ● renders learn react link
 
@@ -41,85 +41,97 @@ FAIL src/App.test.tsx
             [36m</div>[39m
           [36m</div>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"pageTop"[39m
-          [36m>[39m
-            [36m<h2[39m
-              [33mclass[39m=[32m"styledText"[39m
-            [36m>[39m
-              [0mYour Career Companion[0m
-            [36m</h2>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"pageBody"[39m
+            [33mclass[39m=[32m"parallax-scrolling"[39m
           [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
+              [33mclass[39m=[32m"parallax-star-layer"[39m
+              [33mid[39m=[32m"stars1"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"parallax-star-layer"[39m
+              [33mid[39m=[32m"stars3"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"pageTop"[39m
+            [36m>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"styledText"[39m
+              [36m>[39m
+                [0mShoot for the moon[0m
+              [36m</h2>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"pageBody"[39m
             [36m>[39m
               [36m<div[39m
-                [33mclass[39m=[32m"column"[39m
+                [33mclass[39m=[32m"container"[39m
               [36m>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"customButton btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"column"[39m
                 [36m>[39m
-                  [36m<h2>[39m
-                    [0mThe Basic Quiz[0m
-                  [36m</h2>[39m
-                  [36m<h3>[39m
-                    [0m(5 Mins)[0m
-                  [36m</h3>[39m
-                  [36m<p>[39m
-                    [0mKickstart your career exploration with our Basic Career Questions! Designed to touch upon the surface aspects of various professions, these questions aim to quickly gauge your general interests, educational background, and work preferences. Perfect for those at the start of their career journey, these questions provide a straightforward way to discover potential career paths without delving into the complexities of each field.[0m
-                  [36m</p>[39m
-                [36m</button>[39m
-              [36m</div>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"column"[39m
-              [36m>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"customButton btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"customButton btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [36m<h2>[39m
+                      [0mThe Basic Quiz[0m
+                    [36m</h2>[39m
+                    [36m<h3>[39m
+                      [0m(5 Mins)[0m
+                    [36m</h3>[39m
+                    [36m<p>[39m
+                      [0mKickstart your career exploration with our Basic Career Questions! Designed to touch upon the surface aspects of various professions, these questions aim to quickly gauge your general interests, educational background, and work preferences. Perfect for those at the start of their career journey, these questions provide a straightforward way to discover potential career paths without delving into the complexities of each field.[0m
+                    [36m</p>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"column"[39m
                 [36m>[39m
-                  [36m<h2>[39m
-                    [0mThe Detailed Quiz[0m
-                  [36m</h2>[39m
-                  [36m<h3>[39m
-                    [0m(10 Mins)[0m
-                  [36m</h3>[39m
-                  [36m<p>[39m
-                    [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
-                  [36m</p>[39m
-                [36m</button>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"customButton btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [36m<h2>[39m
+                      [0mThe Detailed Quiz[0m
+                    [36m</h2>[39m
+                    [36m<h3>[39m
+                      [0m(10 Mins)[0m
+                    [36m</h3>[39m
+                    [36m<p>[39m
+                      [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
+                    [36m</p>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
               [36m</div>[39m
             [36m</div>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"footer"[39m
-          [36m>[39m
-            [36m<p>[39m
-              [0m© 2024 Helpi. All rights reserved.[0m
-            [36m</p>[39m
-            [36m<div>[39m
-              [36m<form[39m
-                [33mclass[39m=[32m""[39m
-              [36m>[39m
-                [36m<label[39m
-                  [33mclass[39m=[32m"form-label"[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"footer"[39m
+            [36m>[39m
+              [36m<p>[39m
+                [0m© 2024 Helpi. All rights reserved.[0m
+              [36m</p>[39m
+              [36m<div>[39m
+                [36m<form[39m
+                  [33mclass[39m=[32m""[39m
                 [36m>[39m
-                  [0mAPI Key:[0m
-                [36m</label>[39m
-                [36m<input[39m
-                  [33mclass[39m=[32m"formControl form-control"[39m
-                  [33mplaceholder[39m=[32m"Insert API Key Here"[39m
-                  [33mtype[39m=[32m"password"[39m
-                [36m/>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mSubmit[0m
-                [36m</button>[39m
-              [36m</form>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"form-label"[39m
+                  [36m>[39m
+                    [0mAPI Key:[0m
+                  [36m</label>[39m
+                  [36m<input[39m
+                    [33mclass[39m=[32m"formControl form-control"[39m
+                    [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+                    [33mtype[39m=[32m"password"[39m
+                  [36m/>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mSubmit[0m
+                  [36m</button>[39m
+                [36m</form>[39m
+              [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
         [36m</div>[39m
@@ -147,25 +159,25 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   19.13 |       10 |   15.62 |   19.46 |                   
+All files                    |    20.3 |     7.69 |      20 |   21.09 |                   
  src                         |   36.66 |    18.18 |   42.85 |   36.66 |                   
   ApiKey.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23           
   App.tsx                    |   55.55 |       20 |     100 |   55.55 | 18-20,24-26       
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/pages                   |   12.94 |        0 |       8 |   13.25 |                   
+ src/pages                   |   15.53 |        0 |   14.28 |   16.32 |                   
   BasicQuestions.tsx         |    4.76 |        0 |       0 |       5 | 11-107            
   BasicReportTemplate.tsx    |      50 |      100 |       0 |      50 | 7                 
   DetailedQuestions.tsx      |   13.33 |      100 |       0 |   13.33 | 12-76             
   DetailedReportTemplate.tsx |      50 |      100 |       0 |      50 | 8                 
   Footer.tsx                 |       0 |      100 |       0 |       0 | 9-28              
-  Header.tsx                 |      60 |      100 |   33.33 |      60 | 28-32             
-  Home.tsx                   |      50 |      100 |   33.33 |      50 | 21-29             
+  Header.tsx                 |      60 |      100 |   33.33 |      60 | 27-31             
+  Home.tsx                   |   36.84 |        0 |      50 |   43.75 | 15-23,47-55       
   ProgressBarComponent.tsx   |   33.33 |        0 |       0 |   33.33 | 12-14             
-  ReportResults.tsx          |       0 |        0 |       0 |       0 | 6-72              
+  ReportResults.tsx          |       0 |        0 |       0 |       0 | 8-80              
 -----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.702 s
+Time:        2.789 s
 Ran all test suites.

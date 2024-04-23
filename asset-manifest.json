@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.f607d9a4.css",
-    "main.js": "/starter_helpi/static/js/main.a06170d7.js",
+    "main.css": "/starter_helpi/static/css/main.5bca6e78.css",
+    "main.js": "/starter_helpi/static/js/main.0f765f1d.js",
     "static/js/453.bad6c33a.chunk.js": "/starter_helpi/static/js/453.bad6c33a.chunk.js",
     "static/media/LaunchPadLogo.png": "/starter_helpi/static/media/LaunchPadLogo.0892562d03b94d55ef43.png",
+    "static/media/Stars1.png": "/starter_helpi/static/media/Stars1.e23dfdd470166a7b0630.png",
+    "static/media/Stars3.png": "/starter_helpi/static/media/Stars3.af77b42f8eaf0dce594b.png",
     "static/media/nasalization-rg.woff2": "/starter_helpi/static/media/nasalization-rg.57e0d3d05d1feeecf82f.woff2",
     "index.html": "/starter_helpi/index.html",
-    "main.f607d9a4.css.map": "/starter_helpi/static/css/main.f607d9a4.css.map",
-    "main.a06170d7.js.map": "/starter_helpi/static/js/main.a06170d7.js.map",
+    "main.5bca6e78.css.map": "/starter_helpi/static/css/main.5bca6e78.css.map",
+    "main.0f765f1d.js.map": "/starter_helpi/static/js/main.0f765f1d.js.map",
     "453.bad6c33a.chunk.js.map": "/starter_helpi/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f607d9a4.css",
-    "static/js/main.a06170d7.js"
+    "static/css/main.5bca6e78.css",
+    "static/js/main.0f765f1d.js"
   ]
 }
