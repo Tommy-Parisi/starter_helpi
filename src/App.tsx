@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
 import BasicReport from './pages/BasicReportTemplate';
+import DetailedReport from './pages/DetailedReportTemplate';
 import { Header } from './pages/Header';
 
 
@@ -22,7 +23,7 @@ function App() {
       case 'BasicReport':
         return <BasicReport changePage={setCurrentPage} />;
       case 'DetailedReport':
-        return <DetailedQuestions changePage={setCurrentPage} />;
+        return <DetailedReport changePage={setCurrentPage} />;
     }
   }
 
