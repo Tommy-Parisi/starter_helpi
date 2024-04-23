@@ -21,6 +21,8 @@ function App() {
         return <Home changePage = {setCurrentPage}/>;
       case 'BasicReport':
         return <BasicReport changePage={setCurrentPage} />;
+      case 'DetailedReport':
+        return <DetailedQuestions changePage={setCurrentPage} />;
     }
   }
 
