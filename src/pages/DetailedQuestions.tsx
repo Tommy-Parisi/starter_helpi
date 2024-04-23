@@ -5,6 +5,15 @@ interface DetailedProps {
     changePage: (page: string) => void;
 }
 
+let detailedAnswers = [];
+function recordAnswer(answer: string) {
+    detailedAnswers.push(answer);
+}
+function handleClick() {
+    recordAnswer((document.getElementById("question1") as HTMLInputElement).value);
+
+}
+
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
     
     return (
@@ -52,6 +61,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
             rows={3}
             placeholder="Enter your response here"/>
         </div>
+        <Button onClick={() => handleClick()}>Submit</Button>
         </>
     );
 }
