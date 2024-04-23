@@ -1,4 +1,7 @@
+//Page commented out to avoid warnings
 
+
+/* 
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -39,7 +42,6 @@ const ReportResults = () => {
         return QandAprompt;
     }
 
-
     const submitAnswers = async () => {
         if (!ApiKey) {
             setError('Please enter an API key');
@@ -69,6 +71,7 @@ const ReportResults = () => {
         }
     }
 
+
     return (
         <>
             <div className='pageTop'>
@@ -88,4 +91,6 @@ const ReportResults = () => {
     )
 }
 
+export default ReportResults;
 
+*/
