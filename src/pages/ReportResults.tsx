@@ -88,4 +88,6 @@ const ReportResults = () => {
     )
 }
 
+export default ReportResults;
+
 

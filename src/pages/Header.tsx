@@ -1,7 +1,6 @@
 import React from 'react';
 import './Styles.css';
 import logo from '../assets/LaunchPadLogo.png';
-//import { Button } from 'react-bootstrap';
 
 interface HeaderProps {
     changePage: (page: string) => void;
