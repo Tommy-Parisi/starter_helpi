@@ -11,7 +11,7 @@ function recordAnswer(answer: string) {
 }
 function handleClick() {
     recordAnswer((document.getElementById("question1") as HTMLInputElement).value);
-    
+
 }
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
@@ -61,6 +61,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
             rows={3}
             placeholder="Enter your response here"/>
         </div>
+        <Button onClick={() => handleClick()}>Submit</Button>
         </>
     );
 }
