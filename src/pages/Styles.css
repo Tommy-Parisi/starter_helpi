@@ -29,9 +29,12 @@
 }
 
 /*for header buttons on right side*/
-.headerRightButtonStylesText {
+.headerDetailedButtonStylesText {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
     font-family: 'STIX Two Text', serif;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: bold;
     color:#6a11cb;
     cursor: pointer;
@@ -40,11 +43,36 @@
     margin-right: 10px;
 }
 
-.headerRightButtonStylesText:hover {
+.headerBasicButtonStylesText {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    font-family: 'STIX Two Text', serif;
+    font-size: 23px;
+    font-weight: bold;
+    color:#6a11cb;
+    cursor: pointer;
+    transition: text-shadow 0.3s ease;
+    margin-top: 10px;
+    margin-right: 3px;
+}
+
+.headerRightButtons {
+    display: flex;
+    align-items: center;
+}
+
+.headerRightButtons:hover {
     text-shadow: 2px 2px 4px #000000;
 }
 
-
+/*for vertical line separating buttons*/
+.verticalLine {
+    height: 25px; /* Adjust height as needed */
+    width: 1.5px;
+    background-color: #6a11cb; /* Color of the vertical line */
+    margin: 7px 7px 0; /* Adjust margin to center vertically */
+}
 
 
 .header {

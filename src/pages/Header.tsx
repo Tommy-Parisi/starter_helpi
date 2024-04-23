@@ -20,8 +20,11 @@ export const Header: React.FC<HeaderProps> = ({ changePage }) => {
     return (
         <div style={style.header} className='header'>
             <div className='titleStyledText' onClick={() => changePage('Home')}>Helpi</div>
-            <div className='headerRightButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
-            <div className='headerRightButtonStylesText' onClick={() => changePage('DetailedReport')}>Detailed Report</div>
+            <div className='headerRightButtons'>
+                <div className='headerBasicButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
+                <div className='verticalLine'></div>
+                <div className='headerDetailedButtonStylesText' onClick={() => changePage('DetailedReport')}>Detailed Report</div>
+                </div>
         </div>
     );
 }
