@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
 import ProgressBarComponent from './ProgressBarComponent';
+import './ProgressBarStyle.css'; 
 
 interface BasicProps {
     changePage: (page: string) => void;
@@ -91,7 +92,12 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
         <>
             <div className='pageTop'>
                 <h2 className='styledText'>Basic Career Questions</h2>
-                <ProgressBarComponent progress={progress} total={totalQuestions} progressText={`${progress}/${totalQuestions}`} />
+                <ProgressBarComponent 
+                progress={progress} 
+                total={totalQuestions} 
+                progressText={`${progress}/${totalQuestions}`} 
+                rocketImagePath="../assets/Rocket.png"
+                />
             </div>
             <div className="pageBody1">
                 <div className='container1'>

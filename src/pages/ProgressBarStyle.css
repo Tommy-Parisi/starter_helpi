@@ -1,0 +1,25 @@
+.wrapper {
+    position: relative;
+    width: 100%; /* Full width */
+  }
+  
+  #rocket {
+    position: absolute;
+    width: 40px; /* Width of the rocket image */
+    height: 40px; /* Height of the rocket image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: left 0.2s; /* Smooth transition for the rocket movement */
+    z-index: 5;
+  }
+  
+  .custom-progress-bar { /* Progress bar container */
+    height: 20px; 
+    background-color: #000080; /* Deep space blue */
+    border-radius: 10px;
+  }
+  
+  .custom-progress-bar .progress-bar {
+    background-color: #FFD700; /* Golden progress color */
+  }
+  
