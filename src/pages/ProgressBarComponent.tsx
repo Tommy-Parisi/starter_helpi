@@ -23,9 +23,9 @@ const ProgressBarComponent = ({ rocketImagePath, total, progress, progressText =
          style={{
             backgroundImage: `url(${rocket})`,
             left: `calc(${percentage - 1}%)`,
-            top: '-35px',
+            top: '-7px',
             transform: 'translateY(-20px)',
-            animation: 'idleRocket 2s ease-in-out infinite',
+            animation: 'dleRocket .5s ease-in-out infinite', /* Add an I to the beginning to restart animation */
          }}
          />
       </div>

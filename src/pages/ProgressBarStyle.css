@@ -31,7 +31,8 @@
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(10px); /* Adjust the pixel value for the desired amount of movement */
+      transform: translateY(5px); /* Adjust the pixel value for the desired amount of movement */
     }
+    
   }
   
