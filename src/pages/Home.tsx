@@ -32,18 +32,20 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
 
     return (
         <>
+        
+           
+
+            <div className='pageTop'>
+                <h2 className='styledText'>Shoot for the moon!!!</h2>
+            </div>
+       
+        <div className="pageBody">
+                {/*Buttons to navigate to Basic and Detailed question pages*/}
         <div className ='parallax-scrolling'>
             <div id='stars1' className="parallax-star-layer"></div>
             <div id='stars3' className="parallax-star-layer"></div>
-
-            <div className='pageTop'>
-                <h2 className='styledText'>Shoot for the moon</h2>
-            </div>
-       
-            <div className="pageBody">
-                {/*Buttons to navigate to Basic and Detailed question pages*/}
-                <div className='container'>
-                    <div className="column">
+            <div className='container'>
+                <div className="column">
                         <Button className="customButton" onClick={() => changePage('Basic')}>
                         <h2>The Basic Quiz</h2>
                         <h3>(5 Mins)</h3>
@@ -60,12 +62,13 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
                 </div>
             </div>
         </div>
+        </div>
 
        <div className="footer">
             <p>© 2024 Helpi. All rights reserved.</p>
             <ApiKey />
         </div>
-    </div>
+  
     </>
 
     );
