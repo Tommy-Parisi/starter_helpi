@@ -23,22 +23,21 @@
     z-index: 2;
     transform: translateY(var(--stars1-translateY));
 }
-  
-/*
+
 #stars2 {
     background-image: url('../assets/Stars2.png');
     animation: moveStars 150s linear infinite;
     z-index: 3;
     transform: translateY(var(--stars2-translateY));
 }
-*/
-  
+
 #stars3 {
     background-image: url('../assets/Stars3.png');
     animation: moveStars 200s linear infinite;
     z-index: 2;
     transform: translateY(var(--stars3-translateY));
 }
+
 /*
 @keyframes moveStars {
     from {
