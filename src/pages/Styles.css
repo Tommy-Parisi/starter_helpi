@@ -1,5 +1,5 @@
 
-.titleStyledText { 
+.titleStyledText { /*Logo text*/
     font-family: 'Nasalization';
     src: url('../fonts/nasalization-rg.woff2') format('woff2');
     font-size: 30px;
@@ -10,7 +10,7 @@
     mix-blend-mode: #6a11cb
 }
 
-.headerButtonStylesText {
+.headerButtonStylesText { /*Subheading text*/
     font-family: 'STIX Two Text', serif;
     font-size: 20px;
     font-weight: bold;
@@ -22,17 +22,16 @@
     z-index: 5;
 }
 
-.headerButtonStylesText:hover {
+.headerButtonStylesText:hover { /*Header text hover*/
     text-shadow: 2px 2px 4px #000000;
 }
 
 
-.titleStyledText:hover {
+.titleStyledText:hover { /*Title text hover*/
     text-shadow: 2px 2px 4px #000000;
 }
 
-/*for header buttons on right side*/
-.headerDetailedButtonStylesText {
+.headerDetailedButtonStylesText { /*header buttons on right side*/
     display: flex;
     justify-content: space-between;
     align-items: right;
@@ -46,7 +45,7 @@
     margin-right: 10px;
 }
 
-.headerBasicButtonStylesText {
+.headerBasicButtonStylesText { /*Header basic button text */
     display: flex;
     justify-content: space-between;
     align-items: right;
@@ -60,12 +59,12 @@
     margin-right: 3px;
 }
 
-.headerRightButtons {
+.headerRightButtons { /**/
     display: flex;
     align-items: center;
 }
 
-.headerRightButtons:hover {
+.headerRightButtons:hover { /**/
     text-shadow: 2px 2px 4px #000000;
 }
 
@@ -78,7 +77,7 @@
 }
 
 
-.header {
+.header { /**/
     background-color: white;
     background-size: 100% 100%; 
     background-position: center;
@@ -86,23 +85,23 @@
     z-index: 5;
 }
 
-.pageTop {
+.pageTop { /*Area under header*/
     padding: 40px;
-    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     z-index: 0;
 }
 
-.pageBody {
+.pageBody { /*contains quiz buttons*/
     padding: 40px;
-    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     z-index: 0;
 }
 
-.customButton {
+.customButton { /*Quiz buttons*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,19 +120,19 @@
     z-index: 5;
 }
 
-.customButton:hover {
+.customButton:hover { /*Quiz button hover*/
     transform: translateY(-10px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #6a11cb;
     background-color:rgba(255, 255, 255, 1);
 }
 
-.column {
+.column { /**/
     margin-left: 2.5%;
     margin-right: 2.5%;
 }
 
-.footer {
+.footer { /**/
     text-align: center;
     padding: 20px;
     background-color: white;
@@ -141,7 +140,7 @@
     font-size: 14px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /**/
     .customButton {
         margin-top: 10px;
     }
@@ -151,21 +150,21 @@
     }
 }
 
-.container{
+.container{ /**/
     display: flex;
     justify-content: space-between; 
     align-items: center; 
     padding: 20px; 
 }
 
-.container1{
+.container1{ /**/
     display: flex;
     justify-content: center; 
     align-items: center; 
     padding: 20px; 
 }
 
-.customButton1{
+.customButton1{ /**/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,28 +182,28 @@
     text-align: justify;
 }
 
-.customButton1:hover {
+.customButton1:hover { /**/
     transform: translateY(0px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #6a11cb;
     background-color:rgba(255, 255, 255, 0.8);
 }
-.footer1 {
+.footer1 { /**/
     text-align: center;
     padding: 20px;
     background-color: white;
     color: #6a11cb;
     font-size: 14px;
 }
-.pageBody1 {
+.pageBody1 { /**/
     padding: 40px;
-    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     height: 463px;
 }
 
-.generalInfoBasic{
+.generalInfoBasic{ /**/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -221,7 +220,7 @@
     text-align: justify;
 }
 
-.recIndustriesBasic{
+.recIndustriesBasic{ /**/
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -243,12 +242,12 @@
     text-align: justify;
 
 }
-.option1{
+.option1{ /**/
     margin-left: 10px; 
     margin-top: 5px;
     margin-bottom: 25px;
 }
-.learn{
+.learn{ /**/
 margin-left: 20px;
 }
 
