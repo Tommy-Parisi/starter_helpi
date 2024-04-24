@@ -1,5 +1,6 @@
 import { ProgressBar } from 'react-bootstrap';
 import './ProgressBarStyle.css';
+import rocket from '../assets/Rocket.png';
 
 
 export type ProgressBarProps= {
@@ -18,12 +19,13 @@ const ProgressBarComponent = ({ rocketImagePath, total, progress, progressText =
          <ProgressBar now={percentage} label={`${progressText} (${percentage.toFixed(0)}%)`} className="custom-progress-bar"/>
          {/* Rocket image that moves along with the progress */}
          <div
-         id = "rocket"
+         id ='rocket'
          style={{
-            backgroundImage: `url(${rocketImagePath})`,
-            left: `calc(${percentage}% - 20px)`,
-            top: '50%',
-            transform: 'translateY(-50%)',
+            backgroundImage: `url(${rocket})`,
+            left: `calc(${percentage - 1}%)`,
+            top: '-35px',
+            transform: 'translateY(-20px)',
+            animation: 'idleRocket 2s ease-in-out infinite',
          }}
          />
       </div>
