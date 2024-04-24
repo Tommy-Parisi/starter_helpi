@@ -14,6 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ changePage }) => {
             width: `100%`,
             height: '70px',
             justifyContent: 'space-between',
+           
         },
         logoImage: { // Style for the image
             height: '55px', 

@@ -3,6 +3,10 @@ import { Button, Form } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
+import './ParallaxStarsStyle.css';
+import { useEffect } from 'react';
+
+
 
 interface BasicProps {
     changePage: (page: string) => void;
@@ -87,6 +91,26 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
         }
    }
 
+   useEffect(() => {
+    const handleScroll = () => {
+        const yPos = window.scrollY;
+
+        const stars1 = document.getElementById('stars1');
+        const stars2 = document.getElementById('stars2');
+        const stars3 = document.getElementById('stars3');
+        
+        if (stars1) stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
+        if (stars2) stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
+        if (stars3) stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+
 
     return (
         <>
@@ -99,7 +123,10 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
                 rocketImagePath="../assets/Rocket.png"
                 />
             </div>
-            <div className="pageBody1">
+            <div className="pageBody">
+            <div className ='parallax-scrolling'>
+                <div id='stars1' className="parallax-star-layer"></div>
+                <div id='stars3' className="parallax-star-layer"></div>
                 <div className='container1'>
                     <div className="column">
                         <Button className="customButton1" onClick={() => {}}>
@@ -119,7 +146,8 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
                     </div>
                 </div>
             </div>
-            <div className="footer1">
+            </div>
+            <div className="footer">
                 <p>© 2024 Helpi. All rights reserved.</p>
                 <ApiKey />
             </div>
