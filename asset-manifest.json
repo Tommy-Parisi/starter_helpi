@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.5bca6e78.css",
-    "main.js": "/starter_helpi/static/js/main.0f765f1d.js",
+    "main.css": "/starter_helpi/static/css/main.6bed7984.css",
+    "main.js": "/starter_helpi/static/js/main.e609446d.js",
     "static/js/453.bad6c33a.chunk.js": "/starter_helpi/static/js/453.bad6c33a.chunk.js",
+    "static/media/Rocket.png": "/starter_helpi/static/media/Rocket.8a38260e9c43a158006e.png",
     "static/media/LaunchPadLogo.png": "/starter_helpi/static/media/LaunchPadLogo.0892562d03b94d55ef43.png",
-    "static/media/Stars1.png": "/starter_helpi/static/media/Stars1.e23dfdd470166a7b0630.png",
-    "static/media/Stars3.png": "/starter_helpi/static/media/Stars3.af77b42f8eaf0dce594b.png",
+    "static/media/Stars2.png": "/starter_helpi/static/media/Stars2.b24523381090e5c5b667.png",
+    "static/media/Stars1.png": "/starter_helpi/static/media/Stars1.7a6357adef81c24a1629.png",
     "static/media/nasalization-rg.woff2": "/starter_helpi/static/media/nasalization-rg.57e0d3d05d1feeecf82f.woff2",
+    "static/media/Stars3.png": "/starter_helpi/static/media/Stars3.1d0c12813f6f8c91a146.png",
     "index.html": "/starter_helpi/index.html",
-    "main.5bca6e78.css.map": "/starter_helpi/static/css/main.5bca6e78.css.map",
-    "main.0f765f1d.js.map": "/starter_helpi/static/js/main.0f765f1d.js.map",
+    "main.6bed7984.css.map": "/starter_helpi/static/css/main.6bed7984.css.map",
+    "main.e609446d.js.map": "/starter_helpi/static/js/main.e609446d.js.map",
     "453.bad6c33a.chunk.js.map": "/starter_helpi/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5bca6e78.css",
-    "static/js/main.0f765f1d.js"
+    "static/css/main.6bed7984.css",
+    "static/js/main.e609446d.js"
   ]
 }
