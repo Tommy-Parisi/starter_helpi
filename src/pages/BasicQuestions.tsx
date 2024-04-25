@@ -12,6 +12,8 @@ interface BasicProps {
     changePage: (page: string) => void;
 }
 
+let BasicAnswers: string[] = [];
+
 const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     const questions = [
         {
@@ -65,31 +67,38 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
         }
     ];
 
+  
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState("");
+    const [progress, setProgress] = useState<number>(0);
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option);
-        setTimeout(() => {
-            if (currentQuestionIndex < questions.length - 1) {
-                setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setSelectedOption("");
-            } else {
-                changePage('Summary');
-            }
-        }, 600);
     };
 
-    const question = questions[currentQuestionIndex];
-    const totalQuestions = 7;
-    const [progress, setProgress] = useState<number>(0);
+    const handleNext = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            if (selectedOption && progress === currentQuestionIndex) {
+                setProgress(progress + 1);
+            }
+            setSelectedOption("");
+        } else if (selectedOption && progress === currentQuestionIndex) {
+            setProgress(progress + 1);
+            changePage('Summary');
+        }
+    };
+
+    const handleBack = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+            setSelectedOption("");
+        }
+    };
+
 
     
-    const handleAnswer = (questionNumber: number) => (event: React.MouseEvent<HTMLInputElement>) =>{
-        if(progress <= questionNumber){
-            setProgress(progress + 1);
-        }
-   }
+
 
    useEffect(() => {
     const handleScroll = () => {
@@ -111,27 +120,27 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     };
 }, []);
 
-
-    return (
-        <>
-            <div className='pageTop'>
-                <h2 className='styledText'>Basic Career Questions</h2>
-                <ProgressBarComponent 
+return (
+    <>
+        <div className='pageTop'>
+            <h2 className='styledText'>Basic Career Questions</h2>
+            <ProgressBarComponent 
                 progress={progress} 
-                total={totalQuestions} 
-                progressText={`${progress}/${totalQuestions}`} 
+                total={questions.length} 
+                progressText={`${progress}/${questions.length}`} 
                 rocketImagePath="../assets/Rocket.png"
-                />
-            </div>
-            <div className="pageBody">
+            />
+        </div>
+        <div className="pageBody">
             <div className ='parallax-scrolling'>
                 <div id='stars1' className="parallax-star-layer"></div>
                 <div id='stars3' className="parallax-star-layer"></div>
                 <div className='container1'>
                     <div className="column">
-                        <Button className="customButton1" onClick={() => {}}>
-                            <h2>{question.question}</h2>
-                            {question.options.map((option, index) => (
+                        <div className="customButton1">
+                            <h2>{questions[currentQuestionIndex].question}</h2>
+                            {questions[currentQuestionIndex].options.map((option, index) => (
+                                <div className='form'>
                                 <Form.Check
                                     key={index}
                                     type="radio"
@@ -139,20 +148,25 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
                                     label={option}
                                     onChange={() => handleOptionChange(option)}
                                     checked={selectedOption === option}
-                                    onClick={handleAnswer(currentQuestionIndex)}
                                 />
+                                </div>
                             ))}
-                        </Button>
+                            <div className='buttons'>
+                            <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
+                            <button onClick={handleNext} disabled={!selectedOption}>Next</button>
+                            </div>
+                        </div>
+                      
                     </div>
                 </div>
             </div>
-            </div>
-            <div className="footer">
-                <p>© 2024 Helpi. All rights reserved.</p>
-                <ApiKey />
-            </div>
-        </>
-    );
+        </div>
+        <div className="footer">
+            <p>© 2024 Helpi. All rights reserved.</p>
+            <ApiKey />
+        </div>
+    </>
+);
 };
 
 export default BasicQuestions;

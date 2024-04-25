@@ -1,6 +1,6 @@
 
 .titleStyledText { /*Logo text*/
-    font-family: 'Nasalization';
+    font-family: 'Courier New', Courier, monospace;
     src: url('../fonts/nasalization-rg.woff2') format('woff2');
     font-size: 30px;
     font-weight: bold;
@@ -130,13 +130,14 @@
     margin-top: 0px;
     margin-bottom: 50px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
     background-color: rgba(255, 255, 255, 1);
     color: #6a11cb;
     border: none;
-    transition: all 0.3s ease;
     text-align: justify;
     z-index: 100;
+    cursor: default;
+    text-shadow: none;
+    
 }
 
 .customButton:hover { /*Quiz button hover*/
@@ -263,3 +264,29 @@
 margin-left: 20px;
 }
 
+.form {
+    padding-left: 20px;  
+    width: 100%;          
+}
+
+.buttons{
+    margin-top: 30px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;   
+    background-color:rgba(90, 34, 139);
+    color: white;  
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;  
+
+}
+
+.buttons button:disabled{
+    background-color:rgba(90, 34, 139, 0.6);
+    cursor: not-allowed; 
+
+}
