@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
@@ -12,7 +12,7 @@ interface BasicProps {
     changePage: (page: string) => void;
 }
 
-let BasicAnswers: string[] = [];
+//let BasicAnswers: string[] = [];
 
 const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     const questions = [

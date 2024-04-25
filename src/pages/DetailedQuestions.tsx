@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import {Form } from 'react-bootstrap';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
 import './ParallaxStarsStyle.css';
@@ -9,7 +9,7 @@ interface DetailedProps {
     changePage: (page: string) => void;
 }
 
-let detailedAnswers: string[] = [];
+//let detailedAnswers: string[] = [];
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
 
