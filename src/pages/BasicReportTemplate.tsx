@@ -18,18 +18,15 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
                     <p>Based on your answers, you showed the following raits of people in industries....</p>
                 </div>
             </div>
-            </div>
 
             <div className="column">
-            <div className='containerReportPage'>
             <div className="customButtonReportPages">
-                {/*<div className = "recIndustriesBasic">*/}
-                    <h1 className='recBasicHeader'>Recommended Industries</h1>
-                    <p className="option1">Option 1: ...</p>
-                   <p className="learn">Learn More</p>
+                    <h1>Recommended Industries</h1>
+                    <h2>Option 1: ...</h2>
+                    <p>Learn More</p>
                 </div>
             </div>
-            </div>
+        </div>
         </div>
         </>
         );
