@@ -1,5 +1,3 @@
-//Page commented out to avoid warnings
-
 import React, { useState } from 'react';
 import {basicAnswers} from './BasicQuestions';
 import {detailedAnswers} from './DetailedQuestions';
