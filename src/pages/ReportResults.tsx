@@ -36,7 +36,7 @@ const ReportResults = () => {
     const generatePrompt = (questions: string[], answers: string[]) => {
         let QandAprompt = '';
         for (let i = 0; i < questions.length; i++) {
-            QandAprompt += questions[i] + ' ' + answers[i] + ' ';
+            QandAprompt += [i] + ':' + questions[i] + ' ' + answers[i] + '/n'
         }
         return QandAprompt;
     }
