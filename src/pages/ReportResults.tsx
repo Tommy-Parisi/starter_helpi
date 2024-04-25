@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import {basicAnswers} from './BasicQuestions';
+import {detailedAnswers} from './DetailedQuestions';
 //import BasicReport from './BasicReportTemplate';
 
 
@@ -30,8 +32,7 @@ const ReportResults = () => {
                         "7. What are the three most predominant qualities of your personality?"
     ];
 
-    let basicAnswers: string[] = [];
-    let detailedAnswers: string[] = [];
+  
 
     const generatePrompt = (questions: string[], answers: string[]) => {
         let QandAprompt = '';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
 import './ParallaxStarsStyle.css';
@@ -9,7 +9,10 @@ interface DetailedProps {
     changePage: (page: string) => void;
 }
 
-//let detailedAnswers: string[] = [];
+
+export let detailedAnswers: string[] = [];
+
+
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
 
@@ -54,6 +57,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
 
     const handleNext = () => {
         if (answers[currentQuestionIndex].trim() !== "") {
+            detailedAnswers[currentQuestionIndex] = answers[currentQuestionIndex];
             if (currentQuestionIndex < detailedQuestions.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
                 setProgress(progress + 1);

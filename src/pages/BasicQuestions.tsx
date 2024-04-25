@@ -12,7 +12,8 @@ interface BasicProps {
     changePage: (page: string) => void;
 }
 
-//let BasicAnswers: string[] = [];
+export let basicAnswers: string[] = [];
+
 
 const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     const questions = [
@@ -77,6 +78,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     };
 
     const handleNext = () => {
+        basicAnswers[currentQuestionIndex] = selectedOption;
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             if (selectedOption && progress === currentQuestionIndex) {
