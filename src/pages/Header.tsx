@@ -29,7 +29,11 @@ export const Header: React.FC<HeaderProps> = ({ changePage }) => {
                 <img src= {logo} alt="Logo" style={style.logoImage} />
                 <div className='titleStyledText'>Launch Pad</div>
             </div>
-            <div className='headerButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
+            <div className='headerRightButtons'>
+                <div className='headerBasicButtonStylesText' onClick={() => changePage('BasicReport')}>Basic Report</div>
+                <div className='verticalLine'></div>
+                <div className='headerDetailedButtonStylesText' onClick={() => changePage('DetailedReport')}>Detailed Report</div>
+            </div>
         </div>
     );
 }
