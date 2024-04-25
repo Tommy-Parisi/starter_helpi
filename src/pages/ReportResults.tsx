@@ -30,6 +30,9 @@ const ReportResults = () => {
                         "7. What are the three most predominant qualities of your personality?"
     ];
 
+    let promptFirstHalf = "";
+    let promptSecondHalf = "";
+
   
 
     const generateBasicPrompt = (questions: string[], answers: string[]) => {
@@ -37,7 +40,7 @@ const ReportResults = () => {
         for (let i = 0; i < questions.length; i++) {
             QandAprompt += [i] + ':' + basicQuestions[i] + ' ' + basicAnswers[i] + '/n'
         }
-        return QandAprompt;
+        return promptFirstHalf + QandAprompt + promptSecondHalf;
     }
 
     const generateDetailedPrompt = (questions: string[], answers: string[]) => {
@@ -45,7 +48,7 @@ const ReportResults = () => {
         for (let i = 0; i < questions.length; i++) {
             QandAprompt += [i] + ':' + detailedQuestions[i] + ' ' + detailedAnswers[i] + '/n'
         }
-        return QandAprompt;
+        return promptFirstHalf + QandAprompt + promptSecondHalf;
     }
 
 
