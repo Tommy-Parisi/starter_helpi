@@ -121,3 +121,4 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
 };
 
 export default DetailedQuestions;
+
