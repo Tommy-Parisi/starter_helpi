@@ -1,17 +1,17 @@
 //Page commented out to avoid warnings
 
 import React, { useState } from 'react';
-import axios from 'axios';
 import {basicAnswers} from './BasicQuestions';
 import {detailedAnswers} from './DetailedQuestions';
+import OpenAI from "openai";
 //import BasicReport from './BasicReportTemplate';
 
 
 const ReportResults = () => {
-    const [report, setReport] = useState<String>('');
+    const [report, setReport] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<String>('');
-    const [ApiKey, setApiKey] = useState<String>('');
+    const [error, setError] = useState<string>('');
+    const [ApiKey, setApiKey] = useState<string>('');
 
     let basicQuestions: string[] = ['"I prefer working with numbers and data.", "I prefer working with words and languages."',
                         '"I prefer working with other people.", "I prefer working by myself."',
@@ -34,15 +34,30 @@ const ReportResults = () => {
 
   
 
-    const generatePrompt = (questions: string[], answers: string[]) => {
+    const generateBasicPrompt = (questions: string[], answers: string[]) => {
         let QandAprompt = '';
         for (let i = 0; i < questions.length; i++) {
-            QandAprompt += [i] + ':' + questions[i] + ' ' + answers[i] + '/n'
+            QandAprompt += [i] + ':' + basicQuestions[i] + ' ' + basicAnswers[i] + '/n'
         }
         return QandAprompt;
     }
 
+    const generateDetailedPrompt = (questions: string[], answers: string[]) => {
+        let QandAprompt = '';
+        for (let i = 0; i < questions.length; i++) {
+            QandAprompt += [i] + ':' + detailedQuestions[i] + ' ' + detailedAnswers[i] + '/n'
+        }
+        return QandAprompt;
+    }
+
+
+
     const submitAnswers = async () => {
+
+        const openai = new OpenAI({
+            apiKey: ApiKey,
+        })
+
         if (!ApiKey) {
             setError('Please enter an API key');
             return;
@@ -50,20 +65,26 @@ const ReportResults = () => {
             setApiKey(ApiKey);
         }
 
-        const basicPrompt = `Based on the following responses: ${generatePrompt(basicQuestions, basicAnswers)}, what is the most suitable career for you?`;
+        const basicPrompt = `Based on the following responses: ${generateBasicPrompt(basicQuestions, basicAnswers)}, what is the most suitable career for you?`;
 
-        const detailedPrompt = `Based on the following responses: ${generatePrompt(detailedQuestions, detailedAnswers)}, what is the most suitable career for you?`;
+        const detailedPrompt = `Based on the following responses: ${generateDetailedPrompt(detailedQuestions, detailedAnswers)}, what is the most suitable career for you?`;
 
         const params = {
             prompt: prompt,
             max_tokens: 1,
             temperature: 0.3,
-            api_key: ApiKey
+            api_key: ApiKey,
+            model: 'gpt-3.5-turbo,'
         };
+
         setLoading(true);
         try {
-            const response = await axios.post('https://api.openai.com/v1/engines/davinci/completions', params);
-            setReport(response.data.choices[0].text.trim());
+            const response = await openai.completions.create({
+                ...params,
+                prompt: basicPrompt, // Replace params.prompt with basicPrompt or detailedPrompt
+            });
+            const completionText = response.choices[0].text.trim();
+            setReport(completionText);
             setLoading(false);
         }
         catch (error) {
@@ -74,8 +95,6 @@ const ReportResults = () => {
     }
 
     submitAnswers(); //to avoid errors
-
-
 
 
     return (
