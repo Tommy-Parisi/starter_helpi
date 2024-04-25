@@ -9,7 +9,10 @@ interface DetailedProps {
     changePage: (page: string) => void;
 }
 
+
 export let detailedAnswers: string[] = [];
+
+
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
 
