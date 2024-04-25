@@ -54,7 +54,7 @@
     cursor: pointer;
     transition: text-shadow 0.3s ease;
     margin-top: 10px;
-    margin-right: 3px;
+    margin-right: px;
 }
 
 .headerRightButtons {
@@ -72,6 +72,42 @@
     width: 1.5px;
     background-color: #6a11cb; /* Color of the vertical line */
     margin: 7px 7px 0; /* Adjust margin to center vertically */
+}
+
+.customButtonReportPages {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    width: 100%;  /* Commented out to allow flexible sizing */
+    margin-top: 5px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #6a11cb;
+    border: none;
+    transition: all 0.3s ease;
+    text-align: justify;
+    /* Add any other styles you need */
+}
+
+.customButtonReportPages:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #6a11cb;
+    background-color:rgba(255, 255, 255, 0.8);
+}
+
+.containerReportPage {
+    display: flex;
+    flex-direction: center; /* Changed from 'space-between' */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%; /* Adjust if needed */
 }
 
 
@@ -198,22 +234,7 @@
     height: 463px;
 }
 
-.generalInfoBasic{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    height: auto;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 50px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #6a11cb;
-    border: none;
-    text-align: justify;
-}
+
 
 .recIndustriesBasic{
     display: flex;
