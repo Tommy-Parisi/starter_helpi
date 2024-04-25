@@ -1,12 +1,12 @@
 .wrapper {
     position: relative;
-    width: 100%; /* Full width */
+    width: 100%; 
     overflow: visible;
   }
   
   #rocket {
     position: absolute;
-    height: 80px; /* Height of the rocket image */
+    height: 80px; 
     width: 150px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -22,7 +22,7 @@
   }
   
   .custom-progress-bar .progress-bar {
-    background-color: #ff712f; /* Golden progress color */
+    background-color: #ff712f; /* Fire progress color */
     z-index: 1;
   }
 
@@ -31,7 +31,7 @@
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(5px); /* Adjust the pixel value for the desired amount of movement */
+      transform: translateY(10px); /* movement amount */
     }
     
   }
