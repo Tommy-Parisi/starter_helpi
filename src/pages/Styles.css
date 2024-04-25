@@ -1,14 +1,16 @@
 
-.titleStyledText {
-    font-family: 'STIX Two Text', serif;
+.titleStyledText { /*Logo text*/
+    font-family: 'Nasalization';
+    src: url('../fonts/nasalization-rg.woff2') format('woff2');
     font-size: 30px;
     font-weight: bold;
     color:#6a11cb;
     cursor: pointer;
     transition: text-shadow 0.3s ease;
+    mix-blend-mode: #6a11cb
 }
 
-.headerButtonStylesText {
+.headerButtonStylesText { /*Subheading text*/
     font-family: 'STIX Two Text', serif;
     font-size: 20px;
     font-weight: bold;
@@ -17,19 +19,19 @@
     transition: text-shadow 0.3s ease;
     margin-top: 10px;
     margin-right: 10px;
+    z-index: 5;
 }
 
-.headerButtonStylesText:hover {
+.headerButtonStylesText:hover { /*Header text hover*/
     text-shadow: 2px 2px 4px #000000;
 }
 
 
-.titleStyledText:hover {
+.titleStyledText:hover { /*Title text hover*/
     text-shadow: 2px 2px 4px #000000;
 }
 
-/*for header buttons on right side*/
-.headerDetailedButtonStylesText {
+.headerDetailedButtonStylesText { /*header buttons on right side*/
     display: flex;
     justify-content: space-between;
     align-items: right;
@@ -43,7 +45,7 @@
     margin-right: 10px;
 }
 
-.headerBasicButtonStylesText {
+.headerBasicButtonStylesText { /*Header basic button text */
     display: flex;
     justify-content: space-between;
     align-items: right;
@@ -57,12 +59,12 @@
     margin-right: px;
 }
 
-.headerRightButtons {
+.headerRightButtons { /**/
     display: flex;
     align-items: center;
 }
 
-.headerRightButtons:hover {
+.headerRightButtons:hover { /**/
     text-shadow: 2px 2px 4px #000000;
 }
 
@@ -111,29 +113,32 @@
 }
 
 
-.header {
+.header { /**/
     background-color: white;
     background-size: 100% 100%; 
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 5;
 }
 
-.pageTop {
+.pageTop { /*Area under header*/
     padding: 40px;
-    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    z-index: 0;
+   
 }
 
-
-.pageBody {
+.pageBody { /*contains quiz buttons*/
     padding: 40px;
-    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    z-index: 100;
 }
 
-.customButton {
+.customButton { /*Quiz buttons*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -144,58 +149,14 @@
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 1);
     color: #6a11cb;
     border: none;
     transition: all 0.3s ease;
     text-align: justify;
+    z-index: 100;
 }
-
-.customButton:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    color: #6a11cb;
-    background-color:rgba(255, 255, 255, 0.8);
-}
-
-.column {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-}
-
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: white;
-    color: #6a11cb;
-    font-size: 14px;
-}
-
-@media (max-width: 768px) {
-    .customButton {
-        margin-top: 10px;
-    }
-
-    .column {
-        margin: 0 10px;
-    }
-}
-
-.container{
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px; 
-}
-
-.container1{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    padding: 20px; 
-}
-
-.customButton1{
+.customButton1{ /**/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -205,38 +166,94 @@
     margin-top: 0px;
     margin-bottom: 50px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 1);
     color: #6a11cb;
     border: none;
-    transition: all 0.3s ease;
     text-align: justify;
+    z-index: 100;
+    cursor: default;
+    text-shadow: none;
+    
 }
 
-.customButton1:hover {
+.customButton:hover { /*Quiz button hover*/
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #6a11cb;
+    background-color:rgba(255, 255, 255, 1);
+}
+
+.column { /**/
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.footer { /**/
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color: #6a11cb;
+    font-size: 14px;
+    position: relative;
+    z-index: 100;
+}
+
+@media (max-width: 768px) { /**/
+    .customButton {
+        margin-top: 10px;
+    }
+
+    .column {
+        margin: 0 10px;
+    }
+}
+
+.container{ /**/
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px; 
+    position: relative;
+    z-index: 100;
+}
+
+.container1{ /**/
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    position: relative;
+    z-index: 100;
+}
+
+
+
+.customButton1:hover { /**/
     transform: translateY(0px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #6a11cb;
-    background-color:rgba(255, 255, 255, 0.8);
+    background-color:rgba(255, 255, 255, 1);
 }
-.footer1 {
+/*
+.footer1 { 
     text-align: center;
     padding: 20px;
     background-color: white;
     color: #6a11cb;
     font-size: 14px;
 }
-.pageBody1 {
+*/
+/*.pageBody1 { 
     padding: 40px;
-    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     height: 463px;
 }
+*/
 
 
-
-.recIndustriesBasic{
+.recIndustriesBasic{ /**/
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -258,12 +275,38 @@
     text-align: justify;
 
 }
-.option1{
+.option1{ /**/
     margin-left: 10px; 
     margin-top: 5px;
     margin-bottom: 25px;
 }
-.learn{
+.learn{ /**/
 margin-left: 20px;
 }
 
+.form {
+    padding-left: 20px;  
+    width: 100%;          
+}
+
+.buttons{
+    margin-top: 30px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;   
+    background-color:rgba(90, 34, 139);
+    color: white;  
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;  
+
+}
+
+.buttons button:disabled{
+    background-color:rgba(90, 34, 139, 0.6);
+    cursor: not-allowed; 
+
+}
