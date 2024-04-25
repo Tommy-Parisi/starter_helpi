@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ changePage }) => {
     const style = {
-        header: { //Style for the header
+        header: { 
             textAllign: 'center',
             display: 'flex',
             width: `100%`,
@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({ changePage }) => {
             justifyContent: 'space-between',
            
         },
-        logoImage: { // Style for the image
+        logoImage: { 
             height: '55px', 
             marginRight: '10px',
             marginLeft: '10px'
