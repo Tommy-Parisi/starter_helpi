@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (48 ms)
+  ✕ renders learn react link (49 ms)
 
   ● renders learn react link
 
@@ -171,13 +171,13 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   15.21 |     3.84 |   16.66 |   16.18 |                   
+All files                    |   15.05 |     3.84 |   16.66 |      16 |                   
  src                         |   36.66 |    18.18 |   42.85 |   36.66 |                   
   ApiKey.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23           
   App.tsx                    |   55.55 |       20 |     100 |   55.55 | 18-20,24-26       
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/pages                   |   11.03 |        0 |   11.42 |   11.88 |                   
+ src/pages                   |   10.89 |        0 |   11.42 |   11.72 |                   
   BasicQuestions.tsx         |       5 |        0 |       0 |     5.4 | 19-151            
   BasicReportTemplate.tsx    |      50 |      100 |       0 |      50 | 7                 
   DetailedQuestions.tsx      |    5.26 |        0 |       0 |    5.71 | 19-102            
@@ -186,10 +186,10 @@ All files                    |   15.21 |     3.84 |   16.66 |   16.18 |
   Header.tsx                 |      50 |      100 |      25 |      50 | 28-35             
   Home.tsx                   |   36.84 |        0 |      50 |   43.75 | 15-23,49-57       
   ProgressBarComponent.tsx   |   33.33 |        0 |       0 |   33.33 | 15-17             
-  ReportResults.tsx          |       0 |        0 |       0 |       0 | 8-101             
+  ReportResults.tsx          |       0 |        0 |       0 |       0 | 8-170             
 -----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.827 s
+Time:        2.921 s
 Ran all test suites.
