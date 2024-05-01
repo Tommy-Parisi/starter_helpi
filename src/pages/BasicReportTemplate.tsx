@@ -33,3 +33,4 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
 }
 
 export default BasicReport;
+

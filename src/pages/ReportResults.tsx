@@ -10,6 +10,7 @@ const ReportResults = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
     const [ApiKey, setApiKey] = useState<string>('');
+    let basic = false;
 
     let basicQuestions: string[] = ['"I prefer working with numbers and data.", "I prefer working with words and languages."',
                         '"I prefer working with other people.", "I prefer working by myself."',
@@ -70,6 +71,7 @@ const ReportResults = () => {
         for (let i = 0; i < questions.length; i++) {
             QandAprompt += [i] + ':' + basicQuestions[i] + ' ' + basicAnswers[i] + '/n'
         }
+        basic = true;
         return basicPromptFirstHalf + QandAprompt + basicPromptSecondHalf;
     }
 
@@ -109,18 +111,16 @@ const ReportResults = () => {
            </div>
            </>
            );
-    }
-    "`
+    }"`
 
     const generateDetailedPrompt = (questions: string[], answers: string[]) => {
         let QandAprompt = '';
         for (let i = 0; i < questions.length; i++) {
             QandAprompt += [i] + ':' + detailedQuestions[i] + ' ' + detailedAnswers[i] + '/n'
         }
+        basic = false;
         return detailedPromptFirstHalf + QandAprompt + detailedPromptSecondHalf;
     }
-
-
 
     const submitAnswers = async () => {
 
@@ -151,10 +151,11 @@ const ReportResults = () => {
         try {
             const response = await openai.completions.create({
                 ...params,
-                prompt: basicPrompt, // Replace params.prompt with basicPrompt or detailedPrompt
+                prompt: basic ? basicPrompt : detailedPrompt,
             });
+
             const completionText = response.choices[0].text.trim();
-            setReport(completionText);
+            setReport(completionText); //This is the gpt response
             setLoading(false);
         }
         catch (error) {
@@ -163,9 +164,6 @@ const ReportResults = () => {
         console.log(basicPrompt);
         console.log(detailedPrompt);
     }
-
-    submitAnswers(); //to avoid errors
-
 
     return (
         <>

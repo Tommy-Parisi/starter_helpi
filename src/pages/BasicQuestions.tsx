@@ -5,8 +5,7 @@ import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
 import './ParallaxStarsStyle.css';
 import { useEffect } from 'react';
-
-
+import submitAnswers from './ReportResults';
 
 interface BasicProps {
     changePage: (page: string) => void;
@@ -156,6 +155,7 @@ return (
                             <div className='buttons'>
                             <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
                             <button onClick={handleNext} disabled={!selectedOption}>Next</button>
+                            <button onClick={submitAnswers} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
                             </div>
                         </div>
                       
