@@ -56,7 +56,9 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
         if (detailedAnswers[currentQuestionIndex].trim() !== "") {
             if (currentQuestionIndex < detailedQuestions.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setProgress(progress + 1);
+                if (detailedAnswers[currentQuestionIndex + 1] === "" && progress === currentQuestionIndex) {
+                    setProgress(progress + 1);
+                }
             } else {
                 console.log(detailedAnswers);
                 changePage('DetailedReport');
