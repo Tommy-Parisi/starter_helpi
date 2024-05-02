@@ -5,8 +5,7 @@ import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
 import './ParallaxStarsStyle.css';
 import { useEffect } from 'react';
-
-
+import OpenAI from "openai";
 
 interface BasicProps {
     changePage: (page: string) => void;
@@ -16,7 +15,44 @@ interface BasicProps {
 export let basicAnswers: string[] = [];
 
 
+
+const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
+    let basicPromptFirstHalf = "Create a career recommender report that is based on the following questions and answers. The report should have 2 different sections. One should have general information about 4 traits that the person seems to exhibit based on their answers. It should also include how these might impact their behavior in the workplace. This section should be concise and use bullet points with short sentences for descriptions. Don’t directly quote the given answers in this part, but find traits that they likely have based off of what they answered. The other section should list 3 different industries and 3 specific job titles within each industry as well as their expected salary range that the quiz taker is likely to succeed in. The report does not need an introduction or conclusion. Here are the questions the user was asked and the answers they selected. The format of these questions is that the user selects which of the 2 options they feel most applies to them. In this list, the options are separated by commas: "
+let basicPromptSecondHalf = `"The report should include 3 industries specific to the person that provided the answers. These industries should be ones that the person will likely succeed in. Also provide 3 career options and their salary range within each industry. The report does not need an introduction or conclusion. Make 2 separate sections; One should have general information about 4 traits that the person seems to exhibit and how these might impact their behavior in the workplace. This section should be concise and use bullet points with short sentences for descriptions. Don’t directly quote the given answers in this part, but find traits that they likely have based off of what they answered. The other section should only list the industries and potential careers for each. Here is the javascript code that gives an example of the formatting of the report. Give the results back to me written in javascript. Include one sentence of detail about the traits and explain them in first person like you are talking directly to the person who took the quiz.
+const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
+   return (
+       <>
+       <div className='pageTop'>
+           <h2 className='styledText'>Basic Career Assessment Report</h2>
+       </div>
+
+
+       <div className="pageBody">
+       <div className='container'>
+           <div className="column">
+               <div className = "generalInfoBasic">
+                   <h1>General Information</h1>
+                   <p>Based on your answers, you showed the following raits of people in industries....</p>
+               </div>
+           </div>
+
+
+           <div className="column">
+               <div className = "recIndustriesBasic">
+                   <h1 className='recBasicHeader'>Recommended Industries</h1>
+                   <p className="option1">Option 1: ...</p>
+                  <p className="learn">Learn More</p>
+               </div>
+           </div>
+       </div>
+       </div>
+       </>
+       );
+}
+"`;
+    
 const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
+
     const questions = [
         {
             question: "Question 1",
@@ -69,6 +105,8 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
         }
     ];
 
+    const justQuestions = questions.map((question) => question.question);
+
   
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState("");
@@ -113,7 +151,30 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
         }
     };
 
+    const generatePrompt = (questions: string[], answers: string[]) => {
+        let QandAprompt = '';
+        for (let i = 0; i < questions.length; i++) {
+            QandAprompt += [i] + ':' + questions[i] + ' ' + basicAnswers[i] + '/n'
+        }
+        return basicPromptFirstHalf + QandAprompt + basicPromptSecondHalf;
+    }
 
+    const openai = new OpenAI({apiKey: JSON.parse(localStorage.getItem("MYKEY") as string), dangerouslyAllowBrowser: true});
+    async function showMyResults() {
+            const completion = await openai.chat.completions.create({
+                messages: [
+                    {
+                        role: 'system',
+                        content: generatePrompt(justQuestions, basicAnswers),
+                    },
+                ],
+                max_tokens: 150,
+                model: "gpt-4-turbo",
+                temperature: 0.75,
+            });
+        
+            console.log(completion.choices[0].message.content);
+        }
     
 
 
@@ -136,6 +197,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
         window.removeEventListener('scroll', handleScroll);
     };
 }, []);
+
 
 return (
     <>
@@ -171,6 +233,7 @@ return (
                             <div className='buttons'>
                             <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
                             <button onClick={handleNext} disabled={!selectedOption}>Next</button>
+                            <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
                             </div>
                         </div>
                       
