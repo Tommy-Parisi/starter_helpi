@@ -10,30 +10,30 @@ import { Header } from './pages/Header';
 
 function App() {
   const [currentPage , setCurrentPage] = useState<string>('Home'); //for the current page the user is on
+  const [basicQuizCompleted, setBasicQuizCompleted] = useState<boolean>(false);
+  const [detailedQuizCompleted, setDetailedQuizCompleted] = useState<boolean>(false);
+
 
   /* State change to navigate to different pages */
   const renderPage = (): JSX.Element => {
     switch (currentPage) {
       case 'Basic':
-        return <BasicQuestions changePage={setCurrentPage} />;
+        return <BasicQuestions changePage={setCurrentPage} onQuizComplete={() => setBasicQuizCompleted(true)} />;
       case 'Detailed':
-        return <DetailedQuestions changePage={setCurrentPage} />;
+        return <DetailedQuestions changePage={setCurrentPage} onQuizComplete={() => setDetailedQuizCompleted(true)} />;
       default:
         return <Home changePage = {setCurrentPage}/>;
       case 'BasicReport':
-        return <BasicReport changePage={setCurrentPage} />;
+        return <BasicReport changePage={setCurrentPage} basicQuizCompleted={basicQuizCompleted} />;
       case 'DetailedReport':
-        return <DetailedReport changePage={setCurrentPage} />;
+        return <DetailedReport changePage={setCurrentPage} detailedQuizCompleted={detailedQuizCompleted} />;
     }
   }
 
   return (
     <div className="App">
       <Header changePage={setCurrentPage}/>
-
       {renderPage()}
-
-    
     </div>
   );
 }

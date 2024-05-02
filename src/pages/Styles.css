@@ -7,7 +7,7 @@
     color:#6a11cb;
     cursor: pointer;
     transition: text-shadow 0.3s ease;
-    mix-blend-mode: #6a11cb
+mix-blend-mode: #6a11cb
 }
 
 .headerButtonStylesText { /*Subheading text*/
@@ -19,7 +19,7 @@
     transition: text-shadow 0.3s ease;
     margin-top: 10px;
     margin-right: 10px;
-    z-index: 5;
+z-index: 5;
 }
 
 .headerButtonStylesText:hover { /*Header text hover*/
@@ -59,14 +59,20 @@
     margin-right: px;
 }
 
-.headerRightButtons { /**/
+.headerRightButtons { 
     display: flex;
     align-items: center;
 }
 
-.headerRightButtons:hover { /**/
+
+.headerDetailedButtonStylesText:hover{
     text-shadow: 2px 2px 4px #000000;
 }
+
+.headerBasicButtonStylesText:hover{
+    text-shadow: 2px 2px 4px #000000;
+}
+
 
 /*for vertical line separating buttons*/
 .verticalLine {
@@ -106,9 +112,9 @@
 .containerReportPage {
     display: flex;
     flex-direction: center; /* Changed from 'space-between' */
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
     width: 100%; /* Adjust if needed */
 }
 
@@ -118,7 +124,7 @@
     background-size: 100% 100%; 
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 5;
+z-index: 5;
 }
 
 .pageTop { /*Area under header*/
@@ -126,7 +132,7 @@
     background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    z-index: 0;
+z-index: 0;
    
 }
 
@@ -135,7 +141,7 @@
     background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    z-index: 100;
+z-index: 100;
 }
 
 .customButton { /*Quiz buttons*/
@@ -149,12 +155,12 @@
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-    background-color: rgba(255, 255, 255, 1);
+    background-color: white;
     color: #6a11cb;
     border: none;
     transition: all 0.3s ease;
     text-align: justify;
-    z-index: 100;
+z-index: 100;
 }
 .customButton1{ /**/
     display: flex;
@@ -194,7 +200,7 @@
     background-color: white;
     color: #6a11cb;
     font-size: 14px;
-    position: relative;
+position: relative;
     z-index: 100;
 }
 
@@ -213,7 +219,7 @@
     justify-content: space-between; 
     align-items: center; 
     padding: 20px; 
-    position: relative;
+position: relative;
     z-index: 100;
 }
 
@@ -222,7 +228,7 @@
     justify-content: center; 
     align-items: center; 
     padding: 20px; 
-    position: relative;
+position: relative;
     z-index: 100;
 }
 
@@ -235,7 +241,7 @@
     background-color:rgba(255, 255, 255, 1);
 }
 /*
-.footer1 { 
+.footer1 {
     text-align: center;
     padding: 20px;
     background-color: white;
@@ -243,7 +249,7 @@
     font-size: 14px;
 }
 */
-/*.pageBody1 { 
+/*.pageBody1 {
     padding: 40px;
     background-image: linear-gradient(to right, #6a11cb, #0d122a);
     color: white;
