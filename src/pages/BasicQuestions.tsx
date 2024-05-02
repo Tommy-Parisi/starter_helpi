@@ -10,12 +10,13 @@ import { useEffect } from 'react';
 
 interface BasicProps {
     changePage: (page: string) => void;
+    onQuizComplete: () => void; // Add onQuizComplete to BasicProps
 }
 
 export let basicAnswers: string[] = [];
 
 
-const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
+const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
     const questions = [
         {
             question: "Question 1",
@@ -92,6 +93,16 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
             setProgress(progress + 1);
             changePage('Summary');
         }
+        if (currentQuestionIndex === questions.length - 1 && selectedOption) {
+            // Check if all questions are answered
+            const allQuestionsAnswered = basicAnswers.every(answer => answer !== "");
+            if (allQuestionsAnswered) {
+                // Call onQuizComplete when all questions are answered
+                onQuizComplete();
+            }
+            changePage('Summary');
+        }
+
     };
 
     const handleBack = () => {

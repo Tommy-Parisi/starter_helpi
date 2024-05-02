@@ -7,11 +7,16 @@ import { ApiKey } from '../ApiKey';
 
 interface DetailedProps {
     changePage: (page: string) => void;
+    onQuizComplete: () => void; // Add onQuizComplete to DetailedProps
+
 }
 
 export let detailedAnswers: string[] = [];
 
-const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
+
+
+
+const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
 
     useEffect(() => {
         const handleScroll = () => {
@@ -63,6 +68,15 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage }) => {
                 console.log(detailedAnswers);
                 changePage('DetailedReport');
             }
+        }
+        if (currentQuestionIndex === detailedQuestions.length - 1 && answers[currentQuestionIndex].trim() !== "") {
+            // Check if all questions are answered
+            const allQuestionsAnswered = answers.every(answer => answer.trim() !== "");
+            if (allQuestionsAnswered) {
+                // Call onQuizComplete when all questions are answered
+                onQuizComplete();
+            }
+            changePage('DetailedReport');
         }
     };
 
