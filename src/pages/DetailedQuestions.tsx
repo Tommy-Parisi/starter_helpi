@@ -11,8 +11,8 @@ interface DetailedProps {
 
 }
 
-
 export let detailedAnswers: string[] = [];
+
 
 
 
@@ -48,23 +48,24 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     ];
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [answers, setAnswers] = useState(Array(detailedQuestions.length).fill(""));
+    const [detailedAnswers, setDetailedAnswers] = useState(Array(detailedQuestions.length).fill(""));
     const [progress, setProgress] = useState(0);
 
     const handleInputChange = (text: string) => {
-        const updatedAnswers = [...answers];
+        const updatedAnswers = [...detailedAnswers];
         updatedAnswers[currentQuestionIndex] = text;
-        setAnswers(updatedAnswers);
+        setDetailedAnswers(updatedAnswers);
     };
 
     const handleNext = () => {
-        if (answers[currentQuestionIndex].trim() !== "") {
-            detailedAnswers[currentQuestionIndex] = answers[currentQuestionIndex];
+        if (detailedAnswers[currentQuestionIndex].trim() !== "") {
             if (currentQuestionIndex < detailedQuestions.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setProgress(progress + 1);
+                if (detailedAnswers[currentQuestionIndex + 1] === "" && progress === currentQuestionIndex) {
+                    setProgress(progress + 1);
+                }
             } else {
-                console.log(answers);
+                console.log(detailedAnswers);
                 changePage('DetailedReport');
             }
         }
@@ -109,14 +110,14 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
                                 <Form.Control
                                     as="textarea"
                                     rows={3}
-                                    value={answers[currentQuestionIndex]}
+                                    value={detailedAnswers[currentQuestionIndex]}
                                     onChange={(e) => handleInputChange(e.target.value)}
                                     placeholder="Enter your response here"
                                 />
                                 </div>
                                 <div className='buttons'>
                                 <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
-                                <button onClick={handleNext} disabled={answers[currentQuestionIndex].trim() === ""}>Next</button>
+                                <button onClick={handleNext} disabled={detailedAnswers[currentQuestionIndex].trim() === ""}>Next</button>
                                 </div>
                             </div>
                         </div>
@@ -131,5 +132,4 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     );
 };
 
-export default DetailedQuestions;
-
+export default DetailedQuestions; 
