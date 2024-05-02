@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/starter_helpi/static/css/main.c0171330.css",
-    "main.js": "/starter_helpi/static/js/main.deda85ec.js",
+    "main.js": "/starter_helpi/static/js/main.f8ca2a9c.js",
     "static/js/453.bad6c33a.chunk.js": "/starter_helpi/static/js/453.bad6c33a.chunk.js",
     "static/media/Rocket.png": "/starter_helpi/static/media/Rocket.8a38260e9c43a158006e.png",
     "static/media/LaunchPadLogo.png": "/starter_helpi/static/media/LaunchPadLogo.0892562d03b94d55ef43.png",
@@ -11,11 +11,11 @@
     "static/media/Stars3.png": "/starter_helpi/static/media/Stars3.1d0c12813f6f8c91a146.png",
     "index.html": "/starter_helpi/index.html",
     "main.c0171330.css.map": "/starter_helpi/static/css/main.c0171330.css.map",
-    "main.deda85ec.js.map": "/starter_helpi/static/js/main.deda85ec.js.map",
+    "main.f8ca2a9c.js.map": "/starter_helpi/static/js/main.f8ca2a9c.js.map",
     "453.bad6c33a.chunk.js.map": "/starter_helpi/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c0171330.css",
-    "static/js/main.deda85ec.js"
+    "static/js/main.f8ca2a9c.js"
   ]
 }
