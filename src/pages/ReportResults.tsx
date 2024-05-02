@@ -181,3 +181,4 @@ const generatePrompt = (questions: string[], answers: string[], template: string
     console.log(detailedPrompt);
 }
 */
+export {};
