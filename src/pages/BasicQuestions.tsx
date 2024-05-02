@@ -97,10 +97,6 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
         }
     };
 
-
-    
-
-
    useEffect(() => {
     const handleScroll = () => {
         const yPos = window.scrollY;
@@ -155,7 +151,7 @@ return (
                             <div className='buttons'>
                             <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
                             <button onClick={handleNext} disabled={!selectedOption}>Next</button>
-                            <button onClick={submitAnswers} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
+                            <button onClick={submitAnswers('basic')} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
                             </div>
                         </div>
                       
