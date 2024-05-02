@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, Dispatch, useState, SetStateAction } from 'react';
 import {basicAnswers} from './BasicQuestions';
 import {detailedAnswers} from './DetailedQuestions';
@@ -179,3 +180,4 @@ const generatePrompt = (questions: string[], answers: string[], template: string
     console.log(basicPrompt);
     console.log(detailedPrompt);
 }
+*/

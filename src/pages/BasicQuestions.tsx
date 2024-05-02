@@ -5,7 +5,6 @@ import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
 import './ParallaxStarsStyle.css';
 import { useEffect } from 'react';
-import submitAnswers from './ReportResults';
 import OpenAI from "openai";
 
 interface BasicProps {
@@ -141,14 +140,6 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
         return basicPromptFirstHalf + QandAprompt + basicPromptSecondHalf;
     }
 
-    const params = {
-        prompt: generatePrompt(justQuestions, basicAnswers),
-        max_tokens: 1,
-        temperature: 0.3,
-        api_key: ApiKey,
-        model: 'gpt-3.5-turbo,'
-    };
-
     const openai = new OpenAI({apiKey: JSON.parse(localStorage.getItem("MYKEY") as string), dangerouslyAllowBrowser: true});
     async function showMyResults() {
             const completion = await openai.chat.completions.create({
@@ -223,7 +214,7 @@ return (
                             <div className='buttons'>
                             <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
                             <button onClick={handleNext} disabled={!selectedOption}>Next</button>
-                            <button onClick={submitAnswers('basic')} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
+                            <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
                             </div>
                         </div>
                       
