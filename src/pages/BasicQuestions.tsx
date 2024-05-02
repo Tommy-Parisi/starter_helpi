@@ -84,7 +84,10 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
             if (selectedOption && progress === currentQuestionIndex) {
                 setProgress(progress + 1);
             }
-            setSelectedOption("");
+            if (basicAnswers[currentQuestionIndex + 1] !== "") {
+                setSelectedOption(basicAnswers[currentQuestionIndex + 1]);
+            } else {
+                setSelectedOption("")}
         } else if (selectedOption && progress === currentQuestionIndex) {
             setProgress(progress + 1);
             changePage('Summary');
@@ -92,9 +95,10 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
     };
 
     const handleBack = () => {
+        basicAnswers[currentQuestionIndex] = selectedOption;
         if (currentQuestionIndex > 0) {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
-            setSelectedOption("");
+            setSelectedOption(basicAnswers[currentQuestionIndex - 1]);
         }
     };
 
