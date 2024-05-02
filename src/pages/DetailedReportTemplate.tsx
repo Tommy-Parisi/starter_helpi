@@ -6,6 +6,10 @@ interface DetailedReportProps {
 }
 
 const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQuizCompleted}) => {
+    const handleStartDetailedQuiz = () => {
+        // Navigate to the Detailed Quiz page
+        changePage('Detailed');
+    };
     return(
         <>
         <div className='pageTop'>
@@ -34,6 +38,15 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
                     <p>Complete the detailed quiz to get your results!</p>
                 </div>
             )}
+
+            {/* Button to take the Basic Quiz */}
+            {!detailedQuizCompleted && (
+                    <div className="containerReportPage">
+                        <button className="startQuizButton" onClick={handleStartDetailedQuiz}>Take the Detailed Quiz Now!</button>
+                    </div>
+            )}
+
+
         </div>
         </>
     );

@@ -2,9 +2,14 @@ import React from 'react';
 
 interface BasicReportProps {
     changePage: (page: string) => void;
-    basicQuizCompleted: boolean; // Define the basicQuizCompleted prop
+    basicQuizCompleted: boolean; 
 }
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
+    const handleStartBasicQuiz = () => {
+        // Navigate to the Basic Quiz page
+        changePage('Basic');
+    };
+
     return (
         <>
         <div className='pageTop'>
@@ -17,7 +22,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
                     <div className="column">
                         <div className="customButtonReportPages">
                             <h1>General Information</h1>
-                            <p>Based on your answers, you showed the following raits of people in industries....</p>
+                            <p>Based on your answers, you showed the following raits of people in industries...</p>
                         </div>
                     </div>
 
@@ -31,10 +36,16 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
             </div>
         ) : (
             <div className='containerReportPage'>
-                    <p>Complete the Basic quiz to get your results!</p>
+                    <p>Complete the basic quiz to get your results!</p>
             </div>
         )}
-    </div>
+            {/* Button to take the Basic Quiz */}
+                {!basicQuizCompleted && (
+                    <div className="containerReportPage">
+                        <button className="startQuizButton" onClick={handleStartBasicQuiz}>Take the Basic Quiz Now!</button>
+                    </div>
+            )}
+        </div>
     </>
     );
 }
