@@ -9,9 +9,11 @@ import OpenAI from "openai";
 
 interface BasicProps {
     changePage: (page: string) => void;
+    onQuizComplete: () => void; // Add onQuizComplete to BasicProps
 }
 
 export let basicAnswers: string[] = [];
+
 
 
 const BasicQuestions: React.FC<BasicProps> = ({ changePage }) => {
@@ -48,6 +50,9 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
        );
 }
 "`;
+    
+const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
+
     const questions = [
         {
             question: "Question 1",
@@ -118,17 +123,31 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage }) => {
             if (selectedOption && progress === currentQuestionIndex) {
                 setProgress(progress + 1);
             }
-            setSelectedOption("");
+            if (basicAnswers[currentQuestionIndex + 1] !== "") {
+                setSelectedOption(basicAnswers[currentQuestionIndex + 1]);
+            } else {
+                setSelectedOption("")}
         } else if (selectedOption && progress === currentQuestionIndex) {
             setProgress(progress + 1);
             changePage('Summary');
         }
+        if (currentQuestionIndex === questions.length - 1 && selectedOption) {
+            // Check if all questions are answered
+            const allQuestionsAnswered = basicAnswers.every(answer => answer !== "");
+            if (allQuestionsAnswered) {
+                // Call onQuizComplete when all questions are answered
+                onQuizComplete();
+            }
+            changePage('Summary');
+        }
+
     };
 
     const handleBack = () => {
+        basicAnswers[currentQuestionIndex] = selectedOption;
         if (currentQuestionIndex > 0) {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
-            setSelectedOption("");
+            setSelectedOption(basicAnswers[currentQuestionIndex - 1]);
         }
     };
 
