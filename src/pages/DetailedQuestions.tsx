@@ -14,8 +14,6 @@ interface DetailedProps {
 export let detailedAnswers: string[] = [];
 
 
-
-
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
 
     useEffect(() => {
@@ -69,9 +67,9 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
                 changePage('DetailedReport');
             }
         }
-        if (currentQuestionIndex === detailedQuestions.length - 1 && answers[currentQuestionIndex].trim() !== "") {
+        if (currentQuestionIndex === detailedQuestions.length - 1 && detailedAnswers[currentQuestionIndex].trim() !== "") {
             // Check if all questions are answered
-            const allQuestionsAnswered = answers.every(answer => answer.trim() !== "");
+            const allQuestionsAnswered = detailedAnswers.every(answer => answer.trim() !== "");
             if (allQuestionsAnswered) {
                 // Call onQuizComplete when all questions are answered
                 onQuizComplete();
