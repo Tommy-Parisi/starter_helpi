@@ -85,11 +85,10 @@
 .customButtonReportPages {
     display: flex;
     flex-direction: column;
-    flex: 1;
     align-items: center;
     padding: 20px;
     height: auto;
-    width: 100%;  /* Commented out to allow flexible sizing */
+    width: 100%;
     margin-top: 5px;
     margin-bottom: 50px;
     border-radius: 10px;
@@ -102,12 +101,28 @@
     /* Add any other styles you need */
 }
 
+.customButtonReportPages h1 {
+    text-align: center; /* Center the title */
+}
+
+.option {
+    text-align: left; /* Align "Option 1" to the left */
+    margin-left: 20px; /* Indent "Option 1" */
+}
+
+.learn {
+    text-align: left; /* Align "Learn More" to the left */
+    margin-left: 40px; /* Indent "Learn More" more than "Option 1" */
+}
+
+
+
+
 .customButtonReportPages:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #6a11cb;
     background-color: white;
-    /*rgba(255, 255, 255, 0.8);*/
 }
 
 .containerReportPage {

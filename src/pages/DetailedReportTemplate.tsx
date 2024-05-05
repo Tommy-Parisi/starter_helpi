@@ -29,7 +29,7 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
                 <div className = "customButtonReportPages">
                     <h1>Suggested Careers</h1>
                     <p>Option 1: ...</p>
-                    <p>Learn More</p>
+                    <p>   Learn More</p>
                 </div>
             </div>
         </div>

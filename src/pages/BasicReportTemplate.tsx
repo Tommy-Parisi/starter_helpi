@@ -52,8 +52,12 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
                     <div className="column">
                     <div className="customButtonReportPages">
                         <h1>Recommended Industries</h1>
-                        <h2>Option 1: ...</h2>
-                        <p>Learn More</p>
+                        <div className="option">
+                            <div>Option 1: ...</div>
+                        </div>
+                        <div className="learn">
+                        <div>Learn More</div>
+                        </div>
                     </div>
                 </div>
             </div>
