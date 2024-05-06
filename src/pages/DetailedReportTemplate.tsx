@@ -15,7 +15,7 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
         <div className='pageTop'>
             <h2 className='styledText'>Detailed Career Assessment Report</h2>
         </div>
-        <div className="pageBody">
+        <div className="pageBodyReportPages">
             {detailedQuizCompleted ? (
         <div className='containerReportPage'>
             <div className="column">
@@ -29,20 +29,20 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
                 <div className = "customButtonReportPages">
                     <h1>Suggested Careers</h1>
                     <p>Option 1: ...</p>
-                    <p>Learn More</p>
+                    <p>   Learn More</p>
                 </div>
             </div>
         </div>
         ) : (
-            <div className='containerReportPage'>
+            <div className='quizPromptLine'>
                     <p>Complete the detailed quiz to get your results!</p>
                 </div>
             )}
 
             {/* Button to take the Basic Quiz */}
             {!detailedQuizCompleted && (
-                    <div className="containerReportPage">
-                        <button className="startQuizButton" onClick={handleStartDetailedQuiz}>Take the Detailed Quiz Now!</button>
+                        <div className='reportPageButtons'>
+                            <button className="startQuizButton" onClick={handleStartDetailedQuiz}>Take the Detailed Quiz Now!</button>
                     </div>
             )}
 
