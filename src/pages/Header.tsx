@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Styles.css';
 import logo from '../assets/LaunchPadLogo.png';
 
@@ -7,19 +7,39 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ changePage }) => {
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const shouldStick = window.scrollY > 100; // Threshold of scroll Y to trigger sticky header
+            setIsSticky(shouldStick);
+        };
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up event listener
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const style = {
         header: { 
-            textAllign: 'center',
-            display: 'flex',
+            display: isSticky ? 'flex' : 'none',
             width: `100%`,
             height: '70px',
             justifyContent: 'space-between',
-           
+            position: (isSticky ? 'fixed' : 'static') as 'fixed' | 'static',
+            top: isSticky ? 0 : 'auto', // Keep at top when sticky
+            left: 0,
+            right: 0,
+            backgroundColor: isSticky ? '#fff' : 'transparent', // Optional: change background
+            boxShadow: isSticky ? '0 2px 10px rgba(0,0,0,0.1)' : 'none', // Optional: add shadow when sticky
+            zIndex: 1000 // Ensure it's on top of other elements
         },
         logoImage: { 
             height: '55px', 
             marginRight: '10px',
-            marginLeft: '10px'
+            marginLeft: '10px',
         }
     };
 
