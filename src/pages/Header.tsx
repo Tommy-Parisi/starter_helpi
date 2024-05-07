@@ -4,23 +4,27 @@ import logo from '../assets/LaunchPadLogo.png';
 
 interface HeaderProps {
     changePage: (page: string) => void;
+    isHome: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ changePage }) => {
+export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
     const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const shouldStick = window.scrollY > 100; // Threshold of scroll Y to trigger sticky header
-            setIsSticky(shouldStick);
-        };
-        window.addEventListener('scroll', handleScroll);
+        if (isHome) { 
+            const handleScroll = () => {
+                const shouldStick = window.scrollY > 100; // Threshold of scroll Y to trigger sticky header
+                setIsSticky(shouldStick);
+                document.body.style.paddingTop = shouldStick ? '70px' : '0'; // Add this line
+            };
+            window.addEventListener('scroll', handleScroll);
 
-        // Clean up event listener
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+            // Clean up event listener
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }
+    }, [isHome]); // Add isHome to the dependency array
 
     const style = {
         header: { 
@@ -34,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ changePage }) => {
             right: 0,
             backgroundColor: isSticky ? '#fff' : 'transparent', // Optional: change background
             boxShadow: isSticky ? '0 2px 10px rgba(0,0,0,0.1)' : 'none', // Optional: add shadow when sticky
-            zIndex: 1000 // Ensure it's on top of other elements
+            zIndex: 100 // Ensure it's on top of other elements
         },
         logoImage: { 
             height: '55px', 
