@@ -34,7 +34,7 @@ function App() {
   return (
     <ReportProvider>
     <div className="App">
-      <Header changePage={setCurrentPage}/>
+      <Header changePage={setCurrentPage} isHome={currentPage === 'Home'}/>
       {renderPage()}
     </div>
     </ReportProvider>

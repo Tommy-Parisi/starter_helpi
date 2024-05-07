@@ -4,8 +4,12 @@ import OpenAI from 'openai';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css';
 import './ParallaxStarsStyle.css';
+import './PlanetStyles.css';
+import { useEffect } from 'react';
+import OpenAI from "openai";
 import { ApiKey } from '../ApiKey';
 import { ReportContext } from '../ReportContext';
+
 
 interface BasicProps {
   changePage: (page: string) => void;
@@ -73,6 +77,108 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
       setProgress(progress + 1);
       changePage('Summary');
     }
+
+    "`;
+
+    const questions = [
+        {
+            question: "Question 1",
+            options: [
+                "I prefer working with numbers and data.",
+                "I prefer working with words and languages."
+            ]
+        },
+        {
+            question: "Question 2",
+            options: [
+                "I prefer working with other people.",
+                "I prefer working by myself."
+            ]
+        },
+        {
+            question: "Question 3",
+            options: [
+                "I prefer to be in charge.",
+                "I prefer to be told what to do."
+            ]
+        },
+        {
+            question: "Question 4",
+            options: [
+                "I prefer my work to be predictable and consistent.",
+                "I prefer my work to have variety and opportunity for creativity."
+            ]
+        },
+        {
+            question: "Question 5",
+            options: [
+                "I prefer active and hands on tasks.",
+                "I prefer working on a computer."
+            ]
+        },
+        {
+            question: "Question 6",
+            options: [
+                "I prefer working to improve quality of life (e.g., healthcare, education).",
+                "I prefer working in entertainment and leisure (e.g., gaming, sports)"
+            ]
+        },
+        {
+            question: "Question 7",
+            options: [
+                "I prefer science and technology.",
+                "I prefer design and communication."
+            ]
+        }
+    ];
+
+    const justQuestions = questions.map((question) => question.question);
+
+  
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedOption, setSelectedOption] = useState("");
+    const [progress, setProgress] = useState<number>(0);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleOptionChange = (option: string) => {
+        setSelectedOption(option);
+    };
+
+    const handleNext = () => {
+        basicAnswers[currentQuestionIndex] = selectedOption;
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            if (selectedOption && progress === currentQuestionIndex) {
+                setProgress(progress + 1);
+            }
+            if (basicAnswers[currentQuestionIndex + 1] !== "") {
+                setSelectedOption(basicAnswers[currentQuestionIndex + 1]);
+            } else {
+                setSelectedOption("")}
+        } else if (selectedOption && progress === currentQuestionIndex) {
+            setProgress(progress + 1);
+            changePage('Summary');
+        }
+        if (currentQuestionIndex === questions.length - 1 && selectedOption) {
+            // Check if all questions are answered
+            const allQuestionsAnswered = basicAnswers.every(answer => answer !== "");
+            if (allQuestionsAnswered) {
+                // Call onQuizComplete when all questions are answered
+                onQuizComplete();
+            }
+            changePage('Summary');
+        }
+
+    };
+
+    const handleBack = () => {
+        basicAnswers[currentQuestionIndex] = selectedOption;
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+            setSelectedOption(basicAnswers[currentQuestionIndex - 1]);
+        }
+    };
+
     if (currentQuestionIndex === questions.length - 1 && selectedOption) {
       const allQuestionsAnswered = basicAnswers.every((answer) => answer !== '');
       if (allQuestionsAnswered) {
@@ -82,6 +188,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     }
   };
 
+
   const handleBack = () => {
     basicAnswers[currentQuestionIndex] = selectedOption;
     if (currentQuestionIndex > 0) {
@@ -90,11 +197,32 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     }
   };
 
+
+    const openai = new OpenAI({apiKey: JSON.parse(localStorage.getItem("MYKEY") as string), dangerouslyAllowBrowser: true});
+    async function showMyResults() {
+        setIsLoading(true);
+            const completion = await openai.chat.completions.create({
+                messages: [
+                    {
+                        role: 'system',
+                        content: generatePrompt(justQuestions, basicAnswers),
+                    },
+                ],
+                max_tokens: 150,
+                model: "gpt-4-turbo",
+                temperature: 0.75,
+            });
+        
+            console.log(completion.choices[0].message.content);
+            setIsLoading(false);
+        }
+
   const generatePrompt = (questions: string[], answers: string[]) => {
     let QandAprompt = '';
     for (let i = 0; i < questions.length; i++) {
       QandAprompt += `${i}: ${questions[i]} ${basicAnswers[i]}\n`;
     }
+
     
     return `Create a career recommender report that is based on the following questions and answers. The report should have 2 different sections. 
     One should have general information about 4 traits that the person seems to exhibit based on their answers. It should also include how these might impact their behavior in the workplace. 
@@ -150,50 +278,62 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
   return (
     <>
-      <div className='pageTop'>
-        <h2 className='styledText'>Basic Career Questions</h2>
-        <ProgressBarComponent progress={progress} total={questions.length} progressText={`${progress}/${questions.length}`} rocketImagePath='../assets/Rocket.png' />
-      </div>
-      <div className='pageBody'>
-        <div className='parallax-scrolling'>
-          <div id='stars1' className='parallax-star-layer'></div>
-          <div id='stars3' className='parallax-star-layer'></div>
-          <div className='container1'>
-            <div className='column'>
-              <div className='customButton1'>
-                <h2>{questions[currentQuestionIndex].question}</h2>
-                {questions[currentQuestionIndex].options.map((option, index) => (
-                  <div className='form'>
-                    <Form.Check
-                      key={index}
-                      type='radio'
-                      name={`question${currentQuestionIndex + 1}`}
-                      label={option}
-                      onChange={() => handleOptionChange(option)}
-                      checked={selectedOption === option}
-                    />
-                  </div>
-                ))}
-                <div className='buttons'>
-                  <button onClick={handleBack} disabled={currentQuestionIndex === 0}>
-                    Back
-                  </button>
-                  <button onClick={handleNext} disabled={!selectedOption}>
-                    Next
-                  </button>
-                  <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>
-                    Submit
-                  </button>
+    <div>
+
+        <div className='pageTop'>
+            <h2 className='styledText'>Basic Career Questions</h2>
+            <ProgressBarComponent 
+                progress={progress} 
+                total={questions.length} 
+                progressText={`${progress}/${questions.length}`} 
+                rocketImagePath="../assets/Rocket.png"
+            />
+        </div>
+
+        <div id= 'planet' className = {`planetLayer ${isLoading ? 'spin' : ''}`} ></div>
+
+        <div className="pageBody">
+
+            <div className ='parallax-scrolling'>
+                <div id='stars1' className="parallax-star-layer"></div>
+                <div id='stars3' className="parallax-star-layer"></div>
+            <div>
+
+
+                <div className='container1'>
+                    <div className="column">
+                        <div className="customButton1">
+                            <h2>{questions[currentQuestionIndex].question}</h2>
+                            {questions[currentQuestionIndex].options.map((option, index) => (
+                                <div className='form'>
+                                <Form.Check
+                                    key={index}
+                                    type="radio"
+                                    name={`question${currentQuestionIndex + 1}`}
+                                    label={option}
+                                    onChange={() => handleOptionChange(option)}
+                                    checked={selectedOption === option}
+                                />
+                                </div>
+                            ))}
+                            <div className='buttons'>
+                            <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
+                            <button onClick={handleNext} disabled={!selectedOption}>Next</button>
+                            <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className='footer'>
-        <p>© 2024 Helpi. All rights reserved.</p>
-        <ApiKey />
-      </div>
+        <div className="footer">
+            <p>© 2024 Helpi. All rights reserved.</p>
+            <ApiKey />
+        </div>
+    </div>
+
     </>
   );
 };
