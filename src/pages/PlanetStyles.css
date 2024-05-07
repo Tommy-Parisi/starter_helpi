@@ -15,3 +15,15 @@
     background-position: center;
 }
 
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.planetLayer.spin {
+    animation: spin 20s linear infinite;
+}

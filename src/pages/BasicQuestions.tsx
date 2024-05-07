@@ -109,6 +109,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState("");
     const [progress, setProgress] = useState<number>(0);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option);
@@ -159,6 +160,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
     const openai = new OpenAI({apiKey: JSON.parse(localStorage.getItem("MYKEY") as string), dangerouslyAllowBrowser: true});
     async function showMyResults() {
+        setIsLoading(true);
             const completion = await openai.chat.completions.create({
                 messages: [
                     {
@@ -172,6 +174,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
             });
         
             console.log(completion.choices[0].message.content);
+            setIsLoading(false);
         }
     
 
@@ -201,6 +204,7 @@ return (
     <>
 
     <div>
+
         <div className='pageTop'>
             <h2 className='styledText'>Basic Career Questions</h2>
             <ProgressBarComponent 
@@ -211,7 +215,7 @@ return (
             />
         </div>
 
-        <div id= 'planet' className = 'planetLayer'></div>
+        <div id= 'planet' className = {`planetLayer ${isLoading ? 'spin' : ''}`} ></div>
 
         <div className="pageBody">
 
@@ -254,6 +258,7 @@ return (
             <p>© 2024 Helpi. All rights reserved.</p>
             <ApiKey />
         </div>
+
     </div>
 
 
