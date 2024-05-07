@@ -32,11 +32,9 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
 
     return (
         <>
-        
-           
-
-            <div className='pageTop'>
-                <h2 className='styledText'>Shoot for the moon!!!</h2>
+            <div className='logoScreen'>
+                <h2 className='homePageStyledText'>Launch Pad</h2>
+                <h3>Reach for the stars</h3>
             </div>
        
         <div className="pageBody">

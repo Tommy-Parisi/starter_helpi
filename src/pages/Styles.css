@@ -16,6 +16,26 @@
     mix-blend-mode: #6a11cb
 }
 
+.logoScreen {
+    padding-top: 25%;
+    background-image: linear-gradient(to right, #6a11cb, #0d122a);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    height: 100vh;
+    align-items: center;
+}
+
+.homePageStyledText { /*Homepage logo text*/
+    font-family: 'Nasalization';
+    src: url('../fonts/nasalization-rg.woff2') format('woff2');
+    font-size: 80px;
+    font-weight: bold;
+    color:#FFFFFF;
+    cursor: pointer;
+    mix-blend-mode: #6a11cb
+}
+
 .headerButtonStylesText { /*Subheading text*/
     font-family: 'STIX Two Text', serif;
     font-size: 20px;
@@ -147,6 +167,8 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: 5;
+    width: 100%;
+    transition: top 0.03s;
 }
 
 .pageTop { /*Area under header*/
