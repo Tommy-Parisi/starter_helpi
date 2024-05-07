@@ -79,11 +79,19 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
       QandAprompt += `${questions[i]}: ${answers[i]}\n`;
     }
     return `
-      Create a career recommender report based on the following questions and answers.
-      1. List three key personality traits that the individual seems to exhibit.
-      2. Recommend three suitable career paths along with specific job titles and salary ranges.
-      Here are the questions and answers:
-      ${QandAprompt}
+    Create a career recommender report that is based on the following questions and answers. 
+    The report should have 2 different sections. One should have general information about 4 traits that the person seems to exhibit based on their answers.
+    It should also include how these might impact their behavior in the workplace. This section should be concise and use bullet points with short sentences for descriptions. 
+    Don’t directly quote the given answers in this part, but find traits that they likely have based off of what they answered.
+    The other section should list 3 different industries and 3 specific job titles within each industry as well as their expected salary range, a brief description of the workplace environment, and any educational requirements. 
+    These jobs should be ones that the quiz taker is likely to succeed in. The report SHOULD NOT have an introduction or conclusion or a description of the report. 
+    The report should be written like you are talking directly to the person who took the quiz. Only include the two sections described in the report  and this text below them: 
+    "These recommended industries and job titles align with your strengths and interests, providing avenues for professional growth and fulfillment based on your career preferences. 
+    Consider exploring opportunities within these areas to leverage your skills effectively and achieve your career goals.
+    This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!"
+    Here are the questions the user was asked and the answers they selected. They were open ended and the user could enter as much as they wanted. 
+    In this list, the question number is given, followed by the question, and then the answer that was selected: 
+    ${QandAprompt}
     `;
   };
 
