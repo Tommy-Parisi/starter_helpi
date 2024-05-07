@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
 import './ParallaxStarsStyle.css';
 import { ReportContext } from '../ReportContext';
+        
 
 interface BasicReportProps {
   changePage: (page: string) => void;
@@ -11,6 +12,7 @@ interface BasicReportProps {
 }
 
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
+
   // Access the report from the context
   const { report } = useContext(ReportContext);
 
@@ -30,9 +32,11 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
       if (stars1) stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
       if (stars2) stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
       if (stars3) stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
+
     };
 
     window.addEventListener('scroll', handleScroll);
+
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

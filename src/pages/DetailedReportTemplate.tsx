@@ -19,6 +19,7 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
     };
 
 
+
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;
