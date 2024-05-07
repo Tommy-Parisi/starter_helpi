@@ -13,7 +13,7 @@ export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
     useEffect(() => {
         if (isHome) { 
             const handleScroll = () => {
-                const shouldStick = window.scrollY > 100; // Threshold of scroll Y to trigger sticky header
+                const shouldStick = window.scrollY > 50; // Threshold of scroll Y to trigger sticky header
                 setIsSticky(shouldStick);
                 document.body.style.paddingTop = shouldStick ? '70px' : '0'; // Add this line
             };
@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
                 window.removeEventListener('scroll', handleScroll);
             };
         }
-    }, [isHome]); // Add isHome to the dependency array
+    }, [isHome]);
 
     const style = {
         header: { 
@@ -36,7 +36,6 @@ export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
             top: isSticky ? 0 : 'auto', // Keep at top when sticky
             left: 0,
             right: 0,
-            backgroundColor: isSticky ? '#fff' : 'transparent', // Optional: change background
             boxShadow: isSticky ? '0 2px 10px rgba(0,0,0,0.1)' : 'none', // Optional: add shadow when sticky
             zIndex: 100 // Ensure it's on top of other elements
         },
