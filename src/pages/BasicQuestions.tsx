@@ -4,6 +4,7 @@ import { ApiKey } from '../ApiKey';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css'; 
 import './ParallaxStarsStyle.css';
+import './PlanetStyles.css';
 import { useEffect } from 'react';
 import OpenAI from "openai";
 
@@ -198,6 +199,8 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
 return (
     <>
+
+    <div>
         <div className='pageTop'>
             <h2 className='styledText'>Basic Career Questions</h2>
             <ProgressBarComponent 
@@ -207,10 +210,17 @@ return (
                 rocketImagePath="../assets/Rocket.png"
             />
         </div>
+
+        <div id= 'planet' className = 'planetLayer'></div>
+
         <div className="pageBody">
+
             <div className ='parallax-scrolling'>
                 <div id='stars1' className="parallax-star-layer"></div>
                 <div id='stars3' className="parallax-star-layer"></div>
+            <div>
+
+
                 <div className='container1'>
                     <div className="column">
                         <div className="customButton1">
@@ -233,15 +243,20 @@ return (
                             <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
                             </div>
                         </div>
-                      
+                      </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
         <div className="footer">
             <p>© 2024 Helpi. All rights reserved.</p>
             <ApiKey />
         </div>
+    </div>
+
+
     </>
 );
 };

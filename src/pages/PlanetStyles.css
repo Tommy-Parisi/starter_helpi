@@ -1,0 +1,17 @@
+#planet {
+    background-image: url('../assets/planet2.png');
+    z-index: 2;
+    background-size: cover;
+}
+
+.planetLayer {
+    position: absolute;
+    top: 130px;
+    right: 0px;
+    width: 70vh;
+    height: 70vh;
+    z-index: 2;
+    background-size: cover;
+    background-position: center;
+}
+
