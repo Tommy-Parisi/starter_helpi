@@ -6,6 +6,7 @@ import DetailedQuestions from './pages/DetailedQuestions';
 import BasicReport from './pages/BasicReportTemplate';
 import DetailedReport from './pages/DetailedReportTemplate';
 import { Header } from './pages/Header';
+import { ReportProvider } from './ReportContext';
 
 
 function App() {
@@ -31,10 +32,13 @@ function App() {
   }
 
   return (
+    <ReportProvider>
     <div className="App">
       <Header changePage={setCurrentPage}/>
       {renderPage()}
     </div>
+    </ReportProvider>
+
   );
 }
 
