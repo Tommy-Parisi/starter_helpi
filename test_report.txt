@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (72 ms)
+  ✕ renders learn react link (78 ms)
 
   ● renders learn react link
 
@@ -91,23 +91,9 @@ FAIL src/App.test.tsx
                     [36m<h3>[39m
                       [0m(5 Mins)[0m
                     [36m</h3>[39m
-                    [36m<ul>[39m
-                      [36m<h5>[39m
-                        [0mKickstart your career exploration with our Basic Career Questions![0m
-                      [36m</h5>[39m
-                      [36m<li>[39m
-                        [0mQuickly gauge your interests, traits, and preferences.[0m
-                      [36m</li>[39m
-                      [36m<li>[39m
-                        [0mPerfect for those at the start of their career journey.[0m
-                      [36m</li>[39m
-                      [36m<li>[39m
-                        [0mDiscover potential career paths and associated salaries[0m
-                      [36m</li>[39m
-                      [36m<li>[39m
-                        [0mSimply choose between two given options[0m
-                      [36m</li>[39m
-                    [36m</ul>[39m
+                    [36m<p>[39m
+                      [0mKickstart your career exploration with our Basic Career Questions! Designed to touch upon the surface aspects of various professions, these questions aim to quickly gauge your general interests, educational background, and work preferences. Perfect for those at the start of their career journey, these questions provide a straightforward way to discover potential career paths without delving into the complexities of each field.[0m
+                    [36m</p>[39m
                   [36m</button>[39m
                 [36m</div>[39m
                 [36m<div[39m
@@ -123,23 +109,9 @@ FAIL src/App.test.tsx
                     [36m<h3>[39m
                       [0m(10 Mins)[0m
                     [36m</h3>[39m
-                    [36m<ul>[39m
-                      [36m<h5>[39m
-                        [0mReady to dive deeper into your career exploration?[0m
-                      [36m</h5>[39m
-                      [36m<li>[39m
-                        [0mProvides three ideal industries each with specific careers.[0m
-                      [36m</li>[39m
-                      [36m<li>[39m
-                        [0mResults include expected salary, workplace setting possibilities, and educational requirements[0m
-                      [36m</li>[39m
-                      [36m<li>[39m
-                        [0mPerfect for those with a general idea of their career interests.[0m
-                      [36m</li>[39m
-                      [36m<li>[39m
-                        [0mOpen ended short answer questions[0m
-                      [36m</li>[39m
-                    [36m</ul>[39m
+                    [36m<p>[39m
+                      [0mReady to dive deeper into your career exploration? Our Detailed Career Questions are designed to provide a comprehensive overview of various professions, including the skills required, the educational background needed, and the day-to-day responsibilities of each job. Ideal for those who have a general idea of their career interests and are looking to explore potential career paths in more detail.[0m
+                    [36m</p>[39m
                   [36m</button>[39m
                 [36m</div>[39m
               [36m</div>[39m
@@ -199,25 +171,25 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   15.04 |      2.5 |   14.03 |   16.58 |                   
+All files                    |   14.91 |      2.5 |   14.03 |   16.42 |                   
  src                         |   46.15 |    18.18 |   36.36 |   48.64 |                   
   ApiKey.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23           
   App.tsx                    |   53.84 |       20 |      50 |   63.63 | 22-24,28-30       
   ReportContext.tsx          |     100 |      100 |      50 |     100 |                   
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/pages                   |    8.55 |        0 |    8.69 |    9.52 |                   
-  BasicQuestions.tsx         |    3.07 |        0 |       0 |    3.38 | 18-172            
+ src/pages                   |    8.46 |        0 |    8.69 |    9.41 |                   
+  BasicQuestions.tsx         |    2.98 |        0 |       0 |    3.27 | 18-164            
   BasicReportTemplate.tsx    |       5 |        0 |       0 |    5.88 | 17-46             
-  DetailedQuestions.tsx      |    1.96 |        0 |       0 |    2.12 | 16-142            
+  DetailedQuestions.tsx      |    1.96 |        0 |       0 |    2.12 | 16-134            
   DetailedReportTemplate.tsx |       5 |        0 |       0 |    5.88 | 14-43             
   Footer.tsx                 |       0 |      100 |       0 |       0 | 9-28              
   Header.tsx                 |      50 |      100 |      25 |      50 | 28-35             
-  Home.tsx                   |   36.84 |        0 |      50 |   43.75 | 15-23,49-64       
+  Home.tsx                   |   36.84 |        0 |      50 |   43.75 | 15-23,49-57       
   ProgressBarComponent.tsx   |   33.33 |        0 |       0 |   33.33 | 15-17             
 -----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.881 s
+Time:        2.963 s
 Ran all test suites.
