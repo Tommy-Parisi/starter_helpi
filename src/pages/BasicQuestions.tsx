@@ -77,7 +77,9 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     if (currentQuestionIndex === questions.length - 1 && selectedOption) {
       const allQuestionsAnswered = basicAnswers.every((answer) => answer !== '');
       if (allQuestionsAnswered) {
+        setIsLoading(true);
         onQuizComplete();
+        setIsLoading(false);
       }
       changePage('Summary');
     }
@@ -141,55 +143,57 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     };
   }, []);
 
+  
   return (
     <>
       <div className='pageTop'>
         <h2 className='styledText'>Basic Career Questions</h2>
-        <ProgressBarComponent progress={progress} total={questions.length} progressText={`${progress}/${questions.length}`} rocketImagePath='../assets/Rocket.png' />
+        <ProgressBarComponent 
+          progress={progress} 
+          total={questions.length} 
+          progressText={`${progress}/${questions.length}`} 
+          rocketImagePath="../assets/Rocket.png"
+        />
       </div>
-      <div id= 'planet' className = {`planetLayer ${isLoading ? 'spin' : ''}`} ></div>
-      <div className='pageBody'>
+  
+      <div id='planet' className={`planetLayer ${isLoading ? 'spin' : ''}`}></div>
+  
+      <div className="pageBody">
         <div className='parallax-scrolling'>
-          <div id='stars1' className='parallax-star-layer'></div>
-          <div id='stars3' className='parallax-star-layer'></div>
-          <div className='container1'>
-            <div className='column'>
-              <div className='customButton1'>
-                <h2>{questions[currentQuestionIndex].question}</h2>
-                {questions[currentQuestionIndex].options.map((option, index) => (
-                  <div className='form'>
-                    <Form.Check
-                      key={index}
-                      type='radio'
-                      name={`question${currentQuestionIndex + 1}`}
-                      label={option}
-                      onChange={() => handleOptionChange(option)}
-                      checked={selectedOption === option}
-                    />
-                  </div>
-                ))}
-                <div className='buttons'>
-                  <button onClick={handleBack} disabled={currentQuestionIndex === 0}>
-                    Back
-                  </button>
-                  <button onClick={handleNext} disabled={!selectedOption}>
-                    Next
-                  </button>
-                  <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>
-                    Submit
-                  </button>
+          <div id='stars1' className="parallax-star-layer"></div>
+          <div id='stars3' className="parallax-star-layer"></div>
+        </div>
+        <div className='container1'>
+          <div className="column">
+            <div className="customButton1">
+              <h2>{questions[currentQuestionIndex].question}</h2>
+              {questions[currentQuestionIndex].options.map((option, index) => (
+                <div className='form'>
+                  <Form.Check
+                    key={index}
+                    type="radio"
+                    name={`question${currentQuestionIndex + 1}`}
+                    label={option}
+                    onChange={() => handleOptionChange(option)}
+                    checked={selectedOption === option}
+                  />
                 </div>
+              ))}
+              <div className='buttons'>
+                <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
+                <button onClick={handleNext} disabled={!selectedOption}>Next</button>
+                <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className='footer'>
+      
+      <div className="footer">
         <p>© 2024 Helpi. All rights reserved.</p>
         <ApiKey />
       </div>
     </>
   );
-};
-
+}
 export default BasicQuestions;
