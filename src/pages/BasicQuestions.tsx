@@ -78,9 +78,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     if (currentQuestionIndex === questions.length - 1 && selectedOption) {
       const allQuestionsAnswered = basicAnswers.every((answer) => answer !== '');
       if (allQuestionsAnswered) {
-        setIsLoading(true);
         onQuizComplete();
-        setIsLoading(false);
       }
       changePage('Summary');
     }
@@ -108,6 +106,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem('MYKEY') as string), dangerouslyAllowBrowser: true });
 
   const showMyResults = async () => {
+    setIsLoading(true);
     const promptContent = generatePrompt(justQuestions, basicAnswers);
   
     const completion = await openai.chat.completions.create({
@@ -120,7 +119,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     const reportContent = completion.choices[0].message.content || '';
   
     setReport(reportContent);
-
+    setIsLoading(false);
     changePage('BasicReport');
   };
 
@@ -159,10 +158,11 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
             />
         </div>
 
-        <div id= 'planet' className = {`planetLayer ${isLoading ? 'spin' : ''}`} ></div>
+        <div id='planet' className={`planetLayer ${isLoading ? 'spin' : ''}`}>
+          {isLoading && <div className="loadingText">Loading...</div>}
+        </div>
 
         <div className="pageBody">
-
             <div className ='parallax-scrolling'>
                 <div id='stars1' className="parallax-star-layer"></div>
                 <div id='stars3' className="parallax-star-layer"></div>
@@ -187,7 +187,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                             ))}
                             <div className='buttons'>
                             <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
-                            <button onClick={handleNext} disabled={!selectedOption}>Next</button>
+                            <button onClick={handleNext} disabled={!selectedOption || currentQuestionIndex === 6}>Next</button>
                             <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
                             </div>
                         </div>
