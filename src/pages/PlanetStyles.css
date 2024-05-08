@@ -1,6 +1,6 @@
 #planet {
     background-image: url('../assets/planet2.png');
-    z-index: 2;
+    z-index: 100;
     background-size: cover;
 }
 
