@@ -7,7 +7,7 @@
 .planetLayer {
     position: absolute;
     top: 130px;
-    right: 0px;
+    right: -40px;
     width: 70vh;
     height: 70vh;
     z-index: 3;

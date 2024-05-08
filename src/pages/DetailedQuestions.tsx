@@ -27,6 +27,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [detailedAnswers, setDetailedAnswers] = useState(Array(detailedQuestions.length).fill(''));
   const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,6 +97,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
   };
 
   const generateReport = async () => {
+    setIsLoading(true);
     const promptContent = generatePrompt(
       detailedQuestions.map((q) => q.question),
       detailedAnswers
@@ -111,6 +113,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     const reportContent = completion.choices[0].message.content || '';
 
     setReport(reportContent);
+    setIsLoading(false);
     changePage('DetailedReport');
   };
 
@@ -124,6 +127,12 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
           progressText={`${progress}/${detailedQuestions.length}`} 
           rocketImagePath="../assets/Rocket.png"
         />
+
+       <div id='planet' className={`planetLayer ${isLoading ? 'spin' : ''}`}>
+          {isLoading && <div className="loadingText">Loading...</div>}
+        </div>
+
+
       </div>
       <div className='pageBody'>
         <div className='parallax-scrolling'>
@@ -146,6 +155,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
                 <div className='buttons'>
                   <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
                   <button onClick={handleNext} disabled={detailedAnswers[currentQuestionIndex].trim() === ''}>Next</button>
+                  <button onClick={generateReport} disabled={currentQuestionIndex !== detailedQuestions.length - 1}>Submit</button>
                 </div>
               </div>
             </div>

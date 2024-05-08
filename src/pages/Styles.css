@@ -411,3 +411,14 @@ z-index: 100;
 html {
     scroll-behavior: smooth;
 }
+
+.loadingText{
+    font-family: 'Nasalization';
+    src: url('../fonts/nasalization-rg.woff2') format('woff2');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+}
