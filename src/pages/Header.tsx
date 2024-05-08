@@ -9,12 +9,14 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
     const [isSticky, setIsSticky] = useState(false);
+    const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
     useEffect(() => {
         if (isHome) { 
             const handleScroll = () => {
                 const shouldStick = window.scrollY > 50; // Threshold of scroll Y to trigger sticky header
                 setIsSticky(shouldStick);
+                setIsHeaderVisible(true);
                 document.body.style.paddingTop = shouldStick ? '70px' : '0'; // Add this line
             };
             window.addEventListener('scroll', handleScroll);
@@ -26,9 +28,16 @@ export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
         }
     }, [isHome]);
 
+    const handleLogoClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsHeaderVisible(false);
+        changePage('Home');
+        document.body.style.paddingTop = '0';
+    };
+
     const style = {
         header: { 
-            display: isSticky ? 'flex' : 'none',
+            display: (isSticky && isHeaderVisible) ? 'flex' : 'none',
             width: `100%`,
             height: '70px',
             justifyContent: 'space-between',
@@ -48,7 +57,7 @@ export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
 
     return (
         <div style={style.header} className='header'>
-            <div style={{ display: 'flex', alignItems: 'center' }} className='titleStyledText' onClick={() => changePage('Home')}>
+            <div style={{ display: 'flex', alignItems: 'center' }} className='titleStyledText' onClick={handleLogoClick}>
                 <img src= {logo} alt="Logo" style={style.logoImage} />
                 <div className='titleStyledText'>Launch Pad</div>
             </div>

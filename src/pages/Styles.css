@@ -241,7 +241,7 @@ z-index: 100;
     color: #6a11cb;
     border: none;
     text-align: justify;
-    z-index: 10;
+    z-index: 5;
     cursor: default;
     text-shadow: none;
     
@@ -407,4 +407,7 @@ z-index: 100;
     color: #6a11cb;
     background-color:rgba(255, 255, 255, 1);
 
+}
+html {
+    scroll-behavior: smooth;
 }
