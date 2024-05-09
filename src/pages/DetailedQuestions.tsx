@@ -12,6 +12,7 @@ interface DetailedProps {
   onQuizComplete: () => void;
 }
 
+
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
   const { setReport } = useContext(ReportContext);
   const detailedQuestions = [
@@ -60,6 +61,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
           setProgress(progress + 1);
         }
       } else {
+        setProgress(progress + 1);
         generateReport();
       }
     }
@@ -137,7 +139,11 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
                 </div>
                 <div className='buttons'>
                   <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
-                  <button onClick={handleNext} disabled={detailedAnswers[currentQuestionIndex].trim() === ''}>Next</button>
+                  {currentQuestionIndex < detailedQuestions.length - 1 ? (
+                    <button onClick={handleNext} disabled={detailedAnswers[currentQuestionIndex].trim() === ''}>Next</button>
+                  ) : (
+                    <button onClick={handleNext} disabled={detailedAnswers[currentQuestionIndex].trim() === ''}>Submit</button>
+                  )}
                 </div>
               </div>
             </div>

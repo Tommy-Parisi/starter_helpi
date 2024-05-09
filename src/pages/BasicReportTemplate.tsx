@@ -62,7 +62,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
                     <p>{report}</p>
                   </div>
                 ) : (
-                  'Take the Basic Quiz to get your result!'
+                'Take the Basic Quiz to get your result!'
                 )}
               </Button>
             </div>

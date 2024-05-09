@@ -14,6 +14,8 @@ interface BasicProps {
 
 export let basicAnswers: string[] = [];
 
+// In BasicQuestions component
+
 const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
   const { setReport } = useContext(ReportContext);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -71,14 +73,14 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
       }
     } else if (selectedOption && progress === currentQuestionIndex) {
       setProgress(progress + 1);
-      changePage('Summary');
+      showMyResults();
     }
     if (currentQuestionIndex === questions.length - 1 && selectedOption) {
       const allQuestionsAnswered = basicAnswers.every((answer) => answer !== '');
       if (allQuestionsAnswered) {
         onQuizComplete();
       }
-      changePage('Summary');
+      showMyResults();
     }
   };
 
@@ -170,12 +172,15 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                   <button onClick={handleBack} disabled={currentQuestionIndex === 0}>
                     Back
                   </button>
-                  <button onClick={handleNext} disabled={!selectedOption}>
-                    Next
-                  </button>
-                  <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>
-                    Submit
-                  </button>
+                  {currentQuestionIndex < questions.length - 1 ? (
+                    <button onClick={handleNext} disabled={!selectedOption}>
+                      Next
+                    </button>
+                  ) : (
+                    <button onClick={handleNext} disabled={!selectedOption}>
+                      Submit
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -191,3 +196,4 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 };
 
 export default BasicQuestions;
+
