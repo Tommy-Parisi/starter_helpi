@@ -14,7 +14,7 @@ interface BasicProps {
 
 export let basicAnswers: string[] = [];
 
-// In BasicQuestions component
+
 
 const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
   const { setReport } = useContext(ReportContext);
@@ -75,13 +75,6 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
       setProgress(progress + 1);
       showMyResults();
     }
-    if (currentQuestionIndex === questions.length - 1 && selectedOption) {
-      const allQuestionsAnswered = basicAnswers.every((answer) => answer !== '');
-      if (allQuestionsAnswered) {
-        onQuizComplete();
-      }
-      showMyResults();
-    }
   };
 
   const handleBack = () => {
@@ -107,7 +100,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
   const showMyResults = async () => {
     const promptContent = generatePrompt(justQuestions, basicAnswers);
-  
+
     const completion = await openai.chat.completions.create({
       messages: [{ role: 'system', content: promptContent }],
       max_tokens: 600,
@@ -116,30 +109,24 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     });
 
     const reportContent = completion.choices[0].message.content || '';
-  
-    setReport(reportContent);
 
+    setReport(reportContent);
     changePage('BasicReport');
+
+    // Clear the quiz after the report is set and the page changes
+    resetQuiz();
+  };
+
+  const resetQuiz = () => {
+    basicAnswers = [];
+    setCurrentQuestionIndex(0);
+    setProgress(0);
+    setSelectedOption('');
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const yPos = window.scrollY;
-
-      const stars1 = document.getElementById('stars1');
-      const stars2 = document.getElementById('stars2');
-      const stars3 = document.getElementById('stars3');
-
-      if (stars1) stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
-      if (stars2) stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
-      if (stars3) stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // Initialize/reset the quiz state on mount or load
+    resetQuiz();
   }, []);
 
   return (
@@ -157,9 +144,8 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
               <div className='customButton1'>
                 <h2>{questions[currentQuestionIndex].question}</h2>
                 {questions[currentQuestionIndex].options.map((option, index) => (
-                  <div className='form'>
+                  <div className='form' key={index}>
                     <Form.Check
-                      key={index}
                       type='radio'
                       name={`question${currentQuestionIndex + 1}`}
                       label={option}
@@ -177,7 +163,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                       Next
                     </button>
                   ) : (
-                    <button onClick={handleNext} disabled={!selectedOption}>
+                    <button onClick={showMyResults} disabled={!selectedOption}>
                       Submit
                     </button>
                   )}
@@ -196,4 +182,3 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 };
 
 export default BasicQuestions;
-

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Form } from 'react-bootstrap';
 import OpenAI from 'openai';
 import ProgressBarComponent from './ProgressBarComponent';
@@ -12,6 +12,7 @@ interface DetailedProps {
   onQuizComplete: () => void;
 }
 
+// DetailedQuestions.tsx
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
   const { setReport } = useContext(ReportContext);
@@ -29,13 +30,15 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
   const [detailedAnswers, setDetailedAnswers] = useState(Array(detailedQuestions.length).fill(''));
   const [progress, setProgress] = useState(0);
 
+  const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem('MYKEY') as string), dangerouslyAllowBrowser: true });
+
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;
       const stars1 = document.getElementById('stars1');
       const stars2 = document.getElementById('stars2');
       const stars3 = document.getElementById('stars3');
-      
+
       if (stars1) stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
       if (stars2) stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
       if (stars3) stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
@@ -47,6 +50,18 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     };
   }, []);
 
+  // Use useCallback to prevent resetting the function reference on every render
+  const resetQuiz = useCallback(() => {
+    setCurrentQuestionIndex(0);
+    setProgress(0);
+    setDetailedAnswers(Array(detailedQuestions.length).fill(''));
+  }, [detailedQuestions.length]);
+
+  useEffect(() => {
+    // Initialize/reset the quiz state on mount or load
+    resetQuiz();
+  }, [resetQuiz]);
+
   const handleInputChange = (text: string) => {
     const updatedAnswers = [...detailedAnswers];
     updatedAnswers[currentQuestionIndex] = text;
@@ -57,7 +72,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     if (detailedAnswers[currentQuestionIndex].trim() !== '') {
       if (currentQuestionIndex < detailedQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        if (detailedAnswers[currentQuestionIndex + 1] === '' && progress === currentQuestionIndex) {
+        if (progress === currentQuestionIndex) {
           setProgress(progress + 1);
         }
       } else {
@@ -72,8 +87,6 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
-
-  const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem('MYKEY') as string), dangerouslyAllowBrowser: true });
 
   const generatePrompt = (questions: string[], answers: string[]) => {
     let QandAprompt = '';
@@ -106,16 +119,19 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
 
     setReport(reportContent);
     changePage('DetailedReport');
+
+    // Reset the quiz after the report is shown
+    resetQuiz();
   };
 
   return (
     <>
       <div className='pageTop'>
         <h2 className='styledText'>Detailed Career Questions</h2>
-        <ProgressBarComponent 
-          progress={progress} 
-          total={detailedQuestions.length} 
-          progressText={`${progress}/${detailedQuestions.length}`} 
+        <ProgressBarComponent
+          progress={progress}
+          total={detailedQuestions.length}
+          progressText={`${progress}/${detailedQuestions.length}`}
           rocketImagePath="../assets/Rocket.png"
         />
       </div>
