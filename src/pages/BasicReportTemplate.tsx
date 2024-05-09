@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
 import './ParallaxStarsStyle.css';
 import { ReportContext } from '../ReportContext';
+//import { parsedReport } from './BasicQuestions';
         
 
 interface BasicReportProps {
@@ -12,9 +13,29 @@ interface BasicReportProps {
 }
 
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
+  const parseReport = (report: string) => {
+    if (!report) return null;
 
+    const sections = report.split('**').filter((section) => section.trim());
+    return (
+      <div>
+        {sections.map((section, index) => {
+          const lines = section.trim().split('-').filter((line) => line.trim());
+          const title = lines[0];
+          const content = lines.slice(1).map((line, idx) => <li key={idx}>{line.trim()}</li>);
+          return (
+            <div key={index}>
+              <h3>{title}</h3>
+              <ul>{content}</ul>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
 
   const { basicReport } = useContext(ReportContext);
+  const parsedReport = parseReport(basicReport);
 
   const handleStartBasicQuiz = () => {
     // Navigate to the Basic Quiz page
@@ -59,7 +80,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
                 {basicReport ? (
                   <div>
                     <h3>Career Report</h3>
-                    <p>{basicReport}</p>
+                    <p>{parsedReport}</p>
                   </div>
                 ) : (
                 'Take the Basic Quiz to get your result!'
