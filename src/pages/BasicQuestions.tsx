@@ -15,6 +15,8 @@ interface BasicProps {
 
 export let basicAnswers: string[] = [];
 
+
+
 const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
   const { setReport } = useContext(ReportContext);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -73,14 +75,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
       }
     } else if (selectedOption && progress === currentQuestionIndex) {
       setProgress(progress + 1);
-      changePage('Summary');
-    }
-    if (currentQuestionIndex === questions.length - 1 && selectedOption) {
-      const allQuestionsAnswered = basicAnswers.every((answer) => answer !== '');
-      if (allQuestionsAnswered) {
-        onQuizComplete();
-      }
-      changePage('Summary');
+      showMyResults();
     }
   };
 
@@ -108,7 +103,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const showMyResults = async () => {
     setIsLoading(true);
     const promptContent = generatePrompt(justQuestions, basicAnswers);
-  
+
     const completion = await openai.chat.completions.create({
       messages: [{ role: 'system', content: promptContent }],
       max_tokens: 600,
@@ -117,83 +112,78 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     });
 
     const reportContent = completion.choices[0].message.content || '';
-  
+
+
     setReport(reportContent);
     setIsLoading(false);
+
     changePage('BasicReport');
+
+    // Clear the quiz after the report is set and the page changes
+    resetQuiz();
+  };
+
+  const resetQuiz = () => {
+    basicAnswers = [];
+    setCurrentQuestionIndex(0);
+    setProgress(0);
+    setSelectedOption('');
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const yPos = window.scrollY;
-
-      const stars1 = document.getElementById('stars1');
-      const stars2 = document.getElementById('stars2');
-      const stars3 = document.getElementById('stars3');
-
-      if (stars1) stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
-      if (stars2) stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
-      if (stars3) stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // Initialize/reset the quiz state on mount or load
+    resetQuiz();
   }, []);
 
   
   return (
     <>
-    <div>
 
-        <div className='pageTop'>
-            <h2 className='styledText'>Basic Career Questions</h2>
-            <ProgressBarComponent 
-                progress={progress} 
-                total={questions.length} 
-                progressText={`${progress}/${questions.length}`} 
-                rocketImagePath="../assets/Rocket.png"
-            />
-        </div>
-
-        <div id='planet' className={`planetLayer ${isLoading ? 'spin' : ''}`}>
+      <div className='pageTop'>
+        <h2 className='styledText'>Basic Career Questions</h2>
+        <ProgressBarComponent progress={progress} total={questions.length} progressText={`${progress}/${questions.length}`} rocketImagePath='../assets/Rocket.png' />
+      </div>
+        
+      <div id='planet' className={`planetLayer ${isLoading ? 'spin' : ''}`}>
           {isLoading && <div className="loadingText">Loading...</div>}
-        </div>
+      </div>
+        
+      <div className='pageBody'>
+        <div className='parallax-scrolling'>
+          <div id='stars1' className='parallax-star-layer'></div>
+          <div id='stars3' className='parallax-star-layer'></div>
+          <div className='container1'>
+            <div className='column'>
+              <div className='customButton1'>
+                <h2>{questions[currentQuestionIndex].question}</h2>
+                {questions[currentQuestionIndex].options.map((option, index) => (
+                  <div className='form' key={index}>
+                    <Form.Check
+                      type='radio'
+                      name={`question${currentQuestionIndex + 1}`}
+                      label={option}
+                      onChange={() => handleOptionChange(option)}
+                      checked={selectedOption === option}
+                    />
+                  </div>
+                ))}
+                <div className='buttons'>
+                  <button onClick={handleBack} disabled={currentQuestionIndex === 0}>
+                    Back
+                  </button>
+                  {currentQuestionIndex < questions.length - 1 ? (
+                    <button onClick={handleNext} disabled={!selectedOption}>
+                      Next
+                    </button>
+                  ) : (
+                    <button onClick={handleNext} disabled={!selectedOption}>
+                      Submit
+                    </button>
+                  )}
+                  </div>
 
-        <div className="pageBody">
-            <div className ='parallax-scrolling'>
-                <div id='stars1' className="parallax-star-layer"></div>
-                <div id='stars3' className="parallax-star-layer"></div>
-            <div>
-
-
-                <div className='container1'>
-                    <div className="column">
-                        <div className="customButton1">
-                            <h2>{questions[currentQuestionIndex].question}</h2>
-                            {questions[currentQuestionIndex].options.map((option, index) => (
-                                <div className='form'>
-                                <Form.Check
-                                    key={index}
-                                    type="radio"
-                                    name={`question${currentQuestionIndex + 1}`}
-                                    label={option}
-                                    onChange={() => handleOptionChange(option)}
-                                    checked={selectedOption === option}
-                                />
-                                </div>
-                            ))}
-                            <div className='buttons'>
-                            <button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</button>
-                            <button onClick={handleNext} disabled={!selectedOption || currentQuestionIndex === 6}>Next</button>
-                            <button onClick={showMyResults} disabled={currentQuestionIndex !== questions.length - 1}>Submit</button>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+                 </div>
+              </div>
             </div>
           </div>
         </div>

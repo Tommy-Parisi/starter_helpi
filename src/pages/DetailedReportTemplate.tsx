@@ -59,7 +59,8 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
                     <p>{report}</p>
                   </div>
                 ) : (
-                  'No Report Yet'
+                  
+                  'Take the Detailed Quiz to get your result!'
                 )}
               </Button>
             </div>
