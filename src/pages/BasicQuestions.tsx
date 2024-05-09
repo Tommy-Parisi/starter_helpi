@@ -7,8 +7,8 @@ import './ParallaxStarsStyle.css';
 import './PlanetStyles.css';
 import { ApiKey } from '../ApiKey';
 import { ReportContext } from '../ReportContext';
-import { parse } from 'path';
-import { report } from 'process';
+//import { parse } from 'path';
+//import { report } from 'process';
 
 interface BasicProps {
   changePage: (page: string) => void;
