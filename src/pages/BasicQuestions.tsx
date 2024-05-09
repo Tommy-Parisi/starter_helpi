@@ -7,6 +7,8 @@ import './ParallaxStarsStyle.css';
 import './PlanetStyles.css';
 import { ApiKey } from '../ApiKey';
 import { ReportContext } from '../ReportContext';
+import { parse } from 'path';
+import { report } from 'process';
 
 interface BasicProps {
   changePage: (page: string) => void;
@@ -23,6 +25,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const [selectedOption, setSelectedOption] = useState('');
   const [progress, setProgress] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [reportContent, setReportContent] = useState<string>('');
 
   const questions = [
     {
@@ -120,9 +123,11 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     });
 
     const reportContent = completion.choices[0].message.content || '';
+    //export const parsedReport = parseReport(reportContent);
 
 
     setBasicReport(reportContent);
+    setReportContent(reportContent);
     setIsLoading(false);
 
     changePage('BasicReport');
@@ -137,6 +142,28 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     setProgress(0);
     setSelectedOption('');
   };
+
+  const parseReport = (report: string) => {
+    if (!report) return null;
+
+    const sections = report.split('**').filter((section) => section.trim());
+    return (
+      <div>
+        {sections.map((section, index) => {
+          const lines = section.trim().split('-').filter((line) => line.trim());
+          const title = lines[0];
+          const content = lines.slice(1).map((line, idx) => <li key={idx}>{line.trim()}</li>);
+          return (
+            <div key={index}>
+              <h3>{title}</h3>
+              <ul>{content}</ul>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
 
   useEffect(() => {
     // Initialize/reset the quiz state on mount or load
@@ -199,6 +226,12 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
             <p>© 2024 Helpi. All rights reserved.</p>
             <ApiKey />
         </div>
+        {/* Conditionally render parsed report content */}
+        {reportContent && (
+        <div className='parsedReport'>
+          {parseReport(reportContent)}
+        </div>
+      )}
     </>
   );
 };
