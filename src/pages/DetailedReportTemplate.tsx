@@ -11,7 +11,7 @@ interface DetailedReportProps {
 
 const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQuizCompleted}) => {
 
-    const { report } = useContext(ReportContext);
+  const { detailedReport } = useContext(ReportContext);
 
     const handleStartDetailedQuiz = () => {
         // Navigate to the Detailed Quiz page
@@ -53,10 +53,10 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
             <div className='column'>
               {/* Button showing the generated career report or a placeholder */}
               <Button className='customButton2' onClick={handleStartDetailedQuiz}>
-                {report ? (
+                {detailedReport? (
                   <div>
                     <h3>Career Report</h3>
-                    <p>{report}</p>
+                    <p>{detailedReport}</p>
                   </div>
                 ) : (
                   

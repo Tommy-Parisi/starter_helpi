@@ -18,7 +18,7 @@ export let basicAnswers: string[] = [];
 
 
 const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
-  const { setReport } = useContext(ReportContext);
+  const { setBasicReport } = useContext(ReportContext);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [progress, setProgress] = useState<number>(0);
@@ -114,7 +114,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     const reportContent = completion.choices[0].message.content || '';
 
 
-    setReport(reportContent);
+    setBasicReport(reportContent);
     setIsLoading(false);
 
     changePage('BasicReport');

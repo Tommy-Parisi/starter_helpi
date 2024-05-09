@@ -2,22 +2,27 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
 interface ReportContextProps {
-  report: string;
-  setReport: (newReport: string) => void;
+  basicReport: string;
+  detailedReport: string;
+  setBasicReport: (newReport: string) => void;
+  setDetailedReport: (newReport: string) => void;
 }
 
 const defaultContext: ReportContextProps = {
-  report: '',
-  setReport: () => {},
+  basicReport: '',
+  detailedReport: '',
+  setBasicReport: () => {},
+  setDetailedReport: () => {},
 };
 
 export const ReportContext = createContext<ReportContextProps>(defaultContext);
 
 export const ReportProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [report, setReport] = useState('');
+  const [basicReport, setBasicReport] = useState('');
+  const [detailedReport, setDetailedReport] = useState('');
 
   return (
-    <ReportContext.Provider value={{ report, setReport }}>
+    <ReportContext.Provider value={{ basicReport, detailedReport, setBasicReport, setDetailedReport }}>
       {children}
     </ReportContext.Provider>
   );
