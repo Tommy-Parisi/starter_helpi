@@ -15,7 +15,7 @@ interface DetailedProps {
 // DetailedQuestions.tsx
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
-  const { setReport } = useContext(ReportContext);
+  const { setDetailedReport } = useContext(ReportContext);
   const detailedQuestions = [
     { questionNumber: "Question 1", question: "What hobbies/activities do you engage in during your free time?" },
     { questionNumber: "Question 2", question: "What are your top three skills or strengths?" },
@@ -127,7 +127,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
 
     const reportContent = completion.choices[0].message.content || '';
 
-    setReport(reportContent);
+    setDetailedReport(reportContent);
     setIsLoading(false);
     changePage('DetailedReport');
 

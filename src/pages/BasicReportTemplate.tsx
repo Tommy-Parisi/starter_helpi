@@ -13,8 +13,8 @@ interface BasicReportProps {
 
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
 
-  // Access the report from the context
-  const { report } = useContext(ReportContext);
+
+  const { basicReport } = useContext(ReportContext);
 
   const handleStartBasicQuiz = () => {
     // Navigate to the Basic Quiz page
@@ -56,10 +56,10 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
             <div className='column'>
               {/* Button showing the generated career report or a placeholder */}
               <Button className='customButton2' onClick={handleStartBasicQuiz}>
-                {report ? (
+                {basicReport ? (
                   <div>
                     <h3>Career Report</h3>
-                    <p>{report}</p>
+                    <p>{basicReport}</p>
                   </div>
                 ) : (
                 'Take the Basic Quiz to get your result!'
