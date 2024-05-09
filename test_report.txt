@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (83 ms)
+  ✕ renders learn react link (55 ms)
 
   ● renders learn react link
 
@@ -202,16 +202,16 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   18.47 |     8.69 |   16.39 |   19.82 |                   
+All files                    |   16.66 |     8.16 |   14.08 |   18.32 |                   
  src                         |    47.5 |    18.18 |   33.33 |      50 |                   
   ApiKey.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23           
   App.tsx                    |   53.84 |       20 |      50 |   63.63 | 22-24,28-30       
   ReportContext.tsx          |     100 |      100 |   33.33 |     100 |                   
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/pages                   |   12.91 |      7.4 |   12.24 |   13.91 |                   
-  BasicQuestions.tsx         |    3.57 |        0 |       0 |     3.7 | 21-173            
-  BasicReportTemplate.tsx    |       5 |        0 |       0 |    5.88 | 17-46             
+ src/pages                   |   11.44 |     6.89 |   10.16 |   12.67 |                   
+  BasicQuestions.tsx         |    2.85 |        0 |       0 |    3.12 | 23-200            
+  BasicReportTemplate.tsx    |    3.03 |        0 |       0 |    3.84 | 16-67             
   DetailedQuestions.tsx      |    1.61 |        0 |       0 |    1.72 | 18-169            
   DetailedReportTemplate.tsx |       5 |        0 |       0 |    5.88 | 14-43             
   Footer.tsx                 |       0 |      100 |       0 |       0 | 9-28              
@@ -222,5 +222,5 @@ All files                    |   18.47 |     8.69 |   16.39 |   19.82 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.984 s
+Time:        3.021 s
 Ran all test suites.
