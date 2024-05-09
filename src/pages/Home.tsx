@@ -9,6 +9,16 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ changePage }) => {
+
+    const handleBasicClick = () => {
+        changePage('Basic');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const handleDetailedClick = () => {
+        changePage('Detailed');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     
     useEffect(() => {
         const handleScroll = () => {
@@ -32,11 +42,9 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
 
     return (
         <>
-        
-           
-
-            <div className='pageTop'>
-                <h2 className='styledText'>Shoot for the moon!!!</h2>
+            <div className='logoScreen'>
+                <h2 className='homePageStyledText'>Launch Pad</h2>
+                <h3>Reach for the stars</h3>
             </div>
        
         <div className="pageBody">
@@ -46,7 +54,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
             <div id='stars3' className="parallax-star-layer"></div>
             <div className='container'>
                 <div className="column">
-                        <Button className="customButton" onClick={() => changePage('Basic')}>
+                        <Button className="customButton" onClick={handleBasicClick}>
                         <h2>The Basic Quiz</h2>
                         <h3>(5 Mins)</h3>
                         {/*formatting below by ChatGPT*/}
@@ -61,7 +69,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
                 </div>
 
                 <div className="column">
-                    <Button className='customButton' onClick={() => changePage('Detailed')}>
+                    <Button className='customButton' onClick={handleDetailedClick}>
                         <h2>The Detailed Quiz</h2>
                         <h3>(10 Mins)</h3>
                         {/*formatting below by ChatGPT*/}

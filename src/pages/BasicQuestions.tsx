@@ -4,6 +4,7 @@ import OpenAI from 'openai';
 import ProgressBarComponent from './ProgressBarComponent';
 import './ProgressBarStyle.css';
 import './ParallaxStarsStyle.css';
+import './PlanetStyles.css';
 import { ApiKey } from '../ApiKey';
 import { ReportContext } from '../ReportContext';
 
@@ -21,6 +22,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [progress, setProgress] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const questions = [
     {
@@ -99,6 +101,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem('MYKEY') as string), dangerouslyAllowBrowser: true });
 
   const showMyResults = async () => {
+    setIsLoading(true);
     const promptContent = generatePrompt(justQuestions, basicAnswers);
 
     const completion = await openai.chat.completions.create({
@@ -110,7 +113,10 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
     const reportContent = completion.choices[0].message.content || '';
 
+
     setReport(reportContent);
+    setIsLoading(false);
+
     changePage('BasicReport');
 
     // Clear the quiz after the report is set and the page changes
@@ -129,12 +135,19 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     resetQuiz();
   }, []);
 
+  
   return (
     <>
+
       <div className='pageTop'>
         <h2 className='styledText'>Basic Career Questions</h2>
         <ProgressBarComponent progress={progress} total={questions.length} progressText={`${progress}/${questions.length}`} rocketImagePath='../assets/Rocket.png' />
       </div>
+        
+      <div id='planet' className={`planetLayer ${isLoading ? 'spin' : ''}`}>
+          {isLoading && <div className="loadingText">Loading...</div>}
+      </div>
+        
       <div className='pageBody'>
         <div className='parallax-scrolling'>
           <div id='stars1' className='parallax-star-layer'></div>
@@ -167,16 +180,17 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                       Submit
                     </button>
                   )}
-                </div>
+                  </div>
+
+                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className='footer'>
-        <p>© 2024 Helpi. All rights reserved.</p>
-        <ApiKey />
-      </div>
+        <div className="footer">
+            <p>© 2024 Helpi. All rights reserved.</p>
+            <ApiKey />
+        </div>
     </>
   );
 };
