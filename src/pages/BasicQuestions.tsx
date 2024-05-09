@@ -163,7 +163,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                       Next
                     </button>
                   ) : (
-                    <button onClick={showMyResults} disabled={!selectedOption}>
+                    <button onClick={handleNext} disabled={!selectedOption}>
                       Submit
                     </button>
                   )}
