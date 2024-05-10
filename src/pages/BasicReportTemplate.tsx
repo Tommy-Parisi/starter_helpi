@@ -13,26 +13,38 @@ interface BasicReportProps {
 }
 
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
-  const parseReport = (report: string) => {
-    if (!report) return null;
 
-    const sections = report.split('**').filter((section) => section.trim());
+  const parseReport = (report: string): JSX.Element | null => {
+    if (!report.trim()) return null;
+  
+    const sections = report.split('**').map((section) => section.trim());
+  
     return (
       <div>
         {sections.map((section, index) => {
-          const lines = section.trim().split('-').filter((line) => line.trim());
+          if (!section) return null;
+  
+          const lines = section.split('\n').map((line) => line.trim());
           const title = lines[0];
-          const content = lines.slice(1).map((line, idx) => <li key={idx}>{line.trim()}</li>);
+          const content = lines.slice(1).filter((line) => line.startsWith('-'));
+  
           return (
             <div key={index}>
               <h3>{title}</h3>
-              <ul>{content}</ul>
+              <ul>
+                {content.map((item, idx) => (
+                  <li key={idx}>{item.substring(1).trim()}</li>
+                ))}
+              </ul>
             </div>
           );
         })}
       </div>
     );
   };
+
+//export default parseReport;
+
 
   const { basicReport } = useContext(ReportContext);
   const parsedReport = parseReport(basicReport);
@@ -76,16 +88,16 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
           <div className='container1'>
             <div className='column'>
               {/* Button showing the generated career report or a placeholder */}
-              <Button className='customButton2' onClick={handleStartBasicQuiz}>
-                {basicReport ? (
-                  <div>
+                {!basicReport ? (
+                  <Button className='customButton2' onClick={handleStartBasicQuiz}>
+                  'Take the Basic Quiz to get your result!' </Button>
+                ) : 
+                null
+                }
+              {basicReport ? <div>
                     <h3>Career Report</h3>
                     <p>{parsedReport}</p>
-                  </div>
-                ) : (
-                'Take the Basic Quiz to get your result!'
-                )}
-              </Button>
+                  </div> : null}
             </div>
           </div>
         </div>
