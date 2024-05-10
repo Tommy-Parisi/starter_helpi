@@ -15,99 +15,36 @@ interface BasicReportProps {
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
 
   const parseReport = (report: string): JSX.Element | null => {
-    if (!report) return null;
-    const sections = [];
-    const sectionRegex = /(?<=\*\*).*?(?=\*\*)/gs; // Regex to match content between '**' as sections
-    const lineRegex = /- (.*?):(.*?)$/gm; // Regex to match lines in the format '- Key: Value'
-    let match;
-    let lastIndex = 0;
-      // Extract sections from report content
-    while ((match = sectionRegex.exec(report))) {
-      const sectionTitle = match[0].trim();
-      const sectionContent = report.substring(lastIndex, match.index).trim();
-
-        // Extract lines from section content
-      const items: { key: string; value: string }[] = [];
-      let lineMatch;
-      while ((lineMatch = lineRegex.exec(sectionContent))) {
-        const key = lineMatch[1].trim();
-        const value = lineMatch[2].trim();
-        items.push({ key, value });
-      }
-
-        // Add section to the sections array
-      sections.push({ title: sectionTitle, items });
-      lastIndex = match.index + match[0].length;
-    }
-
-      // Render sections as JSX
+    if (!report.trim()) return null;
+  
+    const sections = report.split('**').map((section) => section.trim());
+  
     return (
-      <div className="parsedReport">
-        {sections.map((section, index) => (
-          <div key={index}>
-            <h3>{section.title}</h3>
-            <ul>
-              {section.items.map((item, idx) => (
-                <li key={idx}>
-                  <strong>{item.key}</strong>: {item.value}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div>
+        {sections.map((section, index) => {
+          if (!section) return null;
+  
+          const lines = section.split('\n').map((line) => line.trim());
+          const title = lines[0];
+          const content = lines.slice(1).filter((line) => line.startsWith('-'));
+  
+          return (
+            <div key={index}>
+              <h3>{title}</h3>
+              <ul>
+                {content.map((item, idx) => (
+                  <li key={idx}>{item.substring(1).trim()}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     );
   };
 
 //export default parseReport;
 
-  /*const parseReport = (report : string) => {
-    if (!basicReport) return null;
-  
-    const sections = basicReport.split('**').map((section) => section.trim()).filter((section) => section);
-  
-    return (
-      <div className="parsedReport">
-        {sections.map((section, index) => {
-          const lines = section.split('-').map((line) => line.trim()).filter((line) => line);
-  
-          return (
-            <div key={index} className="reportSection">
-              {lines.map((item, idx) => {
-                const [key, value] = item.split(':').map((part) => part.trim());
-                return (
-                  <div key={idx} className="reportItem">
-                    <strong>{key}</strong>: {value}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const parseReport = (report: string) => {
-    if (!report) return null;
-
-    const sections = report.split('**').filter((section) => section.trim());
-    return (
-      <div>
-        {sections.map((section, index) => {
-          const lines = section.trim().split('-').filter((line) => line.trim());
-          const title = lines[0];
-          const content = lines.slice(1).map((line, idx) => <li key={idx}>{line.trim()}</li>);
-          return (
-            <div key={index}>
-              <h3>{title}</h3>
-              <ul>{content}</ul>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };   */
 
   const { basicReport } = useContext(ReportContext);
   const parsedReport = parseReport(basicReport);
