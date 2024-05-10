@@ -13,6 +13,81 @@ interface BasicReportProps {
 }
 
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
+
+  const parseReport = (report: string): JSX.Element | null => {
+    if (!report) return null;
+    const sections = [];
+    const sectionRegex = /(?<=\*\*).*?(?=\*\*)/gs; // Regex to match content between '**' as sections
+    const lineRegex = /- (.*?):(.*?)$/gm; // Regex to match lines in the format '- Key: Value'
+    let match;
+    let lastIndex = 0;
+      // Extract sections from report content
+    while ((match = sectionRegex.exec(report))) {
+      const sectionTitle = match[0].trim();
+      const sectionContent = report.substring(lastIndex, match.index).trim();
+
+        // Extract lines from section content
+      const items: { key: string; value: string }[] = [];
+      let lineMatch;
+      while ((lineMatch = lineRegex.exec(sectionContent))) {
+        const key = lineMatch[1].trim();
+        const value = lineMatch[2].trim();
+        items.push({ key, value });
+      }
+
+        // Add section to the sections array
+      sections.push({ title: sectionTitle, items });
+      lastIndex = match.index + match[0].length;
+    }
+
+      // Render sections as JSX
+    return (
+      <div className="parsedReport">
+        {sections.map((section, index) => (
+          <div key={index}>
+            <h3>{section.title}</h3>
+            <ul>
+              {section.items.map((item, idx) => (
+                <li key={idx}>
+                  <strong>{item.key}</strong>: {item.value}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+//export default parseReport;
+
+  /*const parseReport = (report : string) => {
+    if (!basicReport) return null;
+  
+    const sections = basicReport.split('**').map((section) => section.trim()).filter((section) => section);
+  
+    return (
+      <div className="parsedReport">
+        {sections.map((section, index) => {
+          const lines = section.split('-').map((line) => line.trim()).filter((line) => line);
+  
+          return (
+            <div key={index} className="reportSection">
+              {lines.map((item, idx) => {
+                const [key, value] = item.split(':').map((part) => part.trim());
+                return (
+                  <div key={idx} className="reportItem">
+                    <strong>{key}</strong>: {value}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
   const parseReport = (report: string) => {
     if (!report) return null;
 
@@ -32,7 +107,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
         })}
       </div>
     );
-  };
+  };   */
 
   const { basicReport } = useContext(ReportContext);
   const parsedReport = parseReport(basicReport);
@@ -76,16 +151,16 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
           <div className='container1'>
             <div className='column'>
               {/* Button showing the generated career report or a placeholder */}
-              <Button className='customButton2' onClick={handleStartBasicQuiz}>
-                {basicReport ? (
-                  <div>
+                {!basicReport ? (
+                  <Button className='customButton2' onClick={handleStartBasicQuiz}>
+                  'Take the Basic Quiz to get your result!' </Button>
+                ) : 
+                null
+                }
+              {basicReport ? <div>
                     <h3>Career Report</h3>
                     <p>{parsedReport}</p>
-                  </div>
-                ) : (
-                'Take the Basic Quiz to get your result!'
-                )}
-              </Button>
+                  </div> : null}
             </div>
           </div>
         </div>
