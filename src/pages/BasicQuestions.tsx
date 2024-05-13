@@ -101,13 +101,37 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     
     This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!"
     
-    Your response should be formatted with ** at the start of each part you want to be a header, and - to at the start of each point for the content in that section.
+    Format your response so that the following parseReport function called on your response will correctly parse the response and display it correctly on the page:
+    const parseReport = (report: string): JSX.Element | null => {
+        if (!report.trim()) return null;
+      
+        const sections = report.split('**').map((section) => section.trim());
+        
+        return (
+          <div>
+            {sections.map((section, index) => {
+              if (!section) return null;
+      
+              const lines = section.split('\n').map((line) => line.trim());
+              const title = lines[0];
+              const content = lines.slice(1).filter((line) => line.trim().startsWith('-'));
+      
+              return (
+                <div key={index}>
+                  <h3>{title}</h3>
+                  <ul>
+                    {content.map((item, idx) => (
+                      <li key={idx}>{item.trim().substring(1)}</li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        );
+      };
     
-    Here are the questions the user was asked and the answers they selected. The format of these questions is that the user selects which of the 2 options they feel most applies to them. In this list, the question number is given, followed by the question, and then the answer that was selected:     
-    `
-    //const basicPromptFirstHalf = 'Create a career recommender report that is based on the following questions and answers. The report should have 2 different sections. One should have general information about 4 traits that the person seems to exhibit based on their answers. It should also include how these might impact their behavior in the workplace. This section should be concise and use bullet points with short sentences for descriptions. Don’t directly quote the given answers in this part, but find traits that they likely have based off of what they answered. The other section should list 3 different industries and 3 specific job titles within each industry as well as their expected salary range that the quiz taker is likely to succeed in. The report does not need an introduction or conclusion. Here are the questions the user was asked and the answers they selected. The format of these questions is that the user selects which of the 2 options they feel most applies to them. In this list, the options are separated by commas: ';
-    //const basicPromptSecondHalf = '"The report should include 3 industries specific to the person that provided the answers. These industries should be ones that the person will likely succeed in. Also provide 3 career options and their salary range within each industry. The report does not need an introduction or conclusion. Make 2 separate sections; One should have general information about 4 traits that the person seems to exhibit and how these might impact their behavior in the workplace. This section should be concise and use bullet points with short sentences for descriptions. Don’t directly quote the given answers in this part, but find traits that they likely have based off of what they answered. The other section should only list the industries and potential careers for each."';
-
+    Here are the questions the user was asked and the answers they selected. The format of these questions is that the user selects which of the 2 options they feel most applies to them. In this list, the question number is given, followed by the question, and then the answer that was selected:`
     return `${basicPromptText}${QandAprompt}`;
   };
 
