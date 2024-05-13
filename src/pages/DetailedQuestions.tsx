@@ -146,10 +146,10 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     
           industriesAndJobs.forEach((industryJobs, idx) => {
             if (idx === 0) return; // Skip first empty split
-            const [industry, ...jobs] = industryJobs.split(/\d+\. /);
+            const [industry, ...jobs] = industryJobs.split(/d+. /);
     
             const jobsList = jobs.map((job, jobIdx) => {
-              const jobDetails = job.split(/\n(?=\d+\. )/);
+              const jobDetails = job.split(/\n(?=d+. )/);
               const jobTitle = jobDetails[0].trim();
               const jobDetailsList = jobDetails.slice(1).map((detail) => detail.trim());
     
