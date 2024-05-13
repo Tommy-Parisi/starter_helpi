@@ -105,7 +105,84 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     "These recommended industries and job titles align with your strengths and interests, providing avenues for professional growth and fulfillment based on your career preferences. 
     Consider exploring opportunities within these areas to leverage your skills effectively and achieve your career goals.
     This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!"
-    Here are the questions the user was asked and the answers they selected. They were open ended and the user could enter as much as they wanted. 
+    Here are the questions the user was asked and the answers they selected. They were open ended and the user could enter as much as they wanted. Produce your response so that it will be correctly displayed using this parseReport function: const parseReport = (report: string): JSX.Element | null => {
+      if (!report.trim()) return null;
+    
+      const sections = report.split('###').map((section) => section.trim());
+      
+      let traitsSection: JSX.Element | null = null;
+      const recommendedPaths: JSX.Element[] = [];
+    
+      sections.forEach((section, index) => {
+        if (!section) return;
+    
+        const lines = section.split('\n').map((line) => line.trim());
+        if (lines.length === 0) return;
+    
+        const title = lines[0];
+    
+        if (title.startsWith("Personal Traits and Workplace Behavior")) {
+          // Parse and format personal traits and workplace behavior
+          const traitsContent = lines.slice(1).filter((line) => line.trim().startsWith('-'));
+          const traitsList = traitsContent.map((item, idx) => {
+            const [trait, ...descriptions] = item.substring(1).split(':').map((part) => part.trim());
+            const description = descriptions.join(': '); // Handle multi-part descriptions
+            return (
+              <li key={idx}>
+                <strong>{trait}</strong>: {description}
+              </li>
+            );
+          });
+    
+          traitsSection = (
+            <div key={index}>
+              <h2>{title}</h2>
+              <ul>{traitsList}</ul>
+            </div>
+          );
+        } else if (title.startsWith("Recommended Career Paths")) {
+          // Parse and format recommended career paths
+          const industriesAndJobs = lines.slice(1).join('\n').split('**Industry: ');
+    
+          industriesAndJobs.forEach((industryJobs, idx) => {
+            if (idx === 0) return; // Skip first empty split
+            const [industry, ...jobs] = industryJobs.split(/\d+\. /);
+    
+            const jobsList = jobs.map((job, jobIdx) => {
+              const jobDetails = job.split(/\n(?=\d+\. )/);
+              const jobTitle = jobDetails[0].trim();
+              const jobDetailsList = jobDetails.slice(1).map((detail) => detail.trim());
+    
+              return (
+                <div key={jobIdx}>
+                  <h3>{jobTitle}</h3>
+                  <ul>
+                    {jobDetailsList.map((detail, detailIdx) => (
+                      <li key={detailIdx}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            });
+    
+            recommendedPaths.push(
+              <div key={idx}>
+                <h2>{industry}</h2>
+                {jobsList}
+              </div>
+            );
+          });
+        }
+      });
+    
+      // Render the parsed sections
+      return (
+        <div>
+          {traitsSection}
+          {recommendedPaths}
+        </div>
+      );
+    };
     In this list, the question number is given, followed by the question, and then the answer that was selected: 
     ${QandAprompt}
     `;
