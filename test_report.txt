@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (53 ms)
+  ✕ renders learn react link (57 ms)
 
   ● renders learn react link
 
@@ -202,18 +202,18 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   16.54 |     7.69 |   13.88 |   18.25 |                   
+All files                    |   15.69 |      7.4 |   12.82 |   17.55 |                   
  src                         |    47.5 |    18.18 |   33.33 |      50 |                   
   ApiKey.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23           
   App.tsx                    |   53.84 |       20 |      50 |   63.63 | 22-24,28-30       
   ReportContext.tsx          |     100 |      100 |   33.33 |     100 |                   
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/pages                   |   11.34 |     6.45 |      10 |   12.61 |                   
+ src/pages                   |   10.67 |     6.18 |    9.09 |   12.05 |                   
   BasicQuestions.tsx         |    2.85 |        0 |       0 |    3.12 | 23-226            
   BasicReportTemplate.tsx    |    2.85 |        0 |       0 |     3.7 | 18-75             
-  DetailedQuestions.tsx      |    1.61 |        0 |       0 |    1.72 | 18-169            
-  DetailedReportTemplate.tsx |       5 |        0 |       0 |    5.88 | 14-43             
+  DetailedQuestions.tsx      |    1.61 |        0 |       0 |    1.72 | 18-246            
+  DetailedReportTemplate.tsx |    2.85 |        0 |       0 |     3.7 | 14-152            
   Footer.tsx                 |       0 |      100 |       0 |       0 | 9-28              
   Header.tsx                 |   54.54 |    42.85 |   42.85 |   54.54 | 17-20,32-35,65-67 
   Home.tsx                   |   39.13 |        0 |      50 |      45 | 14-15,19-20,25-33 
@@ -222,5 +222,5 @@ All files                    |   16.54 |     7.69 |   13.88 |   18.25 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.041 s
+Time:        3.04 s
 Ran all test suites.
