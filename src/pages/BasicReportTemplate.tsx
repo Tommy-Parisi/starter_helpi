@@ -86,14 +86,16 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
               {/* Button showing the generated career report or a placeholder */}
                 {!basicReport ? (
                   <Button className='customButton2' onClick={handleStartBasicQuiz}>
-                  'Take the Basic Quiz to get your result!' </Button>
+                  Take the Basic Quiz to get your result! </Button>
                 ) : 
                 null
                 }
-              {basicReport ? <div>
+              {basicReport ? (
+              <div className='reportContainer'>
                     <h3>Career Report</h3>
                     <p>{parseReport(basicReport)}</p>
-                  </div> : null}
+                  </div> 
+                  ) : null}
             </div>
           </div>
         </div>
