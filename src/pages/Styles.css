@@ -422,3 +422,20 @@ html {
     color: white;
     font-size: 2em;
 }
+
+.reportContainer {
+    background-color: white;
+    color: #6a11cb; /* Purple text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    margin-top: 20px; /* Adjust as needed */
+    margin-bottom: 20px; /* Adjust as needed */
+}
+.reportContainer h3 {
+    margin-top: 0; /* Remove default margin */
+}
+.reportContainer ul {
+    margin-top: 0; /* Remove default margin */
+    padding-left: 20px; /* Add some left padding to the list */
+}

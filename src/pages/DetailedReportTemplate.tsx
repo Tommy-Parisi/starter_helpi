@@ -51,18 +51,20 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
           <div id='stars3' className='parallax-star-layer'></div>
           <div className='container1'>
             <div className='column'>
+              
               {/* Button showing the generated career report or a placeholder */}
+              {!detailedReport ? (
               <Button className='customButton2' onClick={handleStartDetailedQuiz}>
-                {detailedReport? (
-                  <div>
+              Take the Detailed Quiz to get your result!</Button>
+                ) : 
+                null
+                }
+                {detailedReport ? (
+                  <div className='reportContainer' >
                     <h3>Career Report</h3>
                     <p>{detailedReport}</p>
                   </div>
-                ) : (
-                  
-                  'Take the Detailed Quiz to get your result!'
-                )}
-              </Button>
+                ) : null}
             </div>
           </div>
         </div>
