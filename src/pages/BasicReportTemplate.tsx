@@ -80,7 +80,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
   return (
     <>
       <div className='pageTop'>
-        <h2 className='styledText'>Basic Report</h2>
+        <h2 className='styledText'>Congrats! You Completed the Quiz!</h2>
       </div>
       <div className='pageBody'>
         <div className='parallax-scrolling'>

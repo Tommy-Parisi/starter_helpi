@@ -30,32 +30,64 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const questions = [
     {
       question: 'Question 1',
-      options: ['I prefer working with numbers and data.', 'I prefer working with words and languages.'],
+      options: ['I prefer working with numbers and data', 'I prefer working with words and languages'],
     },
     {
       question: 'Question 2',
-      options: ['I prefer working with other people.', 'I prefer working by myself.'],
+      options: ['I prefer working with other people', 'I prefer working by myself'],
     },
     {
       question: 'Question 3',
-      options: ['I prefer to be in charge.', 'I prefer to be told what to do.'],
+      options: ['I prefer to be in charge', 'I prefer to be told what to do'],
     },
     {
       question: 'Question 4',
-      options: ['I prefer my work to be predictable and consistent.', 'I prefer my work to have variety and opportunity for creativity.'],
+      options: ['I prefer my work to be predictable and consistent', 'I prefer my work to have variety and opportunity for creativity'],
     },
     {
       question: 'Question 5',
-      options: ['I prefer active and hands-on tasks.', 'I prefer working on a computer.'],
+      options: ['I prefer active and hands-on tasks', 'I prefer working on a computer'],
     },
     {
       question: 'Question 6',
-      options: ['I prefer working to improve quality of life (e.g., healthcare, education).', 'I prefer working in entertainment and leisure (e.g., gaming, sports)'],
+      options: ['I prefer working to improve quality of life (e.g., healthcare, education)', 'I prefer working in entertainment and leisure (e.g., gaming, sports)'],
     },
     {
       question: 'Question 7',
-      options: ['I prefer science and technology.', 'I prefer design and communication.'],
+      options: ['I prefer science and technology', 'I prefer design and communication'],
     },
+    {
+      question: 'Question 8',
+      options: ['I prefer working in a structured environment', 'I prefer working in a flexible environment'],
+    },
+    {
+      question: 'Question 9',
+      options: ['I prefer fast paced work', 'I prefer slow paced percise work'],
+    },
+    {
+      question: 'Question 10',
+      options: ['I prefer to travel', 'I prefer to stay close to home'],
+    },
+    {
+      question: 'Question 11',
+      options: ['I prefer thinking about the future', 'I prefer living in the moment'],
+    },
+    {
+      question: 'Question 12',
+      options: ['I prefer following my head', 'I prefer following my heart'],
+    },
+    {
+      question: 'Question 13',
+      options: ['I prefer to be optimistic', 'I prefer to be realistic'],
+    },
+    {
+      question: 'Question 14',
+      options: ['I prefer being competitive', 'I prefer being cooperative'],
+    },
+    {
+      question: 'Question 15',
+      options: ['I prefer taking risks', 'I prefer playing it safe'],
+    }
   ];
 
   const justQuestions = questions.map((question) => question.question);
