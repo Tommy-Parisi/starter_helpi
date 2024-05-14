@@ -62,7 +62,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     },
     {
       question: 'Question 9',
-      options: ['I prefer fast paced work', 'I prefer slow paced percise work'],
+      options: ['I prefer fast paced work', 'I prefer slow paced work'],
     },
     {
       question: 'Question 10',
@@ -231,7 +231,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   
   return (
     <>
-
+      <div className='pageTop'></div>
       <div className='pageTop'>
         <h2 className='styledText'>Basic Career Questions</h2>
         <ProgressBarComponent progress={progress} total={questions.length} progressText={`${progress}/${questions.length}`} rocketImagePath='../assets/Rocket.png' />
@@ -251,6 +251,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                 <h2>{questions[currentQuestionIndex].question}</h2>
                 {questions[currentQuestionIndex].options.map((option, index) => (
                   <div className='form' key={index}>
+                    <label>
                     <Form.Check
                       type='radio'
                       name={`question${currentQuestionIndex + 1}`}
@@ -258,6 +259,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
                       onChange={() => handleOptionChange(option)}
                       checked={selectedOption === option}
                     />
+                    </label>
                   </div>
                 ))}
                 <div className='buttons'>
