@@ -11,33 +11,39 @@ interface DetailedReportProps {
 
 const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQuizCompleted}) => {
   
+  
   const parseReport = (report: string): JSX.Element | null => {
     if (!report.trim()) return null;
   
-    const sections = report.split('**').map(section => section.trim());
-  
+    const sections = report.split('**').map((section) => section.trim());
+    
     return (
-      <div className="reportContainer">
+      <div>
         {sections.map((section, index) => {
           if (!section) return null;
   
-          // Splitting section into lines, assuming the first line is the title
-          const lines = section.split('\n').map(line => line.trim());
-          const title = lines[0]; // First line is the section title
-          const content = lines.slice(0); // The rest are content lines
+          const lines = section.split('\n').map((line) => line.trim());
+          const title = lines[0].split('-')[0].trim();
+          const content = lines.slice(0).filter((line) => line.trim().startsWith('-') && line.trim().substring(1).trim() !== '');
+       
 
+          
           return (
-            <div key={index} className="reportSection">
-              <h2 className="sectionTitle">{title}</h2>
-              <ul className="sectionContent">
+            <div key={index}>
+              <h3>{title}</h3>
+              <ul className='listItems'>
                 {content.map((item, idx) => (
-                  // Items are expected to start with '-', strip the '-' and trim the content
-                  item.startsWith('-') ? <li key={idx}>{item.substring(1).trim()}</li> : null
+                  <li key={idx}>{item.trim().substring(1)}</li>
                 ))}
               </ul>
             </div>
           );
         })}
+        <div>
+        <strong>These recommended industries and job titles align with your strengths and interests, providing avenues for professional growth and fulfillment based on your career preferences. 
+    Consider exploring opportunities within these areas to leverage your skills effectively and achieve your career goals.
+    This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!</strong>
+      </div>
       </div>
     );
   };

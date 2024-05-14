@@ -95,43 +95,43 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
       QandAprompt += `${i + 1}: ${questions[i]} - ${answers[i]}\n`;
     }
   
-    const promptText = `Create a career recommender report based on the questions and answers provided. The report should consist of two sections:
-  1. **Personal Traits and Workplace Behavior** - Summarize 4 traits the person exhibits, explaining how these might influence their workplace behavior. Use concise bullet points.
-  2. **Recommended Career Paths** - List 3 industries and within each, 3 job titles, including salary ranges, workplace environments, and educational requirements.
-  End the report with: "These recommended industries and job titles align with your strengths and interests, providing avenues for professional growth and fulfillment based on your career preferences. Consider exploring opportunities within these areas to leverage your skills effectively and achieve your career goals. This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!"
-  Ensure the response is formatted to be correctly parsed by the provided parseReport function.
-  Make the response such that it will work perfectly with this parseReport function that will be used to parse it:
-  const parseReport = (report: string): JSX.Element | null => {
-    if (!report.trim()) return null;
-  
-    const sections = report.split('**').map(section => section.trim());
-  
-    return (
-      <div className="reportContainer">
-        {sections.map((section, index) => {
-          if (!section) return null;
-  
-          // Splitting section into lines, assuming the first line is the title
-          const lines = section.split('\n').map(line => line.trim());
-          const title = lines[0]; // First line is the section title
-          const content = lines.slice(0); // The rest are content lines
+    const promptText = `Create a career recommender report that is based on the following questions and answers. The report should have 2 different sections. One should have general information about 4 traits that the person seems to exhibit based on their answers. It should also include how these might impact their behavior in the workplace. This section should be concise and use bullet points with short sentences for descriptions. Don’t directly quote the given answers in this part, but find traits that they likely have based off of what they answered. 
 
-          return (
-            <div key={index} className="reportSection">
-              <h2 className="sectionTitle">{title}</h2>
-              <ul className="sectionContent">
-                {content.map((item, idx) => (
-                  // Items are expected to start with '-', strip the '-' and trim the content
-                  item.startsWith('-') ? <li key={idx}>{item.substring(1).trim()}</li> : null
-                ))}
-              </ul>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-  `;
+    The other section should list 3 different industries and 3 specific job titles within each industry as well as their expected salary range and a brief description. The report SHOULD NOT have an introduction or conclusion or a description of the report. The report should be written like you are talking directly to the person who took the quiz. Only include the two sections described in the report and this text below them: "These recommended industries and job titles align with your strengths and interests, providing avenues for professional growth and fulfillment based on your career preferences. Consider exploring opportunities within these areas to leverage your skills effectively and achieve your career goals.
+    
+    This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!"
+    
+    Format your response so that the following parseReport function called on your response will correctly parse the response and display it correctly on the page:
+    const parseReport = (report: string): JSX.Element | null => {
+        if (!report.trim()) return null;
+      
+        const sections = report.split('**').map((section) => section.trim());
+        
+        return (
+          <div>
+            {sections.map((section, index) => {
+              if (!section) return null;
+      
+              const lines = section.split('\n').map((line) => line.trim());
+              const title = lines[0];
+              const content = lines.slice(1).filter((line) => line.trim().startsWith('-'));
+      
+              return (
+                <div key={index}>
+                  <h3>{title}</h3>
+                  <ul>
+                    {content.map((item, idx) => (
+                      <li key={idx}>{item.trim().substring(1)}</li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        );
+      };
+    
+    Here are the questions the user was asked and the answers they selected. The format of these questions is that the user selects which of the 2 options they feel most applies to them. In this list, the question number is given, followed by the question, and then the answer that was selected:`;
   
     return `${promptText}${QandAprompt}`;
   };
