@@ -42,6 +42,9 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
             </div>
           );
         })}
+        <div>
+        <strong>This report aims to guide you towards potential career paths that resonate with your personality traits and preferences. Good luck on your career journey!</strong>
+      </div>
       </div>
     );
   };

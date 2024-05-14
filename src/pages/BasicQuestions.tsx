@@ -143,9 +143,9 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
     const completion = await openai.chat.completions.create({
       messages: [{ role: 'system', content: promptContent }],
-      max_tokens: 600,
+      max_tokens: 800,
       model: 'gpt-4-turbo',
-      temperature: 0.75,
+      temperature: 0.5,
     });
 
     const reportContent = completion.choices[0].message.content || '';
