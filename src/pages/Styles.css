@@ -424,18 +424,39 @@ html {
 }
 
 .reportContainer {
-    background-color: white;
-    color: #6a11cb; /* Purple text color */
+    font-family: 'Arial', sans-serif;
+    color: #333;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-    margin-top: 20px; /* Adjust as needed */
-    margin-bottom: 20px; /* Adjust as needed */
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: auto;
+    height:600px;
+    text-shadow: none;
+  }
+  
+ .reportSection {
+  margin-bottom: 30px;
 }
-.reportContainer h3 {
-    margin-top: 0; /* Remove default margin */
+
+.sectionTitle {
+  font-size: 24px;
+  color: #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
 }
-.reportContainer ul {
-    margin-top: 0; /* Remove default margin */
-    padding-left: 20px; /* Add some left padding to the list */
+
+.sectionContent {
+  list-style: none; /* Removes default list bullets */
+  padding-left: 0; /* Removes default padding */
+}
+
+.sectionContent li {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 5px 0;
+}
+.listItems{
+    text-align: left;
 }
