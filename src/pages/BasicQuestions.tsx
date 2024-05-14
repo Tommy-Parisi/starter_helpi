@@ -168,7 +168,24 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     setProgress(0);
     setSelectedOption('');
   };
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const yPos = window.scrollY;
+      const stars1 = document.getElementById('stars1');
+      const stars2 = document.getElementById('stars2');
+      const stars3 = document.getElementById('stars3');
 
+      if (stars1) stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
+      if (stars2) stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
+      if (stars3) stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const parseReport = (report: string) => {
     if (!report) return null;
 
