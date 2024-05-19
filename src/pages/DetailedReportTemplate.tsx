@@ -85,7 +85,7 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
     return(
         <>
            <div className='pageTop'>
-        <h2 className='styledText'>Detailed Report</h2>
+        <h2 className='styledText'>Congrats! You completed the quiz!</h2>
       </div>
       <div className='pageBody'>
         <div className='parallax-scrolling'>
