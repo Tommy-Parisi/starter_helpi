@@ -231,7 +231,6 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   
   return (
     <>
-      <div className='pageTop'></div>
       <div className='pageTop'>
         <h2 className='styledText'>Basic Career Questions</h2>
         <ProgressBarComponent progress={progress} total={questions.length} progressText={`${progress}/${questions.length}`} rocketImagePath='../assets/Rocket.png' />
