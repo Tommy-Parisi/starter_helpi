@@ -81,11 +81,11 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+//Page Structure and Behavior
     return(
         <>
            <div className='pageTop'>
-        <h2 className='styledText'>Congrats! You completed the quiz!</h2>
+        <h2 className='styledText'>Detailed Quiz Report</h2>
       </div>
       <div className='pageBody'>
         <div className='parallax-scrolling'>
@@ -94,7 +94,7 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
           <div className='container1'>
             <div className='column'>
               
-              {/* Button showing the generated career report or a placeholder */}
+              
               {!detailedReport ? (
               <Button className='customButton2' onClick={handleStartDetailedQuiz}>
               Take the Detailed Quiz to get your result!</Button>

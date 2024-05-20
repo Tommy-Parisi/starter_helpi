@@ -9,17 +9,17 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ changePage }) => {
-
+    // Function to handle clicking the Basic Quiz button
     const handleBasicClick = () => {
         changePage('Basic');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
+    // Function to handle clicking the Detailed Quiz button
     const handleDetailedClick = () => {
         changePage('Detailed');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
+    // useEffect to handle parallax scrolling effect
     useEffect(() => {
         const handleScroll = () => {
             const yPos = window.scrollY;
@@ -34,7 +34,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
         };
 
         window.addEventListener('scroll', handleScroll);
-
+     // Clean up event listener
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -57,7 +57,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
                         <Button className="customButton" onClick={handleBasicClick}>
                         <h2>The Basic Quiz</h2>
                         <h3>(5 Mins)</h3>
-                        {/*formatting below by ChatGPT*/}
+             
                         <ul>
                             <h5>Kickstart your career exploration with our Basic Career Questions!</h5>
                             <li>Quickly gauge your interests, traits, and preferences.</li>
@@ -72,7 +72,7 @@ const Home: React.FC<HomeProps> = ({ changePage }) => {
                     <Button className='customButton' onClick={handleDetailedClick}>
                         <h2>The Detailed Quiz</h2>
                         <h3>(10 Mins)</h3>
-                        {/*formatting below by ChatGPT*/}
+                      
                         <ul>
                             <h5>Ready to dive deeper into your career exploration?</h5>
                             <li>Provides three ideal industries each with specific careers.</li>
