@@ -11,7 +11,7 @@ interface DetailedReportProps {
 
 const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQuizCompleted}) => {
   
-  
+   // Function to parse and render the report
   const parseReport = (report: string): JSX.Element | null => {
     if (!report.trim()) return null;
   
@@ -54,14 +54,14 @@ const DetailedReport: React.FC<DetailedReportProps> = ({ changePage, detailedQui
 
 
   const { detailedReport } = useContext(ReportContext);
-
+  // Function to handle starting the detailed quiz
     const handleStartDetailedQuiz = () => {
         // Navigate to the Detailed Quiz page
         changePage('Detailed');
     };
 
 
-
+  // UseEffect to handle parallax scrolling effect
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;

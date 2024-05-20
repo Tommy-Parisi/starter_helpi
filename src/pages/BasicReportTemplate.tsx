@@ -14,7 +14,8 @@ interface BasicReportProps {
 }
 
 const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizCompleted }) => {
-  
+   
+  // Function to parse and render the report
   const parseReport = (report: string): JSX.Element | null => {
     if (!report.trim()) return null;
   
@@ -54,7 +55,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
     // Navigate to the Basic Quiz page
     changePage('Basic');
   };
-
+   // UseEffect to handle parallax scrolling effect
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;

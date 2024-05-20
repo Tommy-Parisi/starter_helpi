@@ -10,15 +10,17 @@ import { ReportContext } from '../ReportContext';
 //import { parse } from 'path';
 //import { report } from 'process';
 
+
+// Interface to define the properties for BasicQuestions component
 interface BasicProps {
   changePage: (page: string) => void;
   onQuizComplete: () => void;
 }
-
+// Array to store user's answers
 export let basicAnswers: string[] = [];
 
 
-
+// BasicQuestions component
 const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) => {
   const { setBasicReport } = useContext(ReportContext);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -26,7 +28,8 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   const [progress, setProgress] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
   const [reportContent, setReportContent] = useState<string>('');
-
+  
+  // List of questions and options
   const questions = [
     {
       question: 'Question 1',
@@ -89,13 +92,19 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
       options: ['I prefer taking risks', 'I prefer playing it safe'],
     }
   ];
-
+  
+   // Extracting just the questions for generating the prompt
   const justQuestions = questions.map((question) => question.question);
+  
 
+
+    // Handle option change
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
   };
+ 
 
+    // Handle "Next" button click
   const handleNext = () => {
     basicAnswers[currentQuestionIndex] = selectedOption;
     if (currentQuestionIndex < questions.length - 1) {
@@ -114,6 +123,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     }
   };
 
+ // Handle "Back" button click
   const handleBack = () => {
     basicAnswers[currentQuestionIndex] = selectedOption;
     if (currentQuestionIndex > 0) {
@@ -121,7 +131,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
       setSelectedOption(basicAnswers[currentQuestionIndex - 1]);
     }
   };
-
+   // Generate prompt for OpenAI based on questions and answers
   const generatePrompt = (questions: string[], answers: string[]) => {
     let QandAprompt = '';
     for (let i = 0; i < questions.length; i++) {
@@ -168,7 +178,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
   };
 
   const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem('MYKEY') as string), dangerouslyAllowBrowser: true });
-
+ // Show results by generating the report using OpenAI
   const showMyResults = async () => {
     setIsLoading(true);
     const promptContent = generatePrompt(justQuestions, basicAnswers);
@@ -193,7 +203,8 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
     // Clear the quiz after the report is set and the page changes
     resetQuiz();
   };
-
+ 
+   // UseEffect to handle parallax scrolling effect
   useEffect(() => {
     const handleScroll = () => {
         const yPos = window.scrollY;
@@ -213,14 +224,14 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
         window.removeEventListener('scroll', handleScroll);
     };
 }, []);
-
+ // Reset quiz state
   const resetQuiz = () => {
     basicAnswers = [];
     setCurrentQuestionIndex(0);
     setProgress(0);
     setSelectedOption('');
   };
-  
+    // UseEffect to initialize/reset the quiz state on mount or load
   useEffect(() => {
     // Initialize/reset the quiz state on mount or load
     resetQuiz();
