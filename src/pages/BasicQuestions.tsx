@@ -7,8 +7,7 @@ import './ParallaxStarsStyle.css';
 import './PlanetStyles.css';
 import { ApiKey } from '../ApiKey';
 import { ReportContext } from '../ReportContext';
-//import { parse } from 'path';
-//import { report } from 'process';
+
 
 
 // Interface to define the properties for BasicQuestions component
@@ -260,7 +259,7 @@ const BasicQuestions: React.FC<BasicProps> = ({ changePage, onQuizComplete }) =>
 
 
 
-  
+  //Page Structure and Behavior
   
   return (
     <>

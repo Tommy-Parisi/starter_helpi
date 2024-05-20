@@ -1,3 +1,4 @@
+/*Styling of Progress Bar Component*/
 .wrapper {
     position: relative;
     width: 100%; 
@@ -10,19 +11,19 @@
     width: 150px;
     background-size: contain;
     background-repeat: no-repeat;
-    transition: left 400ms; /* Smooth transition for the rocket movement */
+    transition: left 400ms; 
     z-index: 5;
   }
   
-  .custom-progress-bar { /* Progress bar container */
+  .custom-progress-bar { 
     height: 20px; 
-    background-color: #000080; /* Deep space blue */
+    background-color: #000080; 
     border-radius: 10px;
     z-index: 1;
   }
   
   .custom-progress-bar .progress-bar {
-    background-color: #ff712f; /* Fire progress color */
+    background-color: #ff712f; 
     z-index: 1;
   }
 
@@ -31,7 +32,7 @@
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(10px); /* movement amount */
+      transform: translateY(10px); 
     }
     
   }

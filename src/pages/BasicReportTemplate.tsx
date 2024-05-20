@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { ApiKey } from '../ApiKey';
 import './ParallaxStarsStyle.css';
 import { ReportContext } from '../ReportContext';
-//import { parsedReport } from './BasicQuestions';
+
         
 
 interface BasicReportProps {
@@ -77,11 +77,11 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+ //Page structure and Behavior
   return (
     <>
       <div className='pageTop'>
-        <h2 className='styledText'>Congrats! You Completed the Quiz!</h2>
+        <h2 className='styledText'>Basic Quiz Report</h2>
       </div>
       <div className='pageBody'>
         <div className='parallax-scrolling'>
@@ -89,7 +89,7 @@ const BasicReport: React.FC<BasicReportProps> = ({ changePage, basicQuizComplete
           <div id='stars3' className='parallax-star-layer'></div>
           <div className='container1'>
             <div className='column'>
-              {/* Button showing the generated career report or a placeholder */}
+              
                 {!basicReport ? (
                   <Button className='customButton2' onClick={handleStartBasicQuiz}>
                   Take the Basic Quiz to get your result! </Button>

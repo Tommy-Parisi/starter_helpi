@@ -12,7 +12,7 @@ interface DetailedProps {
   onQuizComplete: () => void;
 }
 
-// DetailedQuestions.tsx
+
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
   const { setDetailedReport } = useContext(ReportContext);
@@ -161,7 +161,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     // Reset the quiz after the report is shown
     resetQuiz();
   };
-
+  //Page Structure and behavior
   return (
     <>
       <div className='pageTop'>

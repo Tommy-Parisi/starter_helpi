@@ -1,3 +1,6 @@
+/*
+Styling of planet icon
+*/
 #planet {
     background-image: url('../assets/planet2.png');
     z-index: 3;

@@ -10,31 +10,31 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
     const [isSticky, setIsSticky] = useState(false);
     const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-
+    //Useffect to handle header visibility
     useEffect(() => {
         if (isHome) { 
             const handleScroll = () => {
-                const shouldStick = window.scrollY > 50; // Threshold of scroll Y to trigger sticky header
+                const shouldStick = window.scrollY > 50; 
                 setIsSticky(shouldStick);
                 setIsHeaderVisible(true);
-                document.body.style.paddingTop = shouldStick ? '70px' : '0'; // Add this line
+                document.body.style.paddingTop = shouldStick ? '70px' : '0'; 
             };
             window.addEventListener('scroll', handleScroll);
 
-            // Clean up event listener
+            
             return () => {
                 window.removeEventListener('scroll', handleScroll);
             };
         }
     }, [isHome]);
-
+        // Handle logo click event
     const handleLogoClick = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setIsHeaderVisible(false);
         changePage('Home');
         document.body.style.paddingTop = '0';
     };
-
+     // Inline styles for the Header component
     const style = {
         header: { 
             display: (isSticky && isHeaderVisible) ? 'flex' : 'none',
@@ -42,11 +42,11 @@ export const Header: React.FC<HeaderProps> = ({ changePage, isHome }) => {
             height: '70px',
             justifyContent: 'space-between',
             position: (isSticky ? 'fixed' : 'static') as 'fixed' | 'static',
-            top: isSticky ? 0 : 'auto', // Keep at top when sticky
+            top: isSticky ? 0 : 'auto', 
             left: 0,
             right: 0,
-            boxShadow: isSticky ? '0 2px 10px rgba(0,0,0,0.1)' : 'none', // Optional: add shadow when sticky
-            zIndex: 100 // Ensure it's on top of other elements
+            boxShadow: isSticky ? '0 2px 10px rgba(0,0,0,0.1)' : 'none', 
+            zIndex: 100 
         },
         logoImage: { 
             height: '55px', 

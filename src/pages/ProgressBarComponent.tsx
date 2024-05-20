@@ -13,19 +13,19 @@ export type ProgressBarProps= {
 
 const ProgressBarComponent = ({ rocketImagePath, total, progress, progressText = "" }: ProgressBarProps) => {
    const percentage = (progress / total) * 100;
-  
+  //Progress Bar structure and Behavior
    return (
       <div className='wrapper'>
          <ProgressBar now={percentage} label={`${progressText} (${percentage.toFixed(0)}%)`} className="custom-progress-bar"/>
          {/* Rocket image that moves along with the progress */}
          <div
-         id ='rocket' //matches .css file 
+         id ='rocket' 
          style={{
             backgroundImage: `url(${rocket})`, 
-            left: `calc(${percentage - 1}%)`, //-1 to ensure the image is backed up to the progress bar
-            top: '-33px', //offset y
+            left: `calc(${percentage - 1}%)`, 
+            top: '-33px', 
             transform: 'translateY(-20px)', 
-            animation: 'idleRocket 2s ease-in-out infinite', /* Add an I to the beginning to restart animation */
+            animation: 'idleRocket 2s ease-in-out infinite', 
          }}
          />
       </div>

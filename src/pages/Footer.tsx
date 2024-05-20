@@ -7,6 +7,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ changePage }) => {
+     // Inline styles for the Footer component
     const style = {
         Footer: {
             bottom: '0',
