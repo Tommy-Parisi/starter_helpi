@@ -16,6 +16,7 @@ interface DetailedProps {
 
 const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete }) => {
   const { setDetailedReport } = useContext(ReportContext);
+  // Array of detailed questions
   const detailedQuestions = [
     { questionNumber: "Question 1", question: "What hobbies/activities do you engage in during your free time?" },
     { questionNumber: "Question 2", question: "What are your top three skills or strengths?" },
@@ -32,7 +33,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
   const [isLoading, setIsLoading] = useState(false);
 
   const openai = new OpenAI({ apiKey: JSON.parse(localStorage.getItem('MYKEY') as string), dangerouslyAllowBrowser: true });
-
+// UseEffect to handle parallax scrolling effect
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;
@@ -68,7 +69,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     updatedAnswers[currentQuestionIndex] = text;
     setDetailedAnswers(updatedAnswers);
   };
-
+// Handle "Next" button click
   const handleNext = () => {
     if (detailedAnswers[currentQuestionIndex].trim() !== '') {
       if (currentQuestionIndex < detailedQuestions.length - 1) {
@@ -82,13 +83,13 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
       }
     }
   };
-
+  // Handle "Back" button click
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
-
+  // Generate the prompt for OpenAI based on the questions and answers
   const generatePrompt = (questions: string[], answers: string[]) => {
     let QandAprompt = '';
     for (let i = 0; i < questions.length; i++) {
@@ -136,7 +137,7 @@ const DetailedQuestions: React.FC<DetailedProps> = ({ changePage, onQuizComplete
     return `${promptText}${QandAprompt}`;
   };
   
-
+  // Generate the detailed report using OpenAI
   const generateReport = async () => {
     setIsLoading(true);
     const promptContent = generatePrompt(
